@@ -459,3 +459,68 @@ $$\blacksquare$$
    * $\mathbf{0}$ is not a solution ($A\mathbf{0} = \mathbf{0} \neq \mathbf{b}$).
    * Closure fails: $A(\mathbf{x} + \mathbf{x}') = \mathbf{b} + \mathbf{b} = 2\mathbf{b} \neq \mathbf{b}$.
    * Therefore, the solution set to $A\mathbf{x} = \mathbf{b}$ is **NEVER a subspace** when $\mathbf{b} \neq \mathbf{0}$.
+
+---
+
+## Theorem: Consistency Theorem for Linear Systems ($A\mathbf{x} = \mathbf{b}$)
+
+### Statement
+> A system of linear equations $A\mathbf{x} = \mathbf{b}$ is **consistent** if and only if the vector $\mathbf{b}$ is in the column space of $A$:
+> $$A\mathbf{x} = \mathbf{b} \text{ is consistent} \iff \mathbf{b} \in \text{Col}(A)$$
+
+---
+
+### Core Intuition: The Column View of Matrix Multiplication
+When you multiply an $m \times n$ matrix $A$ by a column vector $\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}$, the resulting vector is **not just a collection of dot products**—it is fundamentally a **linear combination of the columns of $A$**:
+$$A\mathbf{x} = \begin{bmatrix} \mathbf{c}_1 & \mathbf{c}_2 & \cdots & \mathbf{c}_n \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} = x_1 \mathbf{c}_1 + x_2 \mathbf{c}_2 + \dots + x_n \mathbf{c}_n$$
+The entries of $\mathbf{x}$ act as the **weights** scaling each column of $A$. 
+
+Therefore, asking *"Does $A\mathbf{x} = \mathbf{b}$ have a solution?"* is mathematically identical to asking *"Can vector $\mathbf{b}$ be built by mixing the columns of $A$?"*
+
+---
+
+### Proof (Bidirectional $\iff$)
+
+Let $A$ be an $m \times n$ matrix partitioned into its column vectors:
+$$A = \begin{bmatrix} \mathbf{c}_1 & \mathbf{c}_2 & \cdots & \mathbf{c}_n \end{bmatrix}, \quad \text{where each } \mathbf{c}_j \in \mathbb{R}^m$$
+and let $\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} \in \mathbb{R}^n$ and $\mathbf{b} \in \mathbb{R}^m$.
+
+By the definition of matrix-vector multiplication:
+$$A\mathbf{x} = x_1 \mathbf{c}_1 + x_2 \mathbf{c}_2 + \dots + x_n \mathbf{c}_n \quad \text{--- (Equation 1)}$$
+
+---
+
+#### 1. Forward Direction ($\implies$): Assume $A\mathbf{x} = \mathbf{b}$ is consistent
+1. If the system $A\mathbf{x} = \mathbf{b}$ is consistent, there exists at least one solution vector $\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}$ such that:
+   $$A\mathbf{x} = \mathbf{b}$$
+2. Substituting Equation (1) into this equality:
+   $$x_1 \mathbf{c}_1 + x_2 \mathbf{c}_2 + \dots + x_n \mathbf{c}_n = \mathbf{b}$$
+3. This equation explicitly shows that $\mathbf{b}$ is expressed as a linear combination of the column vectors $\mathbf{c}_1, \mathbf{c}_2, \dots, \mathbf{c}_n$.
+4. By definition, the **column space** $\text{Col}(A)$ is the span of all column vectors:
+   $$\text{Col}(A) = \text{span}\{\mathbf{c}_1, \mathbf{c}_2, \dots, \mathbf{c}_n\}$$
+5. Since $\mathbf{b}$ is a linear combination of these columns:
+   $$\mathbf{b} \in \text{Col}(A)$$
+
+---
+
+#### 2. Backward Direction ($\impliedby$): Assume $\mathbf{b} \in \text{Col}(A)$
+1. If $\mathbf{b} \in \text{Col}(A)$, then by definition of column space, $\mathbf{b}$ can be written as a linear combination of the columns of $A$.
+2. That is, there exist scalars $s_1, s_2, \dots, s_n \in \mathbb{R}$ such that:
+   $$s_1 \mathbf{c}_1 + s_2 \mathbf{c}_2 + \dots + s_n \mathbf{c}_n = \mathbf{b}$$
+3. Define the vector $\mathbf{s} \in \mathbb{R}^n$ by:
+   $$\mathbf{s} = \begin{bmatrix} s_1 \\ s_2 \\ \vdots \\ s_n \end{bmatrix}$$
+4. Multiplying $A$ by $\mathbf{s}$ using Equation (1):
+   $$A\mathbf{s} = s_1 \mathbf{c}_1 + s_2 \mathbf{c}_2 + \dots + s_n \mathbf{c}_n = \mathbf{b}$$
+5. Since we found an explicit vector $\mathbf{s}$ that satisfies the equation $A\mathbf{s} = \mathbf{b}$, the linear system has a solution.
+6. Therefore, the system $A\mathbf{x} = \mathbf{b}$ is **consistent**.
+
+$$\blacksquare$$
+
+---
+
+### Key Exam Takeaways:
+1. **The "Range" of a Matrix:**
+   $\text{Col}(A)$ is the output space of the transformation $T(\mathbf{x}) = A\mathbf{x}$. You can only solve for $\mathbf{b}$ if $\mathbf{b}$ lands inside the output space.
+2. **Rank Connection (Augmented Matrix):**
+   $A\mathbf{x} = \mathbf{b}$ is consistent $\iff \text{rank}(A) = \text{rank}([A \mid \mathbf{b}])$.
+   *(Adding $\mathbf{b}$ to the matrix doesn't add any new dimensions because $\mathbf{b}$ is already inside the span of $A$'s columns).*
