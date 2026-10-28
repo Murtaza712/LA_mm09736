@@ -59,9 +59,11 @@
   - [Projections (Splitting a Vector)](#projections-splitting-a-vector)
   - [Direction Cosines](#direction-cosines)
 - [12. Euclidean n-Space ($\mathbb{R}^n$)](#12-euclidean-n-space-rn)
-- [13. General Vector Spaces](#13-general-vector-spaces)
-  - [The 10 Axioms of a Vector Space](#the-10-axioms-of-a-vector-space)
-  - [Proving vs. Disproving a Vector Space](#proving-vs-disproving-a-vector-space)
+- [13. General Vector Spaces & Subspaces](#13-general-vector-spaces--subspaces)
+  - [Motivation: Why "General" Vector Spaces?](#1-motivation-why-general-vector-spaces)
+  - [The 10 Axioms of a Vector Space](#2-the-10-axioms-of-a-vector-space)
+  - [The "Hall of Fame": Standard Vector Spaces](#3-the-hall-of-fame-standard-vector-spaces)
+  - [Exam Strategy: Proving vs. Disproving](#4-exam-strategy-proving-vs-disproving-a-vector-space)
   - [Subspaces & The Subspace Test](#subspaces--the-subspace-test)
   - [Solution Space of $Ax = 0$ (Null Space)](#solution-space-of-ax--0-null-space)
   - [Linear Combinations & Span](#linear-combinations--span)
@@ -140,6 +142,15 @@ A **System of Linear Equations** is a set of these equations. We classify system
 *   **Inconsistent:** The system has *no solution* at all.
 *   **Homogeneous:** The equations all equal zero ($Ax = \mathbf{0}$). It is *always consistent* because $x = \mathbf{0}$ is always a solution (the "trivial solution").
 *   **Non-Homogeneous:** The equations equal constants ($Ax = \mathbf{b}$).
+
+> [!NOTE] Intuition: What is a "Trivial Solution"?
+> In mathematics, **"trivial"** literally means so obvious and effortless that you didn't even have to do any math to find it.
+> Look at the equation $A\mathbf{x} = \mathbf{0}$:
+> $$A \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 0 \end{bmatrix}$$
+> Because plugging in all zeros ($\mathbf{x} = \mathbf{0}$) **always** produces $\mathbf{0}$ for any matrix $A$, mathematicians call $\mathbf{x} = \mathbf{0}$ the **trivial solution**.
+> *   **Trivial Solution:** $\mathbf{x} = \mathbf{0}$ (the guaranteed, freebie zero vector).
+> *   **Non-Trivial Solution:** Any vector $\mathbf{x} \neq \mathbf{0}$ containing non-zero numbers that also happens to satisfy $A\mathbf{x} = \mathbf{0}$. Finding non-trivial solutions requires free variables in the matrix!
+
 
 ### The Matrix Form ($Ax = b$)
 Any system of linear equations can be rewritten cleanly into a single matrix equation $Ax = b$.
@@ -1088,34 +1099,107 @@ $$= ||\vec{u}||^2 + 0 + ||\vec{v}||^2 = ||\vec{u}||^2 + ||\vec{v}||^2$$
 
 <div style="page-break-before: always; break-before: page;"></div>
 
-## 13. General Vector Spaces
-We now shift to a much broader definition of vectors: **"Vector" is a job title.**
-If a set of objects (which could be matrices, functions, polynomials, or arrows) has a sensible "addition" and "scalar multiplication" that behave exactly as we expect them to, we call that set a **Vector Space**, and we refer to its elements as **vectors**.
+## 13. General Vector Spaces & Subspaces
 
-### The 10 Axioms of a Vector Space
-Let $V$ be a set of objects. $V$ is a vector space if all 10 of these axioms hold for all vectors $\vec{u}, \vec{v}, \vec{w}$ in $V$ and all scalars $k, l$:
+### 1. Motivation: Why "General" Vector Spaces?
+Up to this point, you have thought of a vector as an **arrow** with direction and magnitude, or as a **column of numbers** in $\mathbb{R}^n$ (like $\begin{bmatrix} x \\ y \\ z \end{bmatrix}$).
 
-**The "Vegas" Rules (Closure):**
-1.  **Closure under Addition:** $\vec{u} + \vec{v}$ is in $V$.
-6.  **Closure under Scalar Multiplication:** $k\vec{u}$ is in $V$.
-*(If operations pull you outside the set, it is not a vector space).*
+However, mathematicians noticed a striking pattern:
+* If you add two polynomials: $(2x^2 + x - 3) + (x^2 - 4x + 1) = 3x^2 - 3x - 2$, the algebra behaves identically to vector addition.
+* If you scale a matrix by a scalar: $3 \begin{bmatrix} 1 & 2 \\ 0 & 4 \end{bmatrix} = \begin{bmatrix} 3 & 6 \\ 0 & 12 \end{bmatrix}$, it behaves identically to scaling an arrow.
+* If you add two continuous functions: $(f + g)(x) = f(x) + g(x)$, all the same rules of arithmetic apply.
 
-**The "Undo" Rules (Identities):**
-4.  **Zero Vector:** There is a $\mathbf{0}$ in $V$ such that $\vec{u} + \mathbf{0} = \vec{u}$. *(This implies a vector space is never empty).*
-5.  **Negative Vector:** Every $\vec{u}$ has an inverse $-\vec{u}$ such that $\vec{u} + (-\vec{u}) = \mathbf{0}$.
+Because the underlying algebra is the exact same, mathematicians unified all these objects under one umbrella:
+> **"Vector" is a job title, not an object shape.**
+> Any mathematical set $V$ whose objects can be **added together** and **scaled by real numbers** such that the operations obey 10 common-sense arithmetic rules is called a **Vector Space**. 
+> The objects living inside $V$ are formally called **vectors** (whether they are arrows, matrices, polynomials, or functions).
 
-**The Arithmetic Rules:**
-2.  **Commutative:** $\vec{u} + \vec{v} = \vec{v} + \vec{u}$
-3.  **Associative (Addition):** $\vec{u} + (\vec{v} + \vec{w}) = (\vec{u} + \vec{v}) + \vec{w}$
-7.  **Distributive (Scalar over Vector Add):** $k(\vec{u} + \vec{v}) = k\vec{u} + k\vec{v}$
-8.  **Distributive (Scalar Add over Vector):** $(k + l)\vec{u} = k\vec{u} + l\vec{u}$
-9.  **Associative (Scalar Multiplication):** $k(l\vec{u}) = (kl)\vec{u}$
-10. **Scalar Identity:** $1\vec{u} = \vec{u}$
+---
 
-### Proving vs. Disproving a Vector Space
-*   **To Prove:** You must systematically show that all 10 axioms hold true. (Most fall out directly from real-number arithmetic applied entrywise, like showing all $2 \times 2$ matrices form a vector space).
-*   **To Disprove:** You only need to find **one** axiom that fails. 
-    *   *Tip:* Always check Axiom 1 (Closure under addition) and Axiom 6 (Closure under scalar multiplication) first. They kill more failed candidates than any other axiom.
+### 2. The 10 Axioms of a Vector Space
+Let $V$ be a non-empty set of objects equipped with two operations:
+1. **Vector Addition ($+$):** An operation that combines any two objects $\mathbf{u}, \mathbf{v} \in V$ to produce an object $\mathbf{u} + \mathbf{v}$.
+2. **Scalar Multiplication ($\cdot$):** An operation that combines any real scalar $k \in \mathbb{R}$ with an object $\mathbf{u} \in V$ to produce an object $k\mathbf{u}$.
+
+$V$ is a **Vector Space** if and only if **all 10 axioms** hold for all vectors $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ and all real scalars $k, m \in \mathbb{R}$:
+
+#### Part I: The 5 Vector Addition Axioms
+1.  **Closure under Addition:** 
+    $$\text{If } \mathbf{u}, \mathbf{v} \in V, \text{ then } \mathbf{u} + \mathbf{v} \in V$$
+    *(Adding two objects in $V$ must produce another object that remains inside $V$. You cannot "fall out" of the set).*
+2.  **Commutative Property:** 
+    $$\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$$
+    *(The order of addition does not matter).*
+3.  **Associative Property (Addition):** 
+    $$(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$$
+    *(Grouping of additions does not matter).*
+4.  **Additive Identity (Zero Vector):** 
+    $$\text{There exists a unique element } \mathbf{0} \in V \text{ such that } \mathbf{u} + \mathbf{0} = \mathbf{u} \text{ for all } \mathbf{u} \in V$$
+    *(There is a neutral "do-nothing" anchor element in the space. This implies $V$ can never be empty).*
+5.  **Additive Inverse (Negative Vector):** 
+    $$\text{For every } \mathbf{u} \in V, \text{ there exists an object } -\mathbf{u} \in V \text{ such that } \mathbf{u} + (-\mathbf{u}) = \mathbf{0}$$
+    *(Every object can be cancelled out to return back to the zero element).*
+
+#### Part II: The 5 Scalar Multiplication Axioms
+6.  **Closure under Scalar Multiplication:** 
+    $$\text{If } k \in \mathbb{R} \text{ and } \mathbf{u} \in V, \text{ then } k\mathbf{u} \in V$$
+    *(Multiplying any object by any real scalar must keep the result strictly inside $V$).*
+7.  **Distributive Property (Scalar over Vector Addition):** 
+    $$k(\mathbf{u} + \mathbf{v}) = k\mathbf{u} + k\mathbf{v}$$
+8.  **Distributive Property (Scalars over Vector):** 
+    $$(k + m)\mathbf{u} = k\mathbf{u} + m\mathbf{u}$$
+9.  **Associative Property (Scalar Multiplication):** 
+    $$k(m\mathbf{u}) = (km)\mathbf{u}$$
+10. **Scalar Identity (Preservation by 1):** 
+    $$1\mathbf{u} = \mathbf{u}$$
+    *(Scaling by the real number 1 leaves the vector unchanged).*
+
+---
+
+### 3. The "Hall of Fame": Standard Vector Spaces
+Here are the classic vector spaces you will encounter in exams:
+
+| Space Symbol | Description of Objects | Example Element | The Zero Vector ($\mathbf{0}$) |
+| :--- | :--- | :--- | :--- |
+| **$\mathbb{R}^n$** | Ordered $n$-tuples of real numbers | $\begin{bmatrix} x_1, x_2, \dots, x_n \end{bmatrix}^T$ | $\begin{bmatrix} 0, 0, \dots, 0 \end{bmatrix}^T$ |
+| **$M_{m \times n}$** | All $m \times n$ matrices with real entries | $\begin{bmatrix} a & b \\ c & d \end{bmatrix} \in M_{2 \times 2}$ | The zero matrix $O_{m \times n}$ |
+| **$P_n$** | All polynomials of degree $\le n$ | $p(x) = a_0 + a_1x + \dots + a_nx^n$ | The zero polynomial: $p(x) = 0$ |
+| **$C(-\infty, \infty)$** | All real-valued continuous functions | $f(x) = \sin(x) + e^x$ | The constant zero function: $f(x) = 0$ |
+
+---
+
+### 4. Exam Strategy: Proving vs. Disproving a Vector Space
+
+*   **To Prove a Set is a Vector Space:**
+    You must theoretically prove that **all 10 axioms** hold. 
+    *(In practice, properties like commutativity and associativity are inherited directly from real-number arithmetic. The real challenge is verifying that addition and scalar multiplication are well-defined and closed).*
+*   **To Disprove a Set is a Vector Space:**
+    You only need to show that **ONE single axiom fails**. 
+
+#### The 3 "Quick-Kill" Tests for Exams:
+When given a candidate set in an exam, do **NOT** test all 10 axioms. Run these 3 tests in order—they catch $95\%$ of invalid sets immediately:
+
+1.  **Quick-Kill 1: The Zero Vector Test (Axiom 4)**
+    *Does the set contain the natural zero object $\mathbf{0}$?*
+    *   *Example of Failure:* The set of polynomials $V = \{p(x) \in P_2 \mid p(0) = 1\}$. 
+    *   *Why it fails:* The zero polynomial is $p(x) = 0$, so $p(0) = 0 \neq 1$. Since $\mathbf{0} \notin V$, it fails Axiom 4 instantly!
+2.  **Quick-Kill 2: The Negative Scalar Test (Axiom 6)**
+    *If you multiply an element by $k = -1$ or $k = 0$, does it stay in the set?*
+    *   *Example of Failure:* The set of all vectors in the first quadrant of $\mathbb{R}^2$: $V = \left\{\begin{bmatrix} x \\ y \end{bmatrix} \;\middle|\; x \ge 0, y \ge 0\right\}$.
+    *   *Why it fails:* Take $\mathbf{u} = \begin{bmatrix} 2 \\ 3 \end{bmatrix} \in V$ and scalar $k = -1$. Then $k\mathbf{u} = \begin{bmatrix} -2 \\ -3 \end{bmatrix} \notin V$. It fails Axiom 6!
+3.  **Quick-Kill 3: The Addition Closure Test (Axiom 1)**
+    *If you add two arbitrary elements from the set, does the sum violate the set's membership rule?*
+    *   *Example of Failure:* The set of all invertible $2 \times 2$ matrices.
+    *   *Why it fails:* $A = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ and $B = \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}$ are both invertible. But their sum is $A + B = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$, which is **not** invertible! It fails Axiom 1!
+
+---
+
+### 5. Why Subspaces are the Secret Shortcut
+Testing all 10 axioms every time is exhausting. 
+Notice that almost all sets you investigate already live inside one of our trusted spaces (like $\mathbb{R}^n$, $M_{m \times n}$, or $P_n$). 
+Because they live inside an existing vector space, they **automatically inherit** the 8 algebraic axioms (Axioms 2, 3, 5, 7, 8, 9, 10). 
+
+This leads directly to the concept of **Subspaces**, where we can reduce 10 tedious tests down to **just 3 quick conditions**!
 
 ### Subspaces & The Subspace Test
 > **Video Resource:** [Khan Academy - Linear Subspaces of $\mathbb{R}^n$](https://youtu.be/pMFv6liWK4M?si=vUzhx0MK-GSeuwX9)
@@ -1183,9 +1267,32 @@ Let $W$ be the set of all solution vectors to the homogeneous system $Ax = \math
 Because all three conditions of Theorem 5.2.1 are satisfied, the solution set $W$ is officially a **subspace of $\mathbb{R}^n$**.
 
 > [!WARNING] Common Exam Trap: Non-Homogeneous Systems ($Ax = b$)
-> If $\mathbf{b} \neq \mathbf{0}$, the solution set to $Ax = \mathbf{b}$ is **NEVER a subspace**. 
-> *   **Zero Vector Fails:** $A\mathbf{0} = \mathbf{0} \neq \mathbf{b}$ (zero is never a solution).
-> *   **Closure Fails:** If $A\mathbf{x} = \mathbf{b}$ and $A\mathbf{x}' = \mathbf{b}$, then $A(\mathbf{x} + \mathbf{x}') = A\mathbf{x} + A\mathbf{x}' = \mathbf{b} + \mathbf{b} = 2\mathbf{b} \neq \mathbf{b}$.
+> Under what condition is the solution set of $A\mathbf{x} = \mathbf{b}$ a valid subspace of $\mathbb{R}^n$?
+> **Answer: If and only if $\mathbf{b} = \mathbf{0}$ (the system is homogeneous)!**
+> 
+> **Why? The Golden Rule of Subspaces:**
+> Every single subspace in the universe **MUST pass through the origin $(0, 0, \dots, 0)$**. If it does not contain the zero vector, it is immediately disqualified.
+> *   **If $\mathbf{b} = \mathbf{0}$ (e.g., $x + y = 0$):**
+>     *   Does the origin $(0,0)$ satisfy the equation? $0 + 0 = 0 \implies$ **YES!**
+>     *   The line passes directly through $(0,0)$. Any scalar multiple or sum of solutions stays on the line $\implies$ **Valid Subspace!**
+> *   **If $\mathbf{b} \neq \mathbf{0}$ (e.g., $x + y = 5$):**
+>     *   Does the origin $(0,0)$ satisfy the equation? $0 + 0 = 5 \implies$ **NO! Impossible.**
+>     *   The line is shifted away from the origin. Because it misses $(0,0)$, it fails the #1 rule of subspaces.
+>     *   **Closure also fails:** If $\mathbf{x}$ and $\mathbf{x}'$ solve $A\mathbf{x} = \mathbf{b}$, their sum gives $A(\mathbf{x} + \mathbf{x}') = \mathbf{b} + \mathbf{b} = 2\mathbf{b} \neq \mathbf{b}$.
+>     *   $\implies$ **NEVER a subspace!** (It is merely an affine space / shifted plane).
+
+> [!TIP] Critical Concept: Does the Solution Space Require ONLY the Trivial Solution?
+> **NO!** The solution set to $A\mathbf{x} = \mathbf{0}$ is a guaranteed valid subspace in **both** cases:
+> 1.  **Case 1 (Only the Trivial Solution Exists):**
+>     *   The only solution is $\mathbf{x} = \mathbf{0}$.
+>     *   The solution space is the single point $\{\mathbf{0}\}$ (the trivial subspace).
+>     *   *Dimension:* **0D (Dimension 0)**. A single point has zero directions of movement, and its basis is the empty set ($\emptyset$), which contains 0 vectors.
+> 2.  **Case 2 (Non-Trivial Solutions Exist — Free Variables Present):**
+>     *   There are infinitely many non-zero solutions.
+>     *   These solutions form a **1D line**, a **2D plane**, or a higher-dimensional hyper-plane **passing through the origin**.
+>     *   *Dimension:* $\dim(\text{Null}(A)) = \text{number of free variables} \ge 1$.
+> 
+> In **both** cases, the solution set passes through the origin and satisfies all closure laws, making it a 100% valid subspace!
 
 ---
 
@@ -1488,6 +1595,12 @@ $$\text{Null}(A) = \{\mathbf{x} \in \mathbb{R}^n \mid A\mathbf{x} = \mathbf{0}\}
     *   The vector $\mathbf{x}$ must have $n$ entries to multiply with $A$. Therefore, **$\text{Null}(A)$ is a subspace of $\mathbb{R}^n$** (the domain / input space).
     *   The output $\mathbf{0}$ has $m$ entries, residing in $\mathbb{R}^m$ (the codomain / output space).
 *   **The Practical Meaning:** Solving for the null space is identical to solving the homogeneous linear system of equations $A\mathbf{x} = \mathbf{0}$.
+*   **Trivial vs. Non-Trivial Solutions in the Null Space:**
+    *   $\mathbf{x} = \mathbf{0}$ is always in $\text{Null}(A)$ because $A\mathbf{0} = \mathbf{0}$ (the **trivial solution**).
+    *   If the only solution is $\mathbf{x} = \mathbf{0}$, then $\text{Null}(A) = \{\mathbf{0}\}$. This is the **trivial subspace**—a single point at the origin. Its basis is the empty set $\emptyset$, so its **dimension is strictly 0 (0D)**.
+    *   If the matrix has free variables, there exist infinitely many **non-trivial solutions** ($\mathbf{x} \neq \mathbf{0}$). These form a 1D line, 2D plane, or higher-dimensional hyper-plane passing through the origin.
+    *   *Key Takeaway:* $\text{Null}(A)$ is a guaranteed, valid subspace of $\mathbb{R}^n$ **regardless** of whether it contains only the trivial solution or infinitely many non-trivial solutions!
+
 
 ---
 
@@ -1748,7 +1861,87 @@ $$B_{\text{col}} = \left\{ \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, \begin{bma
 
 ---
 
+### Conceptual Deep-Dive: Why Null Space Feels So Different from Row & Column Space
+
+A common source of confusion is: *Why do we find bases for Row Space and Column Space so simply (just picking vectors), while Null Space requires solving equations manually?*
+
+Here is the mystery debunked:
+
+#### 1. Why Row Space & Column Space feel so "easy"
+Look at matrix $A$:
+$$A = \begin{bmatrix} 
+\mathbf{2} & \mathbf{3} \\ 
+\mathbf{-1} & \mathbf{4} 
+\end{bmatrix}$$
+
+Ask yourself: **Where are the column vectors?**
+* They are printed **right in front of your eyes** on the paper! Column 1 is $\begin{bmatrix} 2 \\ -1 \end{bmatrix}$ and Column 2 is $\begin{bmatrix} 3 \\ 4 \end{bmatrix}$.
+
+Ask yourself: **Where are the row vectors?**
+* They are **already printed right there**! Row 1 is $\begin{bmatrix} 2 & 3 \end{bmatrix}$ and Row 2 is $\begin{bmatrix} -1 & 4 \end{bmatrix}$.
+
+When you find a basis for the Column Space or Row Space, **you already have the vectors**. You are simply asking: 
+> *"Which of these vectors that I can already see are redundant copies?"*
+
+Row reduction is just a **filter** that says: *"Keep column 1 and column 2, discard column 3."* You don't have to create any new vectors—you just pick the winners from the matrix.
+
+#### 2. Why Null Space requires "manual calculation"
+Now ask yourself: **Where are the Null Space vectors?**
+* Are they printed inside matrix $A$? **NO!** 
+* Matrix $A$ contains *zero* Null Space vectors.
+
+The Null Space is the answer to a mystery:
+$$A \mathbf{x} = \mathbf{0}$$
+> *"What secret, unknown vectors $\mathbf{x}$ in the universe get completely crushed to zero when multiplied by $A$?"*
+
+Because the vectors $\mathbf{x}$ are **not in the matrix**, you cannot just "pick" them. **You literally have to solve the system to hunt them down!** That is why you must write out the equations in parametric form: you are discovering vectors that were never printed on the page.
+
+#### 3. Why do Non-Pivot Columns give the Dimension (Free Variables)?
+Think of variables as **dials on a machine**:
+When you have a system in RREF:
+$$\begin{bmatrix} 
+\mathbf{1} & 0 & 3 & 5 \\ 
+0 & \mathbf{1} & -2 & 4 
+\end{bmatrix} 
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}$$
+
+Notice what each row says:
+* **Row 1 has a pivot at $x_1$:** 
+  $$x_1 + 3x_3 + 5x_4 = 0 \implies \mathbf{x_1 = -3x_3 - 5x_4}$$
+  Variable $x_1$ is **locked in handcuffs**. It has zero freedom—its value is strictly controlled by whatever $x_3$ and $x_4$ are.
+* **Row 2 has a pivot at $x_2$:**
+  $$x_2 - 2x_3 + 4x_4 = 0 \implies \mathbf{x_2 = 2x_3 - 4x_4}$$
+  Variable $x_2$ is also **locked in handcuffs**.
+
+Now look at **Columns 3 and 4 (the NON-PIVOT columns)**:
+* There is no equation locking $x_3$ or $x_4$.
+* Because nobody controls $x_3$ and $x_4$, **they are free variables (unlocked knobs)** you can turn to any number you want!
+
+**How each free variable creates 1 Basis Vector:**
+1. **Turn Knob 1 ($x_3 = 1$, others $0$):** Produces the first independent direction: $\mathbf{v}_1 = \begin{bmatrix} -3 \\ 2 \\ 1 \\ 0 \end{bmatrix}$.
+2. **Turn Knob 2 ($x_4 = 1$, others $0$):** Produces the second independent direction: $\mathbf{v}_2 = \begin{bmatrix} -5 \\ -4 \\ 0 \\ 1 \end{bmatrix}$.
+
+Because there are **2 free knobs (2 non-pivot columns)**, you get **2 independent basis vectors**. That is why:
+$$\mathbf{\text{Dimension of Null Space}} = \textbf{Number of Non-Pivot Columns (Free Variables)!}$$
+
+#### 4. What if there are NO free variables? (RREF is the Identity Matrix)
+If every column has a pivot, $\text{RREF}(A) = I$:
+* Every variable is locked: $x_1 = 0, x_2 = 0, \dots, x_n = 0$.
+* **Null Space:** $\text{Null}(A) = \{\mathbf{0}\}$ (only the trivial solution exists).
+* **Dimension (Nullity):** **$0$** (a 0D point at the origin).
+* **Basis:** **$\emptyset$ (The Empty Set)**. *(Never write $\{\mathbf{0}\}$ as a basis—a basis can never contain the linearly dependent zero vector!)*
+
+#### Summary Comparison:
+| Subspace | Are vectors visible in $A$? | How to find the Basis |
+| :--- | :--- | :--- |
+| **Column Space** | **YES!** (Columns of $A$) | Find pivot column locations in REF, then **pick** those exact columns from original $A$. |
+| **Row Space** | **YES!** (Rows of $A$) | Row reduce to REF, then **pick** the non-zero rows directly from REF. |
+| **Null Space** | **NO!** (Hidden solutions $\mathbf{x}$) | Must **solve** $A\mathbf{x} = \mathbf{0}$, set each free variable knob to $1$, and factor out the basis vectors! |
+
+---
+
 <div style="page-break-before: always; break-before: page;"></div>
+
 
 ### Rank, Nullity & The Rank-Nullity Theorem
 > **Video Resources:**
@@ -1912,8 +2105,9 @@ Here is a master list of all the terminology introduced in this document:
 *   **System of Linear Equations:** A set of multiple linear equations evaluated together.
 *   **Consistent System:** A system that has at least one valid solution.
 *   **Inconsistent System:** A system that has absolutely no valid solutions.
-*   **Homogeneous System:** A system where all equations equal exactly zero ($Ax=0$).
-*   **Trivial Solution:** The guaranteed solution $x=0$ in a homogeneous system.
+*   **Homogeneous System:** A system where all equations equal exactly zero ($A\mathbf{x}=\mathbf{0}$).
+*   **Trivial Solution:** The guaranteed, effortless solution $\mathbf{x}=\mathbf{0}$ for any homogeneous system $A\mathbf{x}=\mathbf{0}$. Forms a 0D subspace if it is the only solution.
+*   **Non-Trivial Solution:** Any non-zero vector $\mathbf{x} \neq \mathbf{0}$ that satisfies $A\mathbf{x}=\mathbf{0}$. Requires free variables and generates higher-dimensional subspaces (1D lines, 2D planes, etc.) through the origin.
 *   **Matrix:** A rectangular array of numbers.
 *   **Order of a Matrix:** The size of the matrix, read as Rows $\times$ Columns.
 *   **Zero (Null) Matrix ($O$):** A matrix where every single entry is $0$.
