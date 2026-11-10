@@ -1,0 +1,2729 @@
+video link: https://youtu.be/BQMyeQOLvpg?si=GJvFXg8XYXt4tH6D
+
+## Definitions
+
+*   **Function:** A relation that associates every member of a set $X$ (the domain) with a member of a set $Y$ (the codomain). This is denoted as $f: X \rightarrow Y$ (0:17-0:44).
+*   **Domain:** The set of all valid inputs for the function, specified as part of the function's definition (4:38-4:54).
+*   **Codomain:** The set $Y$ that the function maps into; it contains all potential values the function might produce (4:57-5:34).
+*   **Range:** The subset of the codomain that the function actually maps to (6:04-6:31).
+*   **Scalar-Valued Function (Real-Valued Function):** A function that maps to a one-dimensional space, specifically $mathbb{R}$ or a subset of $mathbb{R}$ (14:43-15:11).
+*   **Vector-Valued Function:** A function that maps to a space with more than one dimension, such as $mathbb{R}^n$ where $n > 1$ (15:14-15:38).
+
+## Examples & Formulas
+
+### Simple Scalar Function
+
+*   **Definition:** $f: mathbb{R} \rightarrow mathbb{R}$ where $f(x) = x^2$ (2:26-3:54).
+
+### Constant Mapping Example
+
+*   **Definition:** $G: mathbb{R}^2 \rightarrow mathbb{R}$ defined as $G(X_1, X_2) = 2$ (6:45-7:30).
+    *   **Domain:** $mathbb{R}^2$
+    *   **Codomain:** $mathbb{R}$
+    *   **Range:** The set containing only the value $2$ (8:34-9:47).
+
+### Vector-Valued Function Example
+
+*   **Definition:** $H: mathbb{R}^2 \rightarrow mathbb{R}^3$ defined by the mapping (10:05-10:51):
+    $$H(X_1, X_2) = \begin{bmatrix} X_1 + X_2 \ X_2 - X_1 \ X_2 cdot X_1 end{bmatrix}$$
+*   **Specific Mapping:** $H(2, 3)$ maps to $(2+3, 3-2, 3 cdot 2) = (5, 1, 6)$ (12:11-13:08).
+*   **Range Analysis:** Not every point in $mathbb{R}^3$ (codomain) is in the range. For example, $(5, 1, 0)$ is not in the range because there are no $X_1, X_2$ such that their sum is 5, difference is 1, and product is 0 (13:14-14:03).
+In this video, the narrator provides a formal mathematical definition of a **function** and introduces several key terminologies to describe how these functions operate within different sets. Here are the definitions, formulas, and new terminologies covered:
+
+### **Fundamental Definitions & Terminologies**
+
+*   **Function ($f$):** A formal relation that maps or associates every member of an input set to a specific member of an output set (0:17-0:44).
+*   **Domain:** The set of all valid input values allowed by the function definition (4:38-4:54).
+*   **Codomain:** The entire set that the function maps into; it represents all potential target values (4:57-5:34).
+*   **Range:** A subset of the codomain consisting of all values that the function actually maps to (6:04-6:31).
+*   **Scalar-valued function (or Real-valued function):** A function where the codomain is the set of real numbers $mathbb{R}$ or a subset of $mathbb{R}$ (14:43-15:11).
+*   **Vector-valued function:** A function that maps to a space with more than one dimension, such as $mathbb{R}^n$ where $n > 1$ (15:14-15:38).
+
+### **Examples & Formulas**
+
+*   **Simple Scalar Function:** Defined as $f: mathbb{R} \rightarrow mathbb{R}$, where $f(x) = x^2$ (2:26-3:54).
+*   **Constant Mapping:** $G: mathbb{R}^2 \rightarrow mathbb{R}$ defined as $G(X_1, X_2) = 2$. Here, the domain is $mathbb{R}^2$, the codomain is $mathbb{R}$, and the range is simply the value ${2}$ (6:45-9:47).
+*   **Vector-valued Function:** $H: mathbb{R}^2 \rightarrow mathbb{R}^3$, defined by the mapping:
+    $$H(X_1, X_2) = \begin{bmatrix} X_1 + X_2 \ X_2 - X_1 \ X_2 cdot X_1 end{bmatrix}$$
+    This illustrates that for vector-valued functions, the range is often a smaller subset of the codomain (10:05-14:03). An example provided is $H(2, 3) = (5, 1, 6)$ (12:11-13:08).
+
+0:00 I think you've been exposed to the idea
+0:02 of a function at some point in your
+0:05 mathematical career but what I want to
+0:07 do in this video is explain it a little
+0:08 bit more formally than you might be used
+0:10 to and then relate it to some of the
+0:12 concepts of vectors in linear algebra
+0:14 that we've seen so far so a function
+0:17 literally is so I'll write it like this
+0:19 a function really is just a relation
+0:22 between the members of One set and the
+0:24 members of the other set so let's say I
+0:26 have some set X and for every set X I'm
+0:29 going to relate or associate well sorry
+0:32 with for every member of that set X I'm
+0:34 going to relate that member to or
+0:37 associate that member with another
+0:39 member of a set
+0:41 y of a set y so if I imagine
+0:46 that that that is my set X and that this
+0:50 is my set y right there and Y doesn't
+0:54 have to be smaller that's just the way I
+0:55 drew it the function is just a relation
+0:58 that if I just take a member of my set X
+1:01 so if I just take a member of it let's
+1:02 say that's the member that I'm taking it
+1:04 we're visualizing as a point this
+1:06 function will say okay you gave me a
+1:09 member of X then I will give you a
+1:11 member of Y associated with that member
+1:13 of X so the function will say you give
+1:16 me that then I will map it I will map it
+1:20 to that member right there I'll use the
+1:23 word map it and that's really just means
+1:25 relating it to or associating with
+1:27 another member of Y and if you give me
+1:30 some other point right here I'll relate
+1:33 it to another member of Y I'll relate it
+1:38 to another member of Y right there I
+1:40 might even relate it to the same member
+1:42 of Y and so this notation just says this
+1:44 is a mapping from one set X and I'm
+1:46 speaking in very general terms to
+1:49 another set Y and so you're probably
+1:51 saying hey s you know this is very
+1:53 abstract how does this relate to the
+1:55 functions that I've seen in the past
+1:57 well let me let me just write down a
+2:00 function you've probably seen a lot in
+2:01 the past you've seen people write or
+2:04 you've dealt with f ofx is equal to
+2:07 x^2 how would we write this in this
+2:09 notation well this is a function
+2:11 assuming that it's kind of the the
+2:13 traditional way that you see it this
+2:16 function and actually let me well let me
+2:17 just write with the f I was going to
+2:20 write it with the G of X just so that
+2:21 this doesn't always have to be an F but
+2:23 I think you get you get that idea in
+2:25 this case f is a mapping from real
+2:30 numbers right the real numbers are
+2:32 everything that I can put in here and
+2:33 actually this is part of the function
+2:35 definition I could constrain this to
+2:37 just be integers or just be even numbers
+2:39 or just be even integers but this is
+2:41 part of the the function definition I'm
+2:43 defining the function to be a mapping
+2:46 from real numbers I'm saying you can put
+2:48 any real number here and it's going to
+2:50 map it's going to map to well it's going
+2:54 to map to real numbers so in this case
+2:57 if x is real numbers it's going to map
+2:59 to
+3:00 itself which is completely
+3:03 legitimate so if this is the real
+3:05 numbers and obviously the real numbers
+3:06 would go off in every direction forever
+3:08 but if this is the real numbers this
+3:10 function mapping is just taking every
+3:12 point with f and mapping it to another
+3:14 point or every point in R and mapping it
+3:16 to another point in R it's taking every
+3:18 point and associating with it its
+3:20 perfect square and I want to make a very
+3:22 subtle notation what or at least in my
+3:24 mind the first time that I got exposed
+3:26 to functions I was thinking you give me
+3:28 an X and I Square it and I'm giving you
+3:30 the square of X and that's true you are
+3:32 doing that but at least the way my brain
+3:33 worked I kind of thought it of as I was
+3:35 changing my X into another number and
+3:37 you can maybe view it that way and that
+3:39 might actually be the best way to view
+3:40 it but the the mathematically the
+3:43 mathematical definition I'm introducing
+3:45 here is more that I'm associating I'm
+3:47 associating X I'm associating x
+3:51 with X2 and this is actually another way
+3:55 this is another function notation of
+3:57 writing this exact same thing the these
+3:59 two statements right here this statement
+4:02 and this statement are identical this
+4:04 statement you've probably never seen
+4:06 before but I I kind of like it because
+4:08 it kind of shows the mapping or the
+4:10 association more while this Association
+4:13 I kind of think that look you're you're
+4:15 putting you're putting an X into a
+4:17 little you know meat grinder or some
+4:19 machine that's going to turn that's
+4:20 going to ground up the x or Square the x
+4:22 or do whatever it needs to do to the X
+4:24 this notation to me implies the actual
+4:27 mapping you give me an X and then I'm
+4:28 going to associate another number in
+4:30 real numbers called X squ so it's going
+4:33 to be just another point and just as a
+4:35 little bit of of terminology and I think
+4:38 you've seen this terminology
+4:40 before the set that you are mapping from
+4:43 is called the domain and it's part of
+4:46 the function definition I is a function
+4:48 Creator have to tell you that look we
+4:51 every valid input here has to be a set
+4:53 of real numbers now the the set that I'm
+4:57 mapping to the set that I'm Ma maing
+5:00 too this is called the co-
+5:03 domain co- domain which is and and I
+5:08 guess the the obvious question that
+5:09 you're probably asking is hey s when I
+5:11 learned all of this function stuff in in
+5:14 in Algebra 2 or whenever you first learn
+5:16 it you're like where did you know we
+5:18 never use this co- domain word and
+5:19 actually I don't think it has a hyphen
+5:20 in it but we never use that codomain
+5:22 word we have this idea of
+5:24 range you know I learned the word range
+5:26 when I was in 9th or 10th grade how does
+5:29 this code domain relate to range and
+5:33 this is it's a very subtle notation so
+5:35 the codomain is a set that you're
+5:37 mapping too in this example this is the
+5:39 co- domain co- domain in this example
+5:43 the real numbers are the domain and the
+5:45 codomain so the question is how does the
+5:47 range relate to this so the codomain is
+5:50 the is the set that can be possibly
+5:52 mapped to you're not necessarily mapping
+5:54 to every point in the Cod domain I'm
+5:56 just saying that this function is
+5:58 generally mapping from member numbers of
+6:00 this set to that set the range the range
+6:04 is the
+6:05 subset let me write it this way it could
+6:08 be equal to the codomain it's some
+6:11 subset a set is a subset of itself every
+6:14 member of a set is also a member of its
+6:16 of of itself so it's a it's a subset of
+6:18 itself so range is a subset of the co-
+6:21 domain I keep adding a hyphen
+6:24 there or Dash is a subset of the
+6:28 codomain which the function actually
+6:30 maps
+6:31 to that the function actually maps to
+6:39 actually maps
+6:41 to maps to so let me give you an example
+6:45 let's say I Define the function let's
+6:48 say I Define the function G and it is a
+6:52 mapping from the set of real
+6:55 numbers let me say it's a set it's a
+6:57 mapping from R2
+7:00 to
+7:02 R so I'm essentially taking two tupal
+7:06 and I'm mapping it to R and I will
+7:08 define i define G I'll write it a couple
+7:11 of different ways I could write so now
+7:14 I'm going to take G of let's say two
+7:17 values so I could say XY or I could say
+7:19 X1 X2 let me do it that way G of
+7:22 X1
+7:24 X2 is equal to well let's say it's
+7:28 always equal to
+7:30 two it just always equals to two it's a
+7:33 mapping from R2 to R but this just
+7:35 always equals two so what is our and let
+7:38 actually let me write the other notation
+7:40 just because you probably haven't seen
+7:41 this much but I could write G of G Maps
+7:47 any points X1 and X2 to the point two
+7:52 this is kind of this makes the mapping a
+7:54 little bit clearer but just to get the
+7:56 notation right what is our domain
+7:59 what is our
+8:01 domain what's the real numbers that was
+8:03 part of my function definition I said
+8:05 we're mapping from the from R2 so my
+8:09 domain is R2 and I should actually make
+8:11 that little with that little line there
+8:13 now what is my co- domain what is my Cod
+8:18 domain well my co- domain is the set
+8:21 that I am potentially mapping to and
+8:23 it's part of the function definition
+8:25 this by definition is the co-domain so
+8:28 my co- domain is off
+8:30 now what is the range of my function
+8:34 what is the range the range are is the
+8:38 set of values that the function actually
+8:40 maps to in this case we always map to
+8:43 the value two so the range is actually
+8:46 just the value two and if we were to
+8:48 visualize this you know R2 is actually
+8:50 you know I wouldn't draw it as a blur
+8:52 but I would draw it as the entire
+8:53 cartisian space but I'm just giving you
+8:55 kind of an abstract notion that's R2 if
+8:58 I really had to draw an R I would draw
+8:59 it as some type of a number line
+9:01 actually let me do it that way just for
+9:03 fun you don't normally see it written
+9:04 that way but I could just draw R like
+9:06 that's
+9:07 R2 and I could just draw r as some
+9:10 straight line so this is the set
+9:13 R I could draw it like that as well but
+9:15 let's just say this a set R and my
+9:18 function G Maps essentially Maps any
+9:21 point over here to exactly the point two
+9:26 right two is just one little point in R
+9:28 and it my function G takes any any point
+9:31 in R2 any coordinate X you know this is
+9:34 some point you know this could be the
+9:36 point three minus5 whatever it is and it
+9:40 Maps it it always Maps it to the point
+9:42 two in R so if I dig that point it Maps
+9:44 it to the point two that's what G always
+9:47 does so G so G's co-domain you could say
+9:52 it's all of the real numbers but its
+9:53 range is really just two now if I write
+9:56 the example if I if I say that
+9:59 let me do another example that might be
+10:02 interesting if I just write H is a
+10:05 function that goes from let's just say
+10:08 it goes from
+10:10 R2 to
+10:13 R
+10:15 3 and I'll be a little careful here H is
+10:18 goes from R2 to R3 and I'll write and
+10:22 I'll write here that h of X1
+10:27 X2 is equal to so now I'm mapping I'm
+10:31 going to a higher Dimension space so I'm
+10:32 going to say that that is going to be
+10:34 equal to let's say my first coordinate I
+10:37 could say an R3 or my first component at
+10:39 R3 is X1 plus X2 let's say my second
+10:44 coordinate is X2 - X1 and let's say my
+10:48 third coordinate is X2 *
+10:51 X1 now what is what is my domain and my
+10:57 range and my co-domain so my domain by
+11:01 definition my domain by definition is
+11:04 this right there my co-domain by
+11:06 definition is R3 and notice I'm going
+11:09 from a space that has two Dimensions to
+11:11 a space that has three dimensions or
+11:13 three components but I can always
+11:15 associate some point with in X1 X2 with
+11:18 some point in my R3 there and now a
+11:21 slightly trickier question here is what
+11:23 is the range can I always can I always
+11:26 associate every point every point maybe
+11:30 this wasn't the best example because
+11:31 it's not simple enough but can I
+11:33 associate every point in
+11:35 R3 is every can every point in R3 so
+11:39 this is my
+11:41 co-domain my domain was
+11:44 R2 now and my function goes from R2 to
+11:47 R3 so that's H and so my range as you
+11:50 could see there's not it's not like
+11:52 every coordinate you can express
+11:56 as in this way in some way let me give
+12:00 you an example for example clearly the
+12:02 term I mean I could put some x1's and
+12:05 x2s here and and figure it out let's do
+12:07 that let's take our h of and let me use
+12:11 my other let me use my other notation
+12:14 let's say that I said H and I wanted to
+12:18 find the mapping from the point in R2
+12:21 let's say the point 2 comma 3 and then
+12:25 my function tells me that this will map
+12:28 to the point R3 this will map to the I
+12:32 add the two terms so 2 + 3 so it's five
+12:35 I find the difference between X2 and X1
+12:38 so 3 - 2 is 1 and then I multiply the
+12:41 two six so clearly this will be in the
+12:45 range this is a member of the
+12:48 range I I shouldn't write like that I
+12:51 should write it like this the member of
+12:53 the range so for example the point 23
+12:57 which might be right there will be
+12:59 mapped to the three-dimensional point
+13:01 it's kind of just drawn as a
+13:03 two-dimensional blur right there but I
+13:04 think you get the idea would be mapped
+13:06 to the threedimensional point
+13:08 516 so this is definitely a member of
+13:11 the range now my question to you if I
+13:14 have some point in R3 let's say I have
+13:16 the point do it a different
+13:19 color let me say I have the point there
+13:22 and let's say that this is the point
+13:24 let's say this the point 5 1 51
+13:30 0 51 0 is this is this point a member of
+13:35 the range it's definitely a member of
+13:37 the co-domain it's in R3 it's definitely
+13:39 in here and this by definition is the
+13:41 co-domain but is this in our range well
+13:45 if I take this has five has to be the
+13:47 sum of two numbers the one has to be the
+13:50 difference of two numbers and then the
+13:52 zero would have to be the product of two
+13:54 numbers and clearly we know five is the
+13:56 sum and one is the difference we're
+13:57 dealing with two and three and there's
+13:59 no way that you can get the product of
+14:00 those numbers to be equal to zero so
+14:03 this guy is not not in not in the range
+14:08 so the range would be the subset of all
+14:10 of these points in R3 so there'd be a
+14:12 ton of points that aren't in the range
+14:14 and there'll be a smaller subset of R3
+14:16 that is in the range now I want to
+14:18 introduce you to one more kind of one
+14:21 more piece of terminology when it comes
+14:23 to functions these functions up here
+14:27 this function that mapped from point in
+14:29 R2 to R so it mapped its co-domain was R
+14:33 this function up here that is probably
+14:35 the most common function you see in
+14:37 mathematics this is also mapping to R
+14:41 these these functions that map to R are
+14:43 called scalar value or real Val
+14:45 depending on how you want to think about
+14:46 it but if they map to kind of a
+14:49 onedimensional space we call them a
+14:51 scalar valued function or real valued
+14:53 function so
+14:56 scalar valued or maybe we could call it
+14:59 a real valued function real valued
+15:01 function which is pretty much all of the
+15:03 functions that you've uh probably dealt
+15:05 with up to this point in your in your
+15:07 mathematical career unless you've kind
+15:08 of taken some some Vector calculus
+15:10 whatever not now the functions that map
+15:14 to that map to sub that map to spaces or
+15:18 or subspaces that have more than one
+15:20 dimension so if you map to r or any
+15:22 subset of R you have a real valued
+15:25 function or a scalar valued function if
+15:27 you map to you know RN where n is
+15:30 greater than one so if you map to R2 R3
+15:33 R4 R 100 you're then dealing with a
+15:37 vector valued function so this last
+15:39 function that I defined over here H is a
+15:43 vector valued Vector
+15:47 valued
+15:49 function anyway I think you now have at
+15:52 least the the the mathematical
+15:54 notational tools to understand what I'm
+15:56 going to do in the rest of this playlist
+15:58 and and hopefully you found this
+15:59 reasonably useful
+
+
+
+
+
+video link: https://youtu.be/gAbadNuQEjI?si=cWdoAQH7jxJi9rjS
+## Definitions and Terminology
+
+*   **Function:** A mapping that associates each element of one set (the **domain**) to an element in another set (the **co-domain**). (0:00-0:53)
+*   **Set:** A collection of objects. (0:00)
+*   **$R^n$:** The set of all $n$-tuples (ordered lists of $n$ components), where each component is a real number. (1:30-2:57)
+*   **Vector:** A member of $R^n$; specifically, column vectors are used here as ordered lists of $n$ components. (1:19-2:53)
+*   **Vector-Valued Function:** A function where the co-domain is a subset of $R^m$ (where $m > 1$), meaning the output is a vector rather than a single real number. (5:09-5:40)
+*   **Transformation:** A term specifically used in linear algebra to describe a function that operates on vectors. It is conceptually identical to a function but implies the idea of changing or mapping one vector into another. (11:02-11:42)
+
+## Mathematical Examples and Formulas
+
+### General Function Mapping
+
+*   **Notation:** $f: R^n \to R^m$ represents a mapping from $n$-dimensional space to $m$-dimensional space. (3:58-4:06)
+*   **Function Definition Notation:** $f(x) \to x^2$ (or similar) defines the specific association between inputs and outputs. (4:24-4:54)
+
+### Concrete Example: $f: R^3 \to R^2$
+
+*   **Definition:** $f(x_1, x_2, x_3) = (x_1 + 2x_2, 3x_3)$ (6:16-7:24)
+*   **Calculation 1:** $f(1, 1, 1) = (1 + 2(1), 3(1)) = (3, 3)$ (7:31-7:53)
+*   **Calculation 2:** $f(2, 4, 1) = (2 + 2(4), 3(1)) = (10, 3)$ (7:56-8:24)
+
+### Transition to Transformation Notation
+
+*   **Transformation Notation:** $T(x_1, x_2, x_3) = (x_1 + 2x_2, 3x_3)$ (13:07-13:22)
+*   **Transformed Example:** $T(1, 1, 1) = (3, 3)$ (13:25-13:32)
+
+This video serves as an introduction to **vector transformations** in linear algebra, framing them as a specific type of function. The speaker explains that a **function** is a mapping between elements of two sets: a **domain** and a **co-domain** (0:00-0:53).
+
+Key concepts discussed include:
+
+*   **Vectors as Sets:** Vectors are defined as elements within $R^n$, representing ordered $n$-tuples of real numbers (1:19-2:57).
+*   **Vector-Valued Functions:** When a function maps vectors from one space (e.g., $R^n$) to another (e.g., $R^m$), it is referred to as a vector-valued function (5:09-5:40).
+*   **The Concept of Transformation:** In the context of linear algebra, a function operating on vectors is commonly called a **transformation** (often denoted with a capital $T$). The speaker notes that this term is used because it visualizes the act of changing or mapping one vector into another (11:02-12:43).
+
+**Example Breakdown:**
+
+*   The speaker defines a function $f(x_1, x_2, x_3) = (x_1 + 2x_2, 3x_3)$ to map from $R^3$ to $R^2$ (6:16-7:24).
+*   He demonstrates this mapping using the vector $(1, 1, 1)$, which results in $(3, 3)$, and $(2, 4, 1)$, which results in $(10, 3)$ (7:31-8:24).
+*   The video concludes by explaining that this is visually equivalent to transforming one vector into another, which is a foundational concept for fields like video game programming (12:43-14:19).
+
+
+
+
+
+
+
+
+video link: https://youtu.be/4PCktDZJH8E?si=diutF34Mc6jhwAh3
+## Definition of a Linear Transformation (0:00-1:49)
+
+A **linear transformation** is a function $T$ that maps vectors from a domain $mathbb{R}^n$ to a codomain $mathbb{R}^m$. For $T$ to be considered a linear transformation, it must satisfy two specific conditions for any vectors $mathbf{a}, mathbf{b}$ in $mathbb{R}^n$ and any scalar $c$:
+
+*   **Additivity:** The transformation of the sum of two vectors is equal to the sum of the transformations of the vectors:
+    $T(mathbf{a} + mathbf{b}) = T(mathbf{a}) + T(mathbf{b})$
+
+*   **Homogeneity (Scalar Multiplication):** The transformation of a scaled vector is equal to the scalar times the transformation of the vector:
+    $T(cmathbf{a}) = cT(mathbf{a})$
+
+## Example 1: A Linear Transformation (1:56-9:50)
+
+This example defines a mapping $T: mathbb{R}^2 \to mathbb{R}^2$ as follows:
+$T\begin{pmatrix} x_1 \ x_2 end{pmatrix} = \begin{pmatrix} x_1 + x_2 \ 3x_1 end{pmatrix}$
+
+*   **Verification of Additivity:** By testing $T(mathbf{a} + mathbf{b})$ against $T(mathbf{a}) + T(mathbf{b})$, the video confirms that the first condition holds.
+*   **Verification of Homogeneity:** By testing $T(cmathbf{a})$ against $cT(mathbf{a})$, the video confirms that the second condition holds.
+*   **Conclusion:** Because both conditions are met, this is confirmed as a linear transformation.
+
+## Example 2: A Non-Linear Transformation (10:01-13:45)
+
+This example defines a mapping $T: mathbb{R}^2 \to mathbb{R}^2$ as follows:
+$T\begin{pmatrix} x_1 \ x_2 end{pmatrix} = \begin{pmatrix} x_1^2 \ 0 end{pmatrix}$
+
+*   **Testing Homogeneity:** When applying the scalar $c$, the transformation results in $T(cmathbf{a}) = c^2 T(mathbf{a})$.
+*   **Conclusion:** Since $c^2 T(mathbf{a}) \neq c T(mathbf{a})$, the transformation fails the requirement for homogeneity, meaning it is **not** a linear transformation.
+
+## Summary of Intuition (13:15-13:52)
+
+*   **Linear Combinations:** Transformations involving only linear combinations of input components typically result in linear transformations.
+*   **Non-Linear Features:** Transformations involving components multiplied by each other, powers (like $x^2$), or other exponents generally result in non-linear transformations.
+
+0:00 you now know what a transformation is so
+0:02 let's introduce a
+0:04 more a special kind of transformation
+0:07 called a
+0:08 linear linear
+0:11 transformation transformation it only
+0:13 makes sense that we have something
+0:14 called a linear transformation because
+0:16 we're studying linear algebra we already
+0:18 had linear combination so we might as
+0:20 well have a linear transformation and a
+0:22 linear transformation by definition is a
+0:25 transformation which we know is just a
+0:27 function we could say it's from the set
+0:31 RM or let me say it from RN to RM and it
+0:34 might be obvious in the next video why
+0:36 I'm being a little bit particular about
+0:37 that although they are just arbitrary
+0:39 letters where the following two things
+0:43 have to be true so if some if something
+0:45 is a linear
+0:46 transformation something is a linear
+0:48 transformation if and only if the
+0:50 following thing is true let's say that
+0:53 we have two
+0:56 vectors say Vector a and let's say
+0:59 vector VOR B are both members of RN so
+1:03 they're both in our domain so then this
+1:06 is a linear transformation if and only
+1:08 if if I take the transformation of the
+1:12 sum of our two vectors if I take if I
+1:14 add them up first that's equivalent to
+1:17 taking the transformation of each of the
+1:20 vectors taking the transformation of
+1:22 each of the vectors and then summing
+1:24 them that's my first condition for for
+1:27 this to be a linear transformation and
+1:28 then the second one is is that if I take
+1:30 the transformation of any scaled up
+1:32 version of a vector so let me just
+1:34 multiply Vector a times some scalar some
+1:38 real number
+1:39 c if this is a linear transformation
+1:42 then this should be equal to c times the
+1:46 transformation of a that seems pretty
+1:49 straightforward let's see if we can
+1:50 apply these rules to figure out if some
+1:53 actual Transformations are linear or not
+1:56 so let me Define a transformation let's
+1:59 say that I have the transformation T
+2:01 part of my definition I'm going to tell
+2:03 you it's it maps from R2
+2:06 to let's do something uh let's just say
+2:09 it maps from R2 to
+2:12 R2 and my def and it Maps so if you give
+2:16 it a two Tuple right its domain is two
+2:18 tupal so you give it an X1 and an X2
+2:22 let's say it maps to so this will be
+2:25 equal to or It's associated with let me
+2:29 It's associated with let me just say
+2:33 let's say X1 + X2 and then let's just
+2:37 say it's 3 * X1 is a second Tuple and we
+2:39 could have written this more in Vector
+2:41 form this is kind of our Tuple form we
+2:43 could have written it and it's good to
+2:44 see all the different notations that you
+2:46 might encounter you could write it that
+2:48 a transformation of some Vector X where
+2:52 the vector looks like this X1
+2:56 X2 uh let me put a bracket there it
+2:59 equals ALS it equals some new Vector X1
+3:03 + X2 and then the second component of
+3:06 the new Vector would be
+3:08 3x1 that's a completely legitimate way
+3:11 to express our transformation and the
+3:12 Third Way which I never see but to me it
+3:14 kind of uh captures the essence of what
+3:16 a transformation is it's just a mapping
+3:18 or it's just a function we could say
+3:21 that the transformation is a mapping
+3:24 from any Vector in R2 that looks like
+3:27 this
+3:28 X1
+3:30 X2 to and I'll do this notation to a
+3:34 vector that looks like this X1 plus X2
+3:39 and then 3 X1 all of these statements
+3:41 are equivalent but our whole point of
+3:43 writing this is to figure out whether T
+3:46 is linearly independent so I want to
+3:49 sorry not linearly independent whether
+3:50 it's a linear transformation I was so
+3:52 obsessed with linear Independence for so
+3:54 many videos it's hard to get it out of
+3:55 my brain in this one whether it's a
+3:57 linear transformation
+4:00 so let's test our two conditions I have
+4:02 them up here so let's take T of let's
+4:06 say I have two vectors A and B they're
+4:08 members of R2 so let me write it a is
+4:11 equal to
+4:13 A1 No A1
+4:16 A2 and B is equal to
+4:21 B1 B2 sorry that's not a vector I have
+4:25 to make sure that those are scalers
+4:26 these are the components of a vector and
+4:28 B2
+4:30 so what is A1 Plus B sorry what is a
+4:34 vector a plus Vector B brains
+4:38 malfunctioning all right well you just
+4:39 add up their components this is the
+4:41 definition of vector addition so it's A1
+4:44 + B1 add up the first components and the
+4:46 second components is just the sum of
+4:48 each of the vector second components A2
+4:50 plus
+4:51 B2 nothing new here but what is the
+4:54 transformation of this Vector so the
+4:57 transformation the transformation
+5:00 of vector a plus Vector B we could write
+5:04 it like this that would be the same
+5:06 thing as the transformation of this
+5:09 Vector which is just A1 + B1 and A2 +
+5:15 B2 which we know it equals a vector it
+5:20 equals this Vector where what we do is
+5:23 for the first component here we add up
+5:25 the two components on this side so the
+5:27 first component here is going to be
+5:28 these two guys added up so it's A1 Plus
+5:32 A2 plus B1 plus B2 and then the second
+5:37 component by our transformation or our
+5:40 function definition is just three times
+5:42 the first component in that in our in
+5:44 our domain I guess we could say it so
+5:45 it's three times the first one so it's
+5:47 going to be three times this first guy
+5:49 so it's 3 A1 + 3
+5:53 B1 fair enough now what is a
+5:56 transformation individually of A and B
+5:59 so the
+6:01 transformation of
+6:03 a is equal to the transformation of a
+6:07 let me write it this
+6:08 way it's equal to the transformation of
+6:11 A1 A2 in Brackets that's our another way
+6:15 of writing Vector a and what is that
+6:17 equal to that's our definition of our
+6:19 transformation right up here so this is
+6:22 going to be equal to the vector A1 + A2
+6:27 and then 3 * A1 one just come straight
+6:30 out of this definition I essentially
+6:31 just replaced an X with A's by the same
+6:35 I guess argument by the same argument
+6:38 what is the transformation of our Vector
+6:40 B well it's going to be the same thing
+6:43 with the a is replaced by the B so it's
+6:44 the transformation of our Vector B is
+6:46 going to be B you know B is just B1 B2
+6:49 B1 B2 so it's going to be B1 plus B2 and
+6:53 then the second component in the
+6:54 transformation will be 3 *
+6:57 B1 Now what is
+7:00 what is the transformation of vector a
+7:04 plus the transformation of vector B
+7:07 what's this Vector plus that vector and
+7:10 what is that equal to well this is just
+7:11 pure vector addition so we just add up
+7:13 their components so it's A1 + A2 plus
+7:18 B1 plus B2 that's just that component
+7:22 plus that component the second component
+7:23 is 3 A1 we're going to add it to that
+7:26 second component so it's 3 A1 Plus 3 3
+7:30 B1 now we just showed you that if I take
+7:33 the transformation separately of each of
+7:35 the vectors and then add them up I get
+7:37 the exact same thing as if I took the
+7:39 vectors and added them up first and then
+7:42 took the transformation so we've met our
+7:45 first
+7:46 criteria that the transformation of the
+7:48 sum of the vectors is the same thing as
+7:50 the sum of the Transformations now let's
+7:52 see if this works with the with with a
+7:54 random scalar so we know what the
+7:56 transformation of a looks like what do a
+7:58 trans form but what does CA look like
+8:01 first of all I guess that's a good place
+8:02 to start C * our Vector a is going to be
+8:06 equal to C * A1 and then C * A2 that's
+8:11 our definition of scalar multiplication
+8:14 times a vector so what's our
+8:16 transformation let me go to a new color
+8:19 what is our let me do a color I haven't
+8:22 used in a long time white what is our
+8:25 transformation of CA going to be well
+8:28 that's the same thing as our
+8:30 transformation of C A1 C
+8:36 A2 which is equal to a new Vector where
+8:40 the first term let's go to our
+8:41 definition is you sum the first the you
+8:43 sum the first and second components and
+8:45 the second term is three times the first
+8:47 component so our first term you sum them
+8:49 so it's going to be C A1 Plus C A2 and
+8:53 then our second term is three times our
+8:55 first term so it's 3 c a a 1 now what is
+9:01 this equal to this is the same thing we
+9:02 can kind of you can view it as factoring
+9:04 out the C this is the same thing as C *
+9:07 the vector A1 + A2 and then the second
+9:11 component is 3 A1 but this thing right
+9:15 here we already saw this is the same
+9:16 thing as the transformation of a
+9:19 transformation of a so just like that
+9:21 you see that the transformation of c
+9:23 times our Vector a for any Vector a in
+9:26 R2 this anything in R2 can be
+9:28 represented this way it's the same thing
+9:29 as c times the transformation of a so
+9:33 we've met our second
+9:35 condition that it doesn't that when you
+9:37 when well I just stated it so I don't
+9:39 have to restate it so we meet both
+9:41 conditions we meet both conditions which
+9:43 tells us that this is a
+9:47 linear
+9:49 transformation and you might be thinking
+9:51 okay s fair enough that was you know how
+9:53 do I know that all transformations
+9:54 aren't linear Transformations show me
+9:56 something that that won't work and here
+9:58 I'll I'll do a very simple example let
+10:01 me Define my
+10:02 transformation and just to make it well
+10:05 let me let me do one let me make it let
+10:07 me see let me Define a transformation
+10:10 well I'll do it from R2 to R2 just for
+10:14 just to kind of compare the two I could
+10:16 have done it from R to R if I wanted a
+10:17 simpler example but I'm going to Define
+10:19 my transformation let's say my
+10:23 transformation of the vector X1
+10:27 X2 let's say say it is equal
+10:31 to let me just say X1 sared and then 0o
+10:38 just like that let me see if this is a
+10:40 linear transformation so the first
+10:43 question is if if let's let's take
+10:46 what's my transformation of a vector a
+10:48 so my transformation of a vector a where
+10:52 a is just the same a that I did before
+10:55 it would look like this it would look
+10:57 like A1 squar and then a zero now what
+11:01 would be my
+11:02 transformation what would be my
+11:04 transformation if I took C * a c * a
+11:08 well this is the same thing as C * A1
+11:11 and C *
+11:13 A2 and by our transformation definition
+11:17 if I take sorry the transformation of c
+11:20 times of this thing right here because
+11:22 I'm taking the transformation on both
+11:23 sides and by our transformation
+11:25 definition this will be just be equal to
+11:27 a new Vector that would be in our co-
+11:29 domain where we the first term is just
+11:31 the first term of our input squared so
+11:33 it's ca1 squared
+11:36 ca1 squared and the second term is zero
+11:39 and what is this equal to let me switch
+11:42 colors this is equal to c^ squar A1
+11:47 squar and this is equal to
+11:49 zero now let's let's see if we can
+11:53 factor out if we well if we can assume
+11:54 that c does not equal zero this would be
+11:57 equal to what but this would be actually
+12:00 it doesn't even matter we don't even
+12:01 have to make that assumption so let's
+12:03 this is the same thing this is equal to
+12:06 c^
+12:07 2times the vector A1 2 0 which is equal
+12:12 to what this is equal this expression
+12:14 right here is the transformation of a so
+12:16 this is equal to c^
+12:18 2times the transformation of a let me do
+12:22 it in the same color times the
+12:23 transformation of a so what I've just
+12:26 showed you is if I take the
+12:27 transformation of a vector being
+12:30 multiplied by a scalar quantity first
+12:33 that that's equal to for this t for this
+12:36 for this transformation that I've
+12:37 defined right here that's equal to c^
+12:39 2times the transformation of a and
+12:42 clearly this this this statement right
+12:46 here for this choice of transformation
+12:50 conflicts conflicts with this
+12:53 requirement for a linear transformation
+12:55 if I have a c here I should see a c here
+12:57 but in our case I have a c here and I
+13:00 have a c squar here so clearly this
+13:03 negates that statement so we're
+13:05 definitely not dealing so this is this
+13:08 is not a linear
+13:13 transformation and just to get a gut
+13:15 feel if you're just looking at something
+13:16 whether it's going to be a linear
+13:17 transformation or not if the
+13:19 transformation just involves linear
+13:21 combinations of the different components
+13:23 of the inputs you're probably dealing
+13:25 with a linear transformation if
+13:27 something if you start seeing things
+13:28 where the components start getting
+13:30 multiplied by each other or you start
+13:32 seeing squares or exponents you're
+13:34 probably not dealing with a linear
+13:36 transformation and then there are some
+13:37 functions that might be in a a bit of a
+13:39 gray area but it tends to be just linear
+13:41 combinations are going to deal lead to a
+13:43 linear transformation but hopefully that
+13:45 gives you a good sense of things and
+13:46 this leads up to what I think is one of
+13:48 the the neatest outcomes in the next
+13:51 video
+
+
+
+
+
+
+
+
+
+
+video link: https://youtu.be/ondmopWLiEg?si=jGtIkIwCoqrgdPo0
+## Definitions and Core Concepts (0:00-3:20)
+
+*   **Matrix-Vector Product as a Transformation**: The video establishes that multiplying an $m \times n$ matrix $A$ by a vector $x$ from $mathbb{R}^n$ acts as a transformation $T: mathbb{R}^n \to mathbb{R}^m$, defined as $T(x) = Ax$.
+*   **Column Vector Representation**: If $A$ has columns $v_1, v_2, dots, v_n$, then the product $Ax$ is defined as the linear combination:
+    $$Ax = x_1v_1 + x_2v_2 + dots + x_nv_n$$
+*   **Linear Transformation Requirements**: A transformation $T$ is linear if it satisfies two conditions for all vectors $a, b$ and scalars $c$:
+    1.  **Additivity**: $T(a + b) = T(a) + T(b)$
+    2.  **Homogeneity (Scaling)**: $T(ca) = cT(a)$
+
+## Examples (3:58-6:04)
+
+*   **Specific Transformation Example**: The video uses matrix $B = \begin{bmatrix} 2 & -1 \ 3 & 4 end{bmatrix}$ to define a transformation $T: mathbb{R}^2 \to mathbb{R}^2$.
+*   **Calculation**:
+    $$T(x) = \begin{bmatrix} 2 & -1 \ 3 & 4 end{bmatrix} \begin{bmatrix} x_1 \ x_2 end{bmatrix} = \begin{bmatrix} 2x_1 - x_2 \ 3x_1 + 4x_2 end{bmatrix}$$
+*   **Alternative Notation**: This is expressed as $T(x_1, x_2) = (2x_1 - x_2, 3x_1 + 4x_2)$.
+
+## Proofs and Formal Laws (6:49-14:45)
+
+*   **Proof of Additivity**: Shows that $A(a + b) = Aa + Ab$ by expanding the linear combination:
+    *   Substitutes $x_i$ with $(a_i + b_i)$.
+    *   Distributes vectors across the sum.
+    *   Regroups terms corresponding to vector $a$ and vector $b$ to reach $Aa + Ab$.
+*   **Proof of Homogeneity**: Shows that $A(ca) = c(Aa)$:
+    *   Computes $A(ca)$ where the vector entries are $ca_i$.
+    *   Factors the scalar $c$ out of the sum of column vectors.
+    *   Identifies the resulting expression as $c(Aa)$.
+
+## Conclusion and Real-World Application (14:46-17:04)
+
+*   **Fundamental Takeaway**: All matrix-vector products are linear transformations.
+*   **Future Scope**: The video previews the next lesson, which will cover the converse: every linear transformation can be represented as a matrix-vector product.
+*   **Application**: Mentions that 3D graphics engines (in gaming hardware like *Xbox* or *PlayStation*) are essentially "hardwired" matrix multipliers that perform these linear transformations to rotate and render objects in 3D space.
+0:00 i think you're pretty familiar with the
+0:02 idea of matrix vector products what i
+0:05 want to do is i in this video is show
+0:07 you that taking a
+0:09 a product of a vector with a matrix is
+0:11 equivalent to a transformation it's
+0:13 actually a linear transformation so let
+0:15 me let's say we have some
+0:17 matrix a
+0:18 and let's say that its terms are or its
+0:21 columns are
+0:22 v1
+0:24 their vector column vectors v2
+0:26 all the way to vn so this guy has n
+0:30 columns let's see has m rows so it's an
+0:33 m
+0:34 by n
+0:35 matrix and let's say i define some
+0:37 transformation
+0:39 let's say i define some transformation
+0:42 let's say my transformation goes from
+0:45 r n
+0:47 goes from rn
+0:49 to r
+0:50 m this is the domain i can take any
+0:53 vector in rn and it will map it to some
+0:56 vector in rm and i define my
+0:58 transformation so t of
+1:01 x where this is some vector in rn is
+1:04 equal to
+1:05 a
+1:06 my this this this is this a let me write
+1:09 it in this color right here it should be
+1:11 bolded i kind of get careless sometimes
+1:13 with the bolding but big bold a times
+1:16 the vector x so the first thing you
+1:19 might say sal g this you know this this
+1:21 transformation looks very odd relative
+1:23 to how we've been defining
+1:24 transformations or functions so
+1:26 the first thing we have to just
+1:28 feel comfortable with is the idea that
+1:30 this is a transformation so what are we
+1:32 doing we're taking something from rn and
+1:35 then what does ax produce
+1:37 what does ax produce and we can
+1:39 we can
+1:40 ax if we write ax like this if this is x
+1:43 where it's x1 x2 it's going to have n
+1:46 terms because it's an n it's an rn
+1:49 this can be rewritten as
+1:50 x1 times v1 plus x2 times v2 all the way
+1:57 to x
+1:58 n times vn so it's going to be a sum of
+2:02 a bunch of of these column vectors and
+2:04 each of these column vectors v1
+2:07 2
+2:08 all the way to v n
+2:10 what set are they members of well this
+2:12 is an m by n matrix so they're going to
+2:14 have m the the matrix has m rows or each
+2:17 of these column vectors will have m
+2:19 entries so all of these guys are members
+2:22 of rm so if i just take a linear
+2:24 combination of all of these guys i'm
+2:26 going to get another member of rm
+2:30 so this guy right here is going to be a
+2:32 member of rm another vector so clearly
+2:35 by multiplying my vector x times a i'm
+2:38 mapping i'm creating a mapping
+2:41 from
+2:42 our
+2:44 rn
+2:45 and let me pick another color
+2:47 2
+2:49 2 rm and i'm saying it in very general
+2:51 terms maybe n is 3 maybe m is 5 who
+2:54 knows but i'm saying in very general
+2:56 terms and so if this is a particular
+2:59 instance a particular member of set rn
+3:03 so it's that vector our transformation
+3:06 or our function is going to map it
+3:08 to this guy right here and this guy will
+3:10 be a member of rm and we could call him
+3:13 ax or maybe if we said ax equal b we
+3:16 could call him the vector b whatever but
+3:18 this is our transformation mapping so
+3:20 this does fit our our our kind of
+3:23 definition or our our
+3:26 terminology for a function or a
+3:29 transformation as a mapping from one set
+3:30 to another but still might not be
+3:32 satisfying because you know everything
+3:34 we saw before looked kind of like this
+3:36 you know we if we had a transformation i
+3:38 would write it like you know the
+3:39 transformation of i would write you know
+3:42 x1 and x2
+3:44 and
+3:45 x n is equal to and i'd write and i'd
+3:48 write
+3:49 i'd write a bunch of i'd write m terms
+3:51 here and commas and you're like you know
+3:54 how does this relate to that and to do
+3:56 that i'll do a specific example so let's
+3:58 say that i had the matrix
+4:01 let's say that i have the matrix let me
+4:03 do a different letter let's say i have
+4:05 my matrix b
+4:06 and it is a fairly simple matrix let's
+4:09 say 2 minus 1
+4:11 3
+4:12 and 4.
+4:13 and i define some transformation
+4:16 so i define some transformation so i
+4:18 define some transformation t and it goes
+4:21 from r 2
+4:23 to
+4:24 r 2
+4:26 r 2 and i define t t of some vector x
+4:30 is equal to
+4:31 this matrix
+4:33 b
+4:34 times that vector x now what would that
+4:36 equal
+4:37 well the matrix is right there
+4:40 it's let me write it in purple 2 minus 1
+4:43 3 and 4
+4:45 times
+4:47 x x1 x2
+4:51 and so what does this equal
+4:53 well this equals another vector it
+4:55 equals a vector in the codomain r2 where
+4:58 the first term is 2 times x1 i'm just
+5:00 doing the definition of matrix vector
+5:02 multiplication 2 times x1 to x1
+5:06 plus -1 times x2 or minus
+5:09 x2 that's that row times our vector and
+5:13 then the second row times that vector we
+5:15 get
+5:16 3 times x1
+5:18 3 times x1
+5:20 plus 4 times x2 plus 4 times x 2.
+5:24 so this is what we might be more
+5:26 familiar with and i could write i could
+5:27 rewrite this transformation i could
+5:29 rewrite this transformation as
+5:31 t
+5:33 of
+5:33 x 1
+5:35 x 2
+5:36 is equal to
+5:37 2 x
+5:39 1 minus x 2 comma let me scroll over a
+5:42 little bit
+5:44 comma 3 x 1 plus 4 x 2. so hopefully
+5:48 you're satisfied now that a matrix
+5:50 multiplication it isn't some new exotic
+5:52 form of trans transformation that they
+5:54 really are just another way that this
+5:58 this statement right here
+6:00 is just another way of writing this
+6:02 exact transformation
+6:04 right here now the next question you
+6:07 might ask and i already told you the
+6:08 answer to this at the beginning of the
+6:09 video is is multiplication by a matrix
+6:13 always going to be a linear
+6:15 transformation and what are the two
+6:17 constraints for being a linear
+6:18 transformation
+6:20 we know that the transformation of
+6:23 two vectors
+6:24 a plus b
+6:26 the sum of two vectors should be equal
+6:28 to the sum of their transformations
+6:31 transformation of a plus the
+6:32 transformation of b and then the other
+6:35 requirement is that the transformation
+6:37 of a scaled version of a vector
+6:40 should be equal to a scaled version of
+6:42 the transformation these are our two
+6:44 requirements for being a linear
+6:47 transformation so let's see if matrix
+6:49 multiplication applies there and i've
+6:51 touched on this in the past and i've
+6:52 even told you that you know you should
+6:53 prove it and
+6:55 we already kind of i've already assumed
+6:56 you know but i'll prove it to you here
+6:58 because i'm tired of telling you that
+6:59 you know you should prove it i should do
+7:00 it at least once so let's see matrix
+7:02 multiplication if i multiply
+7:04 a matrix
+7:05 a
+7:06 times some vector x
+7:10 we know that let's say let me write it
+7:11 this way
+7:12 we know that this is equivalent to i
+7:14 said our matrix we could just write
+7:16 let's say this is an m by n matrix we
+7:18 can write any matrix as just a series of
+7:20 column vectors so this guy could have n
+7:22 column vectors so let's say it's v1
+7:26 v2
+7:27 all the way to vn column vectors and
+7:30 each of these guys are going to have m
+7:31 components
+7:33 times
+7:34 x1 x2 all the way down to xn and we've
+7:38 seen this multiple multiple times before
+7:40 this by the definition of matrix vector
+7:43 multiplication is equal to
+7:45 x1
+7:46 times v1 that times that this scalar
+7:49 times that vector plus x2 times v2
+7:53 all the way to plus xn times vn this was
+7:57 by definition of a matrix vector
+8:00 multiplication
+8:01 and of course this is going to and i did
+8:02 this at the top of the video this is
+8:04 going to have
+8:05 right here this this vector is going to
+8:07 be a member of r m it's going to have m
+8:10 components so what happens if i take
+8:14 if i take some
+8:16 if i take some matrix a some m by n
+8:18 matrix a
+8:20 and i multiply it
+8:22 times
+8:24 i multiply it times the sum of two
+8:26 vectors a
+8:27 plus b
+8:29 where so i could rewrite this as
+8:32 this thing right here so my matrix a
+8:34 times the sum of a plus b the first term
+8:36 will just be a1 plus b1 second term is
+8:39 a2 plus b2
+8:40 all the way down to a n
+8:43 plus
+8:44 bn
+8:45 this is the same thing as this i'm not
+8:46 saying a of a plus b i'm saying a times
+8:49 let me put it maybe i should put a dot
+8:51 right there i'm multiplying the matrix
+8:53 it's not i don't maybe i want to be
+8:54 careful with my notation this is the
+8:56 matrix vector multiplication it's not
+8:58 some type of new matrix dot product but
+9:00 this is the same thing as this
+9:02 multiplication right here and based on
+9:04 what i just told you up here which we've
+9:05 seen multiple multiple times this is the
+9:07 same thing
+9:08 as
+9:09 a1
+9:11 plus b1
+9:12 times the first column in a which is
+9:15 that vector right there this a is the
+9:17 same as this a so times v1 plus a2 plus
+9:22 b2 times v2 all the way to
+9:26 plus a n plus bn
+9:30 times vn
+9:32 all i did each the each xi term here is
+9:35 just being replaced by a i plus bi terms
+9:37 so if you so each x1 here is replaced by
+9:39 an a1 plus b1 here so this is
+9:41 this is equivalent to this
+9:44 and then from the fact that we know that
+9:46 well vector
+9:48 vector multiple vector vector
+9:50 products times scalars exhibit the
+9:52 distributive property we can say that
+9:54 this is equal to
+9:56 this is equal to a1 times v1
+10:00 let me actually write all of the a1
+10:01 terms well let me write this a1 times v1
+10:04 plus b1
+10:05 times v1 plus a2 times v2 plus b2 times
+10:11 v2 all the way to plus a n times vn
+10:15 plus b
+10:16 n times v n
+10:18 and then if we just reassociate this if
+10:21 we just group all of the a's together
+10:23 all of the a terms together we get a 1
+10:27 plus a sorry
+10:29 a 1 plus let me write it this way a1
+10:32 plus times v1 plus a2 times v2
+10:36 plus all the way
+10:39 a n times vn i just grabbed all the a
+10:42 terms
+10:43 we get that plus all the b terms all the
+10:46 b terms i'll do in this color all the b
+10:48 terms are like that so plus
+10:51 b1 times v1 plus b2 times v2 all the way
+10:56 to plus
+10:57 bn times vn that's that guy right there
+11:01 is equivalent to this statement up here
+11:02 i just regrouped everything which is of
+11:04 course equivalent to that statement over
+11:05 there
+11:06 but what's this equal to
+11:08 this is equal to
+11:11 this is equal to my vector
+11:13 these these columns remember the column
+11:15 for the matrix capital a so this is
+11:17 equal to the matrix capital a
+11:19 times
+11:21 a1 a2 all the way down to a n
+11:24 which was our vector a and what's this
+11:27 equal to this is equal to plus
+11:29 these v ones these are the columns for a
+11:31 so it's equal to the matrix a
+11:33 times my vector b
+11:36 b1
+11:37 b2 all the way down to bn
+11:40 this is my vector
+11:42 b
+11:43 so we just saw that we just showed you
+11:45 that if i if i add my two vectors a and
+11:48 b and then multiply it by the matrix
+11:50 it's completely equivalent to
+11:52 multiplying each of the vectors times
+11:54 the matrix first and then adding them up
+11:56 so we've satisfied and this is for any
+11:59 an m by n matrix so we've now satisfied
+12:03 this first condition
+12:06 right there
+12:08 and then what about the second condition
+12:09 and this one's even more straightforward
+12:11 to understand
+12:13 c times a one
+12:15 so let me write this way if i want to
+12:17 write or let me just the vector a
+12:19 times sorry the matrix capital a times
+12:22 the vector lower case a
+12:24 let me do it this way because i want
+12:26 times the vector
+12:28 c lowercase a so i'm multiplying my
+12:31 vector times the scalar first is equal
+12:33 to
+12:34 i can write my big matrix a i've already
+12:37 labeled its columns it's v1
+12:39 v2
+12:41 all the way to vn that's my matrix a and
+12:44 then what does ca look like
+12:47 ca you just multiply that scalar times
+12:49 each of the terms of a so it's
+12:51 ca1 ca2 all the way down to c
+12:56 a n and what does this equal we we know
+12:58 this we've seen this this show multiple
+13:00 times before right there
+13:02 so just equals
+13:04 this equals i'll write a little bit
+13:05 lower it equals c a one
+13:08 times
+13:10 this column vector times v one
+13:12 plus
+13:14 c a two times
+13:17 v
+13:17 two times this sky all the way
+13:20 to
+13:22 plus
+13:23 c
+13:24 a n
+13:25 times v n
+13:27 times v n
+13:29 times the vector v n and if you just
+13:32 factor this c out once again scalar
+13:34 multiplication times vectors exhibits
+13:37 the distributive property i believe i've
+13:39 done a video on that but it's very easy
+13:40 to prove so this will be equal to c
+13:43 times i'll just stay in one color right
+13:45 now a1 v1 plus
+13:48 a2 v2
+13:50 plus all the way to
+13:52 a n
+13:53 vn and what is this thing equal to well
+13:56 that's just
+13:57 our matrix a that's just our matrix a
+14:01 times our vector
+14:03 or our matrix uppercase a maybe i'm
+14:05 overloading the letter a and then my
+14:07 matrix uppercase a times my vector
+14:09 lowercase a
+14:10 times
+14:11 my lowercase a right
+14:14 where the case a is just you know this
+14:16 thing right here a1 a2 and so forth this
+14:18 thing up here was the same thing as that
+14:20 so i just showed you that what if i take
+14:22 my matrix and multiply it times some
+14:24 vector that was multiplied by a scalar
+14:26 first that's equivalent to first
+14:28 multiplying the matrix times the vector
+14:30 and then multiplying by the scalar
+14:33 so we
+14:34 we've shown you
+14:35 that matrix
+14:37 times vector products or matrix vector
+14:39 products satisfy this condition of
+14:41 linear transformations and this
+14:44 condition
+14:45 so the big takeaway right here is matrix
+14:48 multiplication and this is a important
+14:51 takeaway
+14:52 matrix
+14:54 matrix multiplication
+14:56 or matrix products
+14:59 with vectors
+15:01 vectors
+15:03 is
+15:04 always
+15:07 a linear transformation
+15:09 linear transformation and this is a bit
+15:11 of a side note in the next video i'm
+15:13 going to show you that any linear
+15:14 transformation this is incredibly
+15:16 powerful can be represented by a matrix
+15:19 product or by by any transformation on
+15:22 any vector can be equivalently i guess
+15:25 written as a product of that vector with
+15:27 a matrix
+15:28 as huge repercussions and you know just
+15:30 as a side note kind of tying this back
+15:32 to your everyday life you probably you
+15:34 know you have your your xbox or your
+15:36 sony playstation and you know you have
+15:38 these 3d graphic programs where you're
+15:41 running around and shooting at things
+15:42 and the the way that the the software
+15:45 renders those programs where you can see
+15:47 things from every different angle you
+15:48 know you have a cube and then if you if
+15:51 you kind of move this way a little bit
+15:52 the cube will look more like this and it
+15:54 gets rotated and you move up and down
+15:57 these are all transformations of
+15:58 matrices and we'll do this in more
+16:00 detail that and or these are all
+16:01 transformations of of of vectors or the
+16:05 positions of vectors and i'll do that in
+16:06 a lot more detail and all of that is
+16:08 really just matrix multiplications so
+16:10 all of these things that you're doing in
+16:12 your fancy 3d games on your xbox or your
+16:14 playstation they're all just matrix
+16:16 multiplications i'm going to prove that
+16:17 to in the next video and so when you
+16:19 have these graphics cards or these
+16:20 graphics engines all they are and this
+16:23 is kind of a you know we're jumping away
+16:25 from the theoretical but all these you
+16:27 know graphics processors are
+16:30 are
+16:31 hardwired matrix multipliers if i have
+16:34 just a generalized some type of cpu i
+16:37 have to in software write how to
+16:38 multiply matrices but if i'm right
+16:41 making an xbox or something and 99 of
+16:44 what i'm doing is just rotating these
+16:46 these abstract objects and and
+16:48 displaying them in transformed ways
+16:50 i should have a dedicated piece of
+16:52 hardware a chip that all it does it's
+16:55 hardwired into it is multiplying
+16:58 matrices and that's what those graphics
+17:00 processors or graphics engines really
+17:02 are
+
+
+
+
+
+
+
+
+
+
+
+video link: https://youtu.be/PErhLkQcpZ8?si=6t3Vbk2alYFKU9DR
+## I. The Identity Matrix ($I_n$) (0:00-3:37)
+
+*   **Definition:** An $n \times n$ matrix with ones on the main diagonal and zeros everywhere else.
+*   **Identity Property:** Multiplying the identity matrix by any vector $x$ in $mathbb{R}^n$ results in the original vector: $I_n x = x$.
+*   **Examples:**
+    *   $I_2 = \begin{bmatrix} 1 & 0 \ 0 & 1 end{bmatrix}$
+    *   $I_3 = \begin{bmatrix} 1 & 0 & 0 \ 0 & 1 & 0 \ 0 & 0 & 1 end{bmatrix}$
+
+## II. The Standard Basis for $mathbb{R}^n$ (3:38-6:11)
+
+*   **Definition:** The set of columns of the identity matrix, denoted as ${e_1, e_2, dots, e_n}$.
+*   **Properties:**
+    *   They span $mathbb{R}^n$ (any vector can be written as a linear combination of these).
+    *   They are linearly independent.
+    *   They are orthonormal: each has a length of 1, and the dot product of any two distinct basis vectors is 0.
+*   **Vector Representation:** Any vector $x$ can be expressed as a linear combination of the standard basis: $x = x_1 e_1 + x_2 e_2 + dots + x_n e_n$.
+
+## III. Linear Transformations as Matrix-Vector Products (6:12-10:53)
+
+*   **Key Theorem:** Every linear transformation $T: mathbb{R}^n \to mathbb{R}^m$ can be represented as a matrix-vector product $Ax$, where $A$ is an $m \times n$ matrix.
+*   **Construction of Matrix A:** The columns of the matrix $A$ are the transformation of each standard basis vector: $A = \begin{bmatrix} T(e_1) & T(e_2) & dots & T(e_n) end{bmatrix}$.
+*   **Linearity Rules used:**
+    1.  $T(x_1 e_1 + x_2 e_2 + dots + x_n e_n) = T(x_1 e_1) + T(x_2 e_2) + dots + T(x_n e_n)$
+    2.  $T(c cdot v) = c cdot T(v)$ (where $c$ is a scalar).
+
+## IV. Practical Transformation Example (11:02-17:28)
+
+*   **Transformation Definition:** A mapping $T: mathbb{R}^2 \to mathbb{R}^3$ defined by:
+    $T(x_1, x_2) = \begin{bmatrix} x_1 + 3x_2 \ 5x_2 - x_1 \ 4x_1 + x_2 end{bmatrix}$
+*   **Steps to represent as a matrix:**
+    1.  Evaluate $T$ at standard basis vectors of $mathbb{R}^2$:
+        *   $T(e_1) = T(1, 0) = \begin{bmatrix} 1+3(0) \ 5(0)-1 \ 4(1)+0 end{bmatrix} = \begin{bmatrix} 1 \ -1 \ 4 end{bmatrix}$
+        *   $T(e_2) = T(0, 1) = \begin{bmatrix} 0+3(1) \ 5(1)-0 \ 4(0)+1 end{bmatrix} = \begin{bmatrix} 3 \ 5 \ 1 end{bmatrix}$
+    2.  Construct matrix $A$ using these results as columns:
+        $A = \begin{bmatrix} 1 & 3 \ -1 & 5 \ 4 & 1 end{bmatrix}$
+*   **Final Result:** The transformation can be computed as $Ax$:
+    $T(x) = \begin{bmatrix} 1 & 3 \ -1 & 5 \ 4 & 1 end{bmatrix} \begin{bmatrix} x_1 \ x_2 end{bmatrix}$
+
+0:00 let's say I have an N byn Matrix that
+0:03 looks like this let me just see if I can
+0:05 do it in general terms and the first row
+0:08 and First Column in that entry has a one
+0:11 and then everything else the rest of the
+0:13 N minus one rows in that First Column
+0:15 are all going to be zero it's going to
+0:17 be zeros all the way down to the nth
+0:20 term and in the second column we have a
+0:23 zero in the first component but then a
+0:25 one in the second component and then it
+0:29 goes zero rows all the way down and you
+0:31 keep doing this in the third row in the
+0:34 third or let me say third column
+0:36 although it would have applied to the
+0:37 third row as well that the one shows up
+0:38 in the third component and then it's
+0:40 zeros all the way down and this
+0:43 essentially you have the ones filling up
+0:44 the diagonal of this Matrix right here
+0:47 so if you go all the way to the nth
+0:49 column or the nth column Vector you have
+0:51 a bunch of zeros until you get you have
+0:54 n minus one zeros and then the very last
+0:56 component the nth component there will
+0:57 be a one so you have essentially a
+0:59 matrix with one down ones down the
+1:03 diagonal now this Matrix has a bunch of
+1:04 neat properties and we'll explore it
+1:06 more in the future but I'm just uh
+1:08 exposing you to this because it has one
+1:09 very neat property uh relative to linear
+1:12 Transformations but I'm going to call
+1:14 this the identity Matrix and I'll call
+1:15 this I subn and I call that subn because
+1:19 it's an N byn identity Matrix if I you
+1:21 know I sub 2 would be equal to a 2X two
+1:25 identity Matrix it would be it would
+1:26 look like that and I sub3 would look
+1:31 like this 1 0 0 0 1 0 0 0 1 I think you
+1:36 get the point now the neat thing about
+1:38 this identity M Matrix becomes evident
+1:40 when you multiply it times any Vector so
+1:43 we could we have it defi we can multiply
+1:45 this guy times a a a n component Vector
+1:48 a member of RN so let's do that so if we
+1:52 multiply this Matrix
+1:54 times let's call this Vector X this is
+1:57 X1 X2 all the way down to X x n what is
+2:01 this going to be equal to if I do so
+2:04 this is Vector X right here so if I
+2:07 multiply Matrix I my identity Matrix I
+2:11 subn and I multiply it times my Vector X
+2:14 where X is a member of RN has n
+2:18 components what am I going to get well
+2:21 I'm going to get 1 * X1 + 0 * X2 plus 0
+2:24 * X3 plus 0 * X4 all of that so it's
+2:27 essentially I'm going to have you can
+2:28 kind of view it as this row dotted with
+2:30 the vector so your the only non-zero
+2:32 term is going to be the 1 time the X1 so
+2:34 it's going to be
+2:35 X1 sorry let me do it like this so
+2:38 you're going to get another Vector in
+2:41 RN you're going to get another Vector in
+2:43 RN like that and so the first term is
+2:46 that row essentially being dotted with
+2:48 that column and so you just get X1 and
+2:51 then the next the next entry is going to
+2:54 be this row or you could view it as a
+2:57 transpose of this row dotted with that
+2:59 column so 0 * X1 + 1 * X2 + 0 *
+3:04 everything else so the only nonzero term
+3:05 is a 1 * X2 so you get an X2 there and
+3:08 then you keep doing that and what are
+3:10 you going to get you're going to get an
+3:11 X3 cu the only nonzero term here is the
+3:13 third one and you're going to go all the
+3:14 way down until you get an
+3:16 xn but what is this thing equal to this
+3:18 is just equal to X so the neat thing
+3:21 about this identity Matrix that we've
+3:24 created is that when you multiply it
+3:25 times any Vector you get the vector
+3:27 again the identity Matrix times any
+3:30 Vector in RN it's only defined for
+3:32 vectors in RN is equal to that Vector
+3:36 again and actually The Columns The
+3:39 Columns of the identity
+3:41 Matrix have a special I guess the set of
+3:44 columns has a set a special
+3:47 name they are called so you know if we
+3:50 call this First Column
+3:53 E1 and this second column
+3:57 E2 and the third column column and the
+4:00 third column let me see E2 and the third
+4:03 column E3 and we go all the way to e n
+4:06 these vectors these column vectors here
+4:08 the set of these so let's say E1
+4:11 E2 all the way to en n this is called
+4:15 the standard
+4:17 basis
+4:19 standard
+4:21 basis for RN so why is it called that
+4:25 well the word basis is there so two
+4:27 things must be true these things must
+4:30 span RN and they must be linearly
+4:32 independent it's pretty obvious from
+4:34 inspection they're linearly independent
+4:35 if this guy has a one here and no one
+4:37 else has a one there there's no way you
+4:39 can construct that one with some
+4:40 combination of the rest of the guys and
+4:41 you can make that same argument for each
+4:43 of the ones in each of the components so
+4:45 it's clearly linearly independent and
+4:47 then to see that you can span that you
+4:49 can construct any Vector with a linear
+4:51 combination of these guys you really
+4:54 just have to you just really have to you
+4:56 know whatever Vector you want to
+4:57 construct if you want to construct X One
+5:00 let let me put it this way if you want
+5:01 to construct this Vector if you want to
+5:04 let me write it this way let me pick a
+5:05 different one let's say you want to
+5:07 construct the vector A1 A2 A3 all the
+5:12 way down to a n so this is some member
+5:14 of RN you want to construct this Vector
+5:17 well the linear combination that would
+5:19 get you this is literally A1 * E1 plus
+5:24 A2 * E2 plus all the way to a n * n n
+5:30 right you just this this scalar times
+5:35 this First Column Vector will
+5:36 essentially just get you what'll this
+5:38 look like this will look like A1 and
+5:41 then you'd have a bunch of zeros you'd
+5:43 have n minus one zeros
+5:45 plus zero and you'd have an A2 and then
+5:48 you'd have a bunch of zeros and then you
+5:50 keep doing that and then you would have
+5:52 zeros a bunch of zeros and you would
+5:54 have an a n and obviously by our
+5:56 definition of vector addition you add
+5:58 all of these things up you get this this
+5:59 guy right here and it's kind of obvious
+6:02 because this right here is the same
+6:04 thing as our identity Matrix times A1 I
+6:09 just wanted to expose you to that idea
+6:11 now let's apply what we already know
+6:13 about linear transformations to what
+6:15 we've just learned about this identity
+6:18 Matrix I just told you that I can
+6:20 represent any Vector like this I can let
+6:23 me write it rewrited maybe terms of X I
+6:25 can write any Vector X I can write any
+6:28 Vector X as a linear combination of
+6:32 these of the standard basis which are
+6:34 really just The Columns of the identity
+6:36 Matrix I can write that as X1 * E1 + X2
+6:41 * E2 all the way to xn * n and remember
+6:46 the each of these column vectors right
+6:48 here like for E1 is just one in the
+6:51 first com in the first entry and then
+6:54 all the rest are zeros E2 is a one in
+6:56 the second entry and everything else is
+6:57 zero n is or e 5 is a one in the fifth
+7:00 entry and everything else is zero and
+7:03 this I just showed you and this is a bit
+7:04 obvious from this right here now we know
+7:07 that by definition a linear
+7:10 transformation so if I do so a linear
+7:13 transformation of x a linear
+7:16 transformation of well let me put it
+7:18 this
+7:19 way a linear transformation of X of our
+7:23 Vector X is the same thing as taking the
+7:25 linear transformation of this whole
+7:27 thing let me do another color is equal
+7:29 to so the linear
+7:30 transformation of let me say actually
+7:34 instead of using the T let me use T
+7:37 instead of using L let me use T I used L
+7:39 by accident because I was thinking
+7:41 linear but if I were to take the linear
+7:44 transformation of X because that's the
+7:46 notation we're used to that's the same
+7:47 thing as taking a linear transformation
+7:50 of this thing these they equivalent so
+7:52 X1 * E1 + X2 * E2 all the way to plus X
+7:59 n * n it's equivalent statements now
+8:03 from the definition of linear
+8:05 Transformations we know that this is the
+8:07 same thing that the transformation of
+8:09 the sum is equal to the sum of the
+8:11 transformation so this is equal to this
+8:14 is equal to the transformation of X1
+8:17 E1 plus the transformation of X2 E2
+8:21 where this is just any linear
+8:22 transformation let me make that very
+8:24 clear this is any linear transformation
+8:27 any linear transformation
+8:30 this is this by definition linear
+8:32 Transformations have to satisfy these
+8:34 properties so the transformation time X2
+8:37 E2 all the way to this transformation
+8:40 times this last entry the scalar xn
+8:43 times my standard basis Vector e n and
+8:47 we know from the other property of
+8:48 linear Transformations that the
+8:50 transformation of a a a vector
+8:53 multiplied by the scalar is the same
+8:55 thing is the same thing as the scalar
+8:58 multiplied
+9:00 by the transformation multiplied by the
+9:02 transformation of the vector that's just
+9:04 from our definition of linear
+9:06 Transformations plus X2 * the
+9:08 transformation of E2 plus all the way
+9:12 the X let me write all the way to xn
+9:16 times the transformation of En en now
+9:19 what is this I could rewrite this so I
+9:22 everything I've done so far so the
+9:24 transformation of
+9:25 X is equal to that which I've just using
+9:28 our property of linear Transformations
+9:30 all linear Transformations this has to
+9:32 be true for them I get to this and this
+9:35 is equivalent this is equal to if we
+9:38 view each of these as a column Vector
+9:41 each of those as a column Vector this is
+9:43 equal to what this is equal to the
+9:47 Matrix where this is the First Column
+9:50 T
+9:52 E1 and then the second column is T
+9:56 E2 and then we go all the way to T en n
+10:01 times our times let me put it this way
+10:04 times X1 X2 all the way to xn we've seen
+10:08 this multiple multiple times now what's
+10:10 really really really neat about this is
+10:13 I just started with an arbitrary
+10:15 transformation and I just show that an
+10:17 arbitrary transform an arbitrary linear
+10:19 transformation of X can be Rewritten as
+10:22 a product of a
+10:24 matrix where I'm taking that same linear
+10:26 transformation of each of our standard
+10:28 basis vectors and I can construct that
+10:31 Matrix and multiplying that Matrix times
+10:33 my X Vector is the same thing as this
+10:36 transformation so this essentially
+10:37 showing you that all
+10:40 transformations all let me be careful
+10:42 all linear Transformations can be
+10:46 represented by can can be a
+10:50 matrix
+10:52 Vector product not only did I show you
+10:54 that you can do it but it's actually a
+10:55 fairly straightforward thing to do this
+10:57 is actually a a a pretty simple
+11:00 operation to do let me let me do show
+11:02 you an example and this is what I mean I
+11:04 don't know I think this is super neat
+11:06 let's say that I just I'm just going to
+11:08 make up some transformation let's say I
+11:09 have a transformation and it's a mapping
+11:12 between let's make it extra interesting
+11:14 between R2 and R3 and let's say my
+11:20 transformation say let's say that t of
+11:24 X1 X2 is equal to let's say the first
+11:27 entry is X1 Plus +
+11:30 3x2 the second entry is 5
+11:34 X2 - X1 and let's say the third entry is
+11:39 4
+11:41 x1+ X2 this is a mapping I could have
+11:44 written it like this I could write T of
+11:47 any Vector in R2
+11:50 x1x2 is equal to maybe this is just
+11:53 redundant but I think you get the idea I
+11:55 like this notation better X1 + 3x2
+11:59 5 X2 - X1 and then 4 X1 + X2 this
+12:05 statement and this statement I just
+12:06 wrote are equivalent and I like to
+12:08 visualize this a little bit more now I
+12:10 just told you that I can represent this
+12:12 transformation as a matrix Vector
+12:14 product how do I do it well what I do is
+12:17 I take the transformation of this guy so
+12:19 what am I I'm my domain right here is R2
+12:23 and I produce a vector that's going to
+12:25 be an RN so what I do is let's say so
+12:28 I'm concerned with multiplying things
+12:31 times things times vectors in R2 so what
+12:35 we're going to do is we're going to
+12:35 start with the identity Matrix identity
+12:40 2 because that's my domain and it just
+12:42 looks like this 1 Z 0 1 I'm just going
+12:47 to start with that and all I do is I
+12:49 apply my transformation to each of the
+12:52 columns each of my standard bases these
+12:54 are the standard bases for
+12:56 R2 right and you might be you know
+12:59 wonder you know I I showed you that
+13:00 there're bases how do I know that
+13:01 they're stand why do they why are they
+13:03 called the standard bases and I haven't
+13:05 covered this in a lot of detail right
+13:07 yet but you could take the dotproduct of
+13:09 any of these guys with the dot with any
+13:11 of the other guys and you'll see that
+13:12 they're all orthogonal to each other the
+13:13 dot product of any one of these columns
+13:15 with the other is always zero so that's
+13:17 a nice clue and they all have length of
+13:19 one so that's a nice reason why they're
+13:21 called the standard bases but anyway
+13:22 back to our our our attempt to represent
+13:26 this transformation as a matrix Vector
+13:28 product so we say look our domain is an
+13:31 R2 so let's start with I2 or our our our
+13:35 we call it our 2x two identity Matrix
+13:38 and let's apply the transformation to
+13:40 each of its column vectors where
+13:42 each of its column vectors are a vector
+13:44 in the standard basis for R2 so our
+13:47 stand so T
+13:48 of so I could so I'm going to write it
+13:52 like this T of first the first column is
+13:55 T of this column and then the second
+13:58 column
+13:59 is going to be T
+14:02 of
+14:04 01 and I know I'm getting Messier with
+14:07 my handwriting but what is T of what is
+14:10 T
+14:11 of the vector 1
+14:14 Z well we just go here and we construct
+14:17 another Vector so we get 1 + 3 * 0 is 1
+14:22 then we get 5 * 0 -1 so that's Min -1
+14:27 right X2 is 0 in this case and then we
+14:30 get 4 * 1 + 0 so that's just 4 so that's
+14:36 T of 1 Z and then what is T
+14:40 of Let Me Be T of
+14:45 01 T of 01 is equal
+14:48 to so we have 0 + 3 * 1 is 3 then we
+14:53 have 0 minus one is minus one let me
+14:59 make sure I did this one right what was
+15:01 this this was 5 * 0
+15:03 minus1 and then no yeah 5 * 0 minus X1
+15:09 which is 1 now this case it's 5 time oh
+15:12 I have to be careful let
+15:14 me this is 5 * X2 X2 is 1 so 5 * 1 - 0
+15:21 so it's 5 and then I have 4 * 0 + X2 +
+15:27 1 and I just showed you if I replace if
+15:30 I replace each of these standard bases
+15:32 vectors with the transformation of them
+15:34 what do I get I get this Vector right
+15:37 here so I already figured out what they
+15:39 are I get if I place if I take this guy
+15:43 and evaluate it it's the vector 1 -1 4
+15:48 and then this guy is the vector 3 5 and
+15:53 1 and I so what we just did and this is
+15:56 I I don't know I for some reason I find
+15:58 this to be pretty amazing we can re now
+16:00 rewrite this transformation here as the
+16:04 product of any Vector so if we Define
+16:06 this to be equal to a or we could we
+16:08 could write we could write this way we
+16:10 can now write our transformation our
+16:12 transformation of X1 X2 can now be
+16:17 Rewritten as the product of this Vector
+16:20 I'll write it in green the vector 1 3 -1
+16:25 5 4 1 times
+16:30 our input Vector X1 X2 which is super
+16:34 cool because now we just have to do a
+16:36 matrix multiplication instead of this
+16:38 and if we have some processor that does
+16:39 this super fast we can then use that and
+16:42 what's really I don't know I I think
+16:43 this is It's especially elegant because
+16:46 what happens here is we we applied the
+16:48 transformations to each of the columns
+16:50 of a 2X two Matrix and we got a 3x2
+16:52 matrix we got a 3x2 matrix and we know
+16:56 what happens when you multiply 3x2
+16:57 Matrix times a vector that's an R2 or
+17:00 you can almost view this as a 2x1 matrix
+17:03 you're going to get you're going to get
+17:06 a vector that is in R3 right because
+17:09 you're going to have these guys times
+17:11 that gu is going to be the first term
+17:12 these T times these guys going to be the
+17:14 second term these guys times those guys
+17:15 are going to be the third term so by by
+17:19 kind of creating this 3x two Matrix we
+17:21 have actually created a mapping from R2
+17:24 to R3 anyway I I for some reason I find
+17:27 this to be especially neat hopefully at
+17:28 least you find this somewhat instructive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+video link: https://youtu.be/lPWfIq5DzqI?si=EWc5ysQPTRT5JTrC
+## Linear Transformation: 2D Rotations (0:00-17:52)
+
+### Definitions
+
+*   **Linear Transformation:** A mapping $T$ from a vector space to itself that preserves vector addition and scalar multiplication. To verify, one must show:
+    *   **Additivity:** $T(x + y) = T(x) + T(y)$ (1:53-4:10)
+    *   **Homogeneity:** $T(cx) = cT(x)$ (4:11-5:47)
+*   **Rotation Matrix:** A $2 \times 2$ matrix $A$ used to rotate a vector $x$ in $mathbb{R}^2$ counterclockwise by an angle $\theta$ (5:51-14:11).
+
+### Formulas & Derivations
+
+*   **Rotation Matrix Formula:**
+    $$A = \begin{bmatrix} cos \theta & -sin \theta \ sin \theta & cos \theta end{bmatrix}$$
+*   **Transformation Mapping:**
+    $$T(x) = Ax = \begin{bmatrix} cos \theta & -sin \theta \ sin \theta & cos \theta end{bmatrix} \begin{bmatrix} x_1 \ x_2 end{bmatrix}$$
+    *   $x_1$ and $x_2$ represent the horizontal and vertical components of the input vector, respectively.
+*   **Derivation via Basis Vectors:**
+    *   Transformation of $e_1 = \begin{bmatrix} 1 \ 0 end{bmatrix}$ results in $\begin{bmatrix} cos \theta \ sin \theta end{bmatrix}$ (8:27-10:56).
+    *   Transformation of $e_2 = \begin{bmatrix} 0 \ 1 end{bmatrix}$ results in $\begin{bmatrix} -sin \theta \ cos \theta end{bmatrix}$ (11:00-13:13).
+
+### Examples
+
+*   **45-Degree Rotation:**
+    To rotate a vector by $45^circ$ ($\theta = 45^circ$):
+    $$A = \begin{bmatrix} \frac{sqrt{2}}{2} & -\frac{sqrt{2}}{2} \ \frac{sqrt{2}}{2} & \frac{sqrt{2}}{2} end{bmatrix}$$
+*   **Geometric Visualization:**
+    *   The video uses a square in $mathbb{R}^2$ as an example to illustrate mapping its vertices through the rotation matrix to produce a rotated square (15:33-16:48).
+0:00 let's see if we can create a linear
+0:02 transformation that is a rotation
+0:06 transformation through some angle theta
+0:08 and what it does is it takes any vector
+0:11 in r2 and it maps it to a rotated
+0:14 version of that rec vector
+0:16 or another way of saying it is that the
+0:18 rotation let me apply
+0:21 let me re it's not i don't it's not one
+0:23 of those double r's
+0:25 the rotation
+0:27 of some vector x
+0:29 is going to be equal to some a
+0:31 counterclockwise
+0:33 counter
+0:34 clockwise
+0:36 clockwise
+0:38 theta degree
+0:40 rotation
+0:42 rotation of
+0:45 x so this is what we want to construct
+0:47 using our new linear transformation
+0:49 tools and just to make sure that we can
+0:51 actually even do this we need to make
+0:53 sure there's an actual linear
+0:54 transformation i'll just do that
+0:55 visually because i actually don't even
+0:57 have a mathematical definition for this
+0:58 yet this is about as good as i've given
+1:00 you so let me just draw some
+1:02 really fast some axes right here
+1:05 i have to draw them a little bit neater
+1:06 than that
+1:08 okay that's my vertical axes that's my
+1:10 horizontal axes i could call this i'll
+1:13 call it this one the x1 and i'll call
+1:14 this the x2 axis and the last video i
+1:16 call them the x and the y but you know
+1:18 this is the first component of our
+1:19 vectors this is our second component in
+1:21 our vectors and so if i have some vector
+1:24 x if i have some vector x like that
+1:29 we know that a rotation of this a
+1:31 counterclockwise rotation of this will
+1:32 look like this
+1:34 i'll do the rotations in blue
+1:36 it will look like this
+1:39 where this angle right here is theta so
+1:42 this right here is the rotation for an
+1:44 angle of theta of x that's what this
+1:47 vector right here is so what do we have
+1:49 to do to make sure that this is a linear
+1:50 combination we have to show two things
+1:53 we have to show that the transformation
+1:56 so the rotation through theta of the sum
+1:59 of two vectors
+2:01 is equivalent to the sum of each of
+2:04 their individual rotations the rotation
+2:06 of the vector x plus the rotation
+2:10 of the vector y and i'll just show that
+2:13 to you visually this is the vector x
+2:15 let's say that the vector
+2:17 y looks something like
+2:20 let me draw i'll draw both of the
+2:21 original vectors in yellow so let's say
+2:24 the vector y looks like that so that's y
+2:27 so what's x plus y so let's put heads to
+2:29 tails if we just shift y up here
+2:32 if you just shift y up there that's also
+2:34 vector y not drawn in standard position
+2:36 but x plus y
+2:38 would then well it would look pretty
+2:39 close to this
+2:42 i'm not drawing it
+2:43 let me draw a little bit neater x plus y
+2:45 would look like that
+2:47 that would be the vector
+2:48 x plus y
+2:51 and what would its rotation look like
+2:53 through an angle of theta well it's
+2:55 rotation if you just rotate this guy
+2:57 through an angle of theta i'm just
+2:59 approximating it would look something
+3:00 like this it would look something like
+3:02 that
+3:03 so
+3:04 this right here
+3:06 this would be the rotation through an
+3:07 angle of theta of x plus y
+3:11 now let's see if that's the same thing
+3:12 as if we rotate x and rotate y and then
+3:15 add them together so what's y if we
+3:17 rotate it through an angle of theta if
+3:18 we rotate y through an angle of theta
+3:21 it's going to look something like
+3:24 it's going to look something like
+3:26 is all approximation i should be doing
+3:28 it with a ruler and a protractor maybe
+3:30 it looks something like this and the
+3:32 rotation so this is right here that's
+3:35 the rotation
+3:36 of y
+3:38 through an angle of theta right there
+3:40 that's the same data that i've been
+3:41 doing the whole time let me make it in a
+3:43 color that you can actually see
+3:45 so that's that vector right there the
+3:47 rotation of x was right there so if we
+3:49 add the rotation of x plus the rotation
+3:50 of y
+3:52 i'm kind of fudging it a little bit but
+3:54 i think you get the idea you actually
+3:56 get so this is the rotation of x plus
+3:58 the rotation of y
+4:00 rotation of our vector y you actually
+4:03 get the rotation of x plus y so at least
+4:06 visually it satisfied that first
+4:08 condition now the second conv condition
+4:11 that we need for this to be a valid
+4:13 linear transformation is that the
+4:15 rotation
+4:16 the rotation through an angle of theta
+4:18 of a scaled up version of a vector it
+4:21 should be equal to a scaled up version
+4:23 of the rotated vector
+4:26 of the rotated vector and i'll just do
+4:28 another visual example here
+4:30 so let's say that's my vertical axis
+4:32 that's my horizontal axis and let me say
+4:36 that this is my
+4:38 vector x
+4:40 now let's draw a scaled-up version of it
+4:42 so scaled-up version of x
+4:44 maybe it's just like x but it gets
+4:46 scaled up a little bit so it goes all
+4:48 the way
+4:50 it goes all the way out here
+4:53 so this is my
+4:55 c times x and i'm going to rotate that
+4:57 through an angle of theta
+4:59 so if we rotate that through an angle of
+5:01 theta
+5:02 you'll get a vector that looks something
+5:03 like this
+5:05 rotating it counterclockwise so this
+5:07 vector right here is the rotation
+5:12 by an angle of theta counterclockwise of
+5:14 c
+5:14 x
+5:15 that's what this is right there now what
+5:18 happens if we take the rotation of x
+5:19 first
+5:21 so if we just rotate x first we're going
+5:23 to get this vector
+5:25 right here so this right here is just
+5:27 the rotation
+5:29 through an angle of theta of x and then
+5:31 we scale it up well we see it's the same
+5:33 thing if this scaled up to that when you
+5:34 multiply it by c then this thing is
+5:36 going to scale up to that when you
+5:38 multiply it by c so at least visually
+5:41 i show you that i've shown you that this
+5:43 is satisfied so rotation definitely is a
+5:45 linear transformation at least the way
+5:47 i've shown you
+5:48 now let's actually construct a a
+5:51 mathematical definition for let's
+5:53 actually construct a matrix that will
+5:55 perform the transformation so i'm saying
+5:58 that my rotation
+6:01 i'm saying that my rotation
+6:02 transformation from r2 to r2 of some
+6:06 vector x
+6:07 can be defined as some
+6:10 2 by 2 matrix and it's 2 by 2 because
+6:12 it's a mapping from r2 to r2
+6:15 times
+6:16 any vector
+6:17 x and i'm saying i can do this because
+6:19 i've at least shown you visually that it
+6:21 is indeed a linear transformation and
+6:23 how do i find a well i start with
+6:27 i start with since this was mapping from
+6:30 r2 i start with the identity matrix in
+6:33 r2
+6:34 which is 1 0 0 1
+6:37 its columns are the basis vectors for r2
+6:41 right we refer this one as e1 and this
+6:44 column vector as e2 and to figure out a
+6:47 we essentially just perform the
+6:49 transformation on each of these columns
+6:52 so let me write that
+6:54 so a
+6:55 our vector our tr our matrix a
+6:58 is going to be the first column of it is
+7:00 going to be our rotation transformation
+7:03 performed on the vector 1 0
+7:07 and our second column
+7:09 is going to be the rotation
+7:11 transformation there's a little theta
+7:12 here that i'm forgetting to write times
+7:16 the second column vector times
+7:18 or the transformation of that one zero
+7:21 one
+7:22 this is what our a is going to look like
+7:24 so how do we figure out what these are
+7:26 we you know i'm trying to get to some
+7:28 numbers and this doesn't get me there so
+7:30 let's try to do that
+7:31 so let me draw some more axes here
+7:35 let me pick a different color i'll do it
+7:37 in gray
+7:39 so that is my vertical axes that is my
+7:42 horizontal axis
+7:44 and i could call this the x1 axis and
+7:46 this is the x2 axis now this basis
+7:49 vector e1 what does it look like
+7:52 well it's 1 in the horizontal x1 is 1
+7:55 and x2 is 0. so if this is one out here
+7:59 e1
+8:00 will look like that let me do it in a
+8:02 more vibrant color
+8:04 e1
+8:05 e1 will look like
+8:08 that
+8:08 right there
+8:10 now if i'm rotating let me write what e2
+8:12 looks like e2 would look like i'll do it
+8:14 in yellow
+8:15 e2 would look like this right here
+8:19 e2 that's that vector 0
+8:22 1 this is
+8:23 1 in our x2 direction now if i rotate e1
+8:27 by an angle theta what will it look like
+8:30 so if i rotate e1 and angle theta i'll
+8:32 do it in this color right here
+8:34 it will still have a length of 1 but
+8:36 it'll be rotated like that
+8:37 and that angle right there is theta
+8:40 so this right here is the rotation
+8:43 of e1 by theta
+8:46 these are all vectors
+8:48 of course that's what that is now what
+8:51 what are the coordinates for this or how
+8:53 do we specify this this new vector
+8:56 how do we specify this new vector well
+8:58 we can break out a little bit of our
+8:59 trigonometry its new x1 coordinate we
+9:03 could call it or its x1 entry is going
+9:05 to be this
+9:06 length right here it's going to be this
+9:09 length right here
+9:11 so if we draw if we draw a right
+9:12 triangle
+9:14 it is the side that is adjacent to theta
+9:17 this side is the hypotenuse which is
+9:19 length one and what is so how do we
+9:21 figure out this side if we call this
+9:22 side the adjacent side
+9:24 the adjacent side over the hypotenuse
+9:27 adjacent let me write it over here
+9:29 adjacent over the hypotenuse which is
+9:32 just one
+9:33 is equal to the cosine of theta cosine
+9:36 of theta that comes from sohcahtoa
+9:39 let me write that k
+9:41 cosine is adjacent over hypotenuse
+9:43 adjacent over hypotenuse and the
+9:46 adjacent side is going to be our new
+9:48 our new x1 coordinate right well we can
+9:51 obviously ignore that one a divided by
+9:53 one is equal to cosine theta which means
+9:54 that a is equal to cosine theta which
+9:56 means that this length of our rotated
+9:59 vector is equal to cosine theta it's new
+10:02 it's it's horizontal component or
+10:04 horizontal coordinate is equal to cosine
+10:07 of theta
+10:08 now if we take
+10:10 what's its vertical component going to
+10:12 be
+10:14 what's its vertical component what's a
+10:15 vertical component is going to be this
+10:18 height right here
+10:20 it's going to be that height right there
+10:21 which is the same thing as that height
+10:23 right there or we could say sine of
+10:25 theta
+10:26 let me call this the opposite sine of
+10:27 theta is equal to the opposite over 1.
+10:30 so this is going to be equal to sine of
+10:32 theta right this over one which is just
+10:34 this is equal to sine of theta from
+10:36 sohcahtoa
+10:38 sokatoa
+10:40 so this vertical component is equal to
+10:42 sine of theta so the new rotated basis
+10:45 vector can be written as cos cosine of
+10:47 theta for its x component or for its
+10:49 horizontal component and sine of theta
+10:53 for its vertical component this is the
+10:56 the new the rotated basis vector now
+10:59 what about e2
+11:00 well we could do something very similar
+11:02 there e2 is going to end up looking like
+11:04 this when you rotate it
+11:06 by an angle of theta
+11:08 it's going to look like that that angle
+11:10 right there is theta we can drop we can
+11:13 create a little
+11:15 a little right triangle right there
+11:18 and so if we want to know its x
+11:20 coordinate
+11:22 if we want to know its x coordinate so
+11:23 now we're concerned with
+11:25 the rotation
+11:27 through an angle of theta of e2 which is
+11:29 that right there of e2
+11:32 this is e2
+11:34 right there this is going to be equal to
+11:36 what its new x
+11:38 coordinate
+11:39 or this first entry in this vector if we
+11:41 wanted to draw it in standard position
+11:43 or the point that it is specifying is
+11:45 going to be equal to this distance which
+11:48 is equal to this distance on this
+11:50 triangle but the coordinate is going to
+11:51 be the negative of this right if this is
+11:53 a distance of 2 this coordinate is going
+11:54 to be minus 2. so what's this we have an
+11:57 angle it's a right triangle this is
+11:59 opposite to the angle opposite over 1
+12:02 opposite over our hypotenuse is equal to
+12:03 cosine of theta so this opposite side is
+12:06 equal to the cosine of theta
+12:09 so the x coordinate
+12:10 right here
+12:11 oh sorry i'm my trigonometry is messing
+12:15 up this is the opposite side sohcahtoa
+12:18 sine is equal to opposite let me write
+12:20 it because i was sine of theta is equal
+12:22 to opposite
+12:23 over
+12:24 hypotenuse so the sine of theta sine of
+12:28 this angle is equal to this opposite
+12:30 over the hypotenuse the hypotenuse is 1
+12:32 has length 1 because these are the
+12:33 standard basis vectors so this is equal
+12:36 to the sine of theta now this distance
+12:38 is equal to the sine of theta but it's
+12:40 going in the negative direction so it's
+12:42 going to be equal to the minus
+12:45 minus sine of theta
+12:47 and then what's its new y component
+12:49 going to be
+12:50 of this rotated version of e2 well we
+12:52 just look right here
+12:54 we have our angle this is adjacent to
+12:57 the angle this adjacent side over the
+12:59 hypotenuse so adjacent over one which is
+13:02 just this adjacent right here is just
+13:04 going to be equal to cosine of theta
+13:07 so its new y coordinate is going to be
+13:09 cosine of theta so when we apply the
+13:13 transformation to each of our basis
+13:15 vectors we get
+13:17 a
+13:18 is equal to
+13:20 the transformation applied to e1 which
+13:22 is cosine of theta
+13:25 and sine of theta
+13:27 and the transformation applied to e2
+13:29 which is minus sine of theta
+13:32 times the cosine of theta
+13:34 so now this i mean this is a big result
+13:36 we've now been able to mathematically
+13:38 specify our rotation transformation
+13:41 using a matrix so we can now say that
+13:43 the rotation
+13:46 transformation
+13:47 and it's a transformation from r2 to r2
+13:51 it's a function
+13:52 we can say that the rotation
+13:54 through an angle theta of any vector x
+13:56 in our domain is equal to the matrix
+14:00 cosine of theta
+14:02 sine of theta
+14:04 minus sine of theta
+14:06 cosine of theta
+14:08 times your vector in your domain times
+14:11 x1
+14:12 and x2 and you might be saying oh sal
+14:15 you know we did all this work and that's
+14:16 kind of neat but how do i apply this you
+14:18 know i still have all these cosines of
+14:19 thetas and sines of thetas there how do
+14:21 i do it well what you do is you pick an
+14:23 angle you want to rotate to and just
+14:24 evaluate these and you'll just have a
+14:26 normal matrix with numbers in it so
+14:28 let's say that we wanted to rotate
+14:31 through an angle of 45 degrees
+14:34 some vector
+14:35 well this is going to be equal to what
+14:38 we just apply or we evaluate each of
+14:40 these ratios at 45 degrees the cosine of
+14:43 45 degrees is square root of 2 over 2
+14:47 sine of 45 degrees is square root of 2
+14:49 over 2
+14:50 sine of 45 is square root of 2 of 2 we
+14:52 have a minus there so minus square root
+14:54 of 2 over 2 and then
+14:57 times and then cosine is just another
+14:59 square root of 2 over 2.
+15:02 so and we multiply it times our vector x
+15:05 so this matrix if we multiply it times
+15:07 any vector x
+15:09 literally
+15:11 literally so if we have some
+15:13 if we have some
+15:15 coordinates right here and let's say
+15:17 that i were to
+15:19 i don't know let's say i were to have a
+15:21 bunch of vectors that specify
+15:23 some square here let me see if i can if
+15:26 i can do it properly or maybe it has
+15:28 some triangle here maybe that'll be a
+15:30 little easier for me to
+15:31 to draw
+15:33 i'll do a square let's say it has some
+15:34 square here
+15:38 let's say i have some square here in my
+15:39 domain
+15:40 so this is an r2
+15:42 now when i apply if i literally multiply
+15:45 this times each of the basis vectors or
+15:47 actually all of the vectors that specify
+15:49 this set here i will get when i
+15:52 transform it i'll get a rotated version
+15:55 of this by 45 degrees
+15:57 just to draw it i'll actually draw a
+15:58 little 45 degree angle right there
+16:01 and then
+16:02 it will map it to this image
+16:05 to this image right there which is a
+16:07 pretty neat result and i you can already
+16:09 if you ever attempted to write any
+16:11 computer game that involves marbles or
+16:14 pinballs going around this is a very
+16:16 useful thing to know of how do you
+16:17 rotate things how do you in the future
+16:19 we'll talk about other types of
+16:21 transformations but this is a super
+16:22 useful one this is super hard to do and
+16:24 you know i remember the first time i
+16:25 wrote a computer program that tried to
+16:26 do this type of thing i just did it by
+16:28 hand but when you have this tool at your
+16:30 disposal all you have to do is evaluate
+16:32 this matrix at the angle you want to
+16:34 rotate it by
+16:35 and then multiply times your position
+16:37 vectors and so you know obviously you
+16:39 have a bunch of position vectors here
+16:40 but here you just you can just do it
+16:43 times the vertices and then you can say
+16:45 okay and everything else is just connect
+16:46 the dots between them and then you have
+16:48 your rotated image
+16:50 and just to be clear these
+16:52 this is these are the points specified
+16:54 by a set of vectors and i just want to
+16:56 make this clear right this point right
+16:57 here is specified by some position
+17:00 vector that looks like that when you
+17:01 apply the
+17:02 rotation on 45 degrees of that vector
+17:06 this vector then looks like this
+17:09 and the vector that specified this
+17:11 corner right here let me do it a
+17:12 different color
+17:14 that specified this corner right here
+17:16 when you rotate it by 45 degrees then
+17:18 becomes this vector and the vector that
+17:21 specified that corner over there that
+17:24 now becomes this vector that's what's
+17:26 actually being mapped or actually being
+17:28 transformed anyway hopefully you found
+17:30 this pretty neat i thought this was a
+17:32 at least for me this is kind of the neat
+17:34 the first really neat transformation and
+17:36 you can already start thinking about how
+17:37 to extend this into multiple dimensions
+17:39 especially three dimensionals if you
+17:40 ever try to actually do it by hand three
+17:42 dimensional rotations becomes very
+17:44 confusing but in the next video we'll
+17:45 actually figure out a way to do
+17:47 three-dimensional rotations around
+17:48 certain axes
+
+
+
+
+
+
+
+video link: https://youtu.be/f_DTiXZpb8M?si=VghPW3fxIH6iprx7
+This video explores the composition of two **linear transformations**, $S$ and $T$. Below are the core definitions, formulas, and logical proofs presented:
+
+### Definitions & Mappings (0:00 - 4:12)
+
+*   **Transformation S:** A mapping from set $X$ (a subset of $mathbb{R}^n$) to set $Y$ (a subset of $mathbb{R}^m$). It is represented by the matrix-vector product:
+    $$S(x) = Ax$$
+    Where $A$ is an $m \times n$ matrix.
+*   **Transformation T:** A mapping from set $Y$ (a subset of $mathbb{R}^m$) to set $Z$ (a subset of $mathbb{R}^l$). It is represented by the matrix-vector product:
+    $$T(x) = Bx$$
+    Where $B$ is an $l \times m$ matrix.
+*   **Composition of T with S:** Defined as a mapping from $X$ to $Z$, denoted by $T circ S$. It is constructed by applying $S$ first, then applying $T$ to the result:
+    $$(T circ S)(x) = T(S(x))$$
+
+### Proofs of Linear Transformation Requirements (6:51 - 11:14)
+
+To prove that the composition $T circ S$ is a linear transformation, the speaker validates two fundamental laws:
+
+1.  **Additivity:** $(T circ S)(x + y) = (T circ S)(x) + (T circ S)(y)$
+    *   *Steps:* $(T circ S)(x + y) = T(S(x + y)) = T(S(x) + S(y)) = T(S(x)) + T(S(y)) = (T circ S)(x) + (T circ S)(y)$.
+2.  **Homogeneity (Scalar Multiplication):** $(T circ S)(cx) = c(T circ S)(x)$
+    *   *Steps:* $(T circ S)(cx) = T(S(cx)) = T(c(S(x))) = c(T(S(x))) = c(T circ S)(x)$.
+
+### Dimensionality of the Resultant Matrix (11:14 - 11:57)
+
+*   Because the composition $T circ S$ is a linear transformation, it can also be represented as a single matrix-vector product:
+    $$(T circ S)(x) = Mx$$
+*   **Dimensions:** Since $S$ maps from an $n$-dimensional space to an $m$-dimensional space, and $T$ maps from that $m$-dimensional space to an $l$-dimensional space, the resulting matrix $M$ is an $l \times n$ matrix.
+0:00 let's see if we can build a bit on some
+0:02 of our work with linear transformations
+0:04 let's say i have two linear
+0:06 transformations to have the
+0:08 transformation s that's a
+0:10 mapping or a function from
+0:13 the set x to the set
+0:15 y
+0:16 and let's just say that x is a subset of
+0:19 let me write it here x is a subset of r
+0:23 n and let's say that y
+0:26 is a subset of r
+0:29 m of r m then we know if s is a linear
+0:32 transformation it can be represented by
+0:34 a matrix vector product so we can
+0:38 write s of x
+0:39 let me do it in the same color i was
+0:41 doing it before
+0:42 we can write that s
+0:44 of some vector x is equal to some matrix
+0:47 a
+0:48 times x and the matrix a it's going to
+0:51 be
+0:52 x whatever x we input into the function
+0:54 though we take the mapping of it's going
+0:56 to be in this set right here it's going
+0:58 to be a member of our n so this is going
+1:01 to be
+1:02 right here x is let me do it like this
+1:06 x is going to be a member of r
+1:09 n so what's actually going to be a
+1:11 member of x which is a subset of r n but
+1:13 i'm just trying to figure out what the
+1:14 dimensions of matrix a are going to be
+1:16 so this is going to have n components
+1:18 right here matrix a has to have n
+1:22 columns so matrix a is going to be let's
+1:25 just say it's an m by n matrix
+1:28 m
+1:29 by end fair enough now let's say we have
+1:32 another
+1:33 linear transformation so actually let me
+1:35 draw what i've said what i've done so
+1:37 far so we have some set x right here
+1:41 that is set x it is a subset of
+1:44 r
+1:45 n r n i could draw out there and we have
+1:48 this mapping s or this linear
+1:51 transformation from x to y so it goes to
+1:53 a new set
+1:55 y right here
+1:58 goes to a new set
+1:59 y
+2:00 and y is a member of rm so the mapping
+2:04 the mapping
+2:05 x right
+2:06 here the mapping x
+2:09 you take some element here and you apply
+2:11 the transformation s and i've told you
+2:13 it's a linear transformation and you'll
+2:14 get to some value in
+2:17 set y which is an rm and i said that the
+2:20 matrix representation of our linear
+2:22 transformation is going to be an m by n
+2:24 matrix right because you're going to
+2:26 start with something that has n entries
+2:29 or a vector that's a member of rn and
+2:31 you want to end up with a vector that's
+2:32 in rm fair enough now let's say i have
+2:35 another linear transformation t
+2:38 i have another linear transformation t
+2:41 and it's a mapping from the set y
+2:44 to the set
+2:46 z so let me draw
+2:48 so i have
+2:50 i have
+2:52 another set here called set
+2:54 z
+2:55 and i can map from elements of y so i
+2:58 could map from here
+2:59 into elements of z using the linear
+3:02 transformation t
+3:04 so let's similar what i did before we
+3:06 know that y is a member of r m we know
+3:09 that this is a subset not a member more
+3:11 of a subset of rm and i'm you know these
+3:15 are just arbitrary letters this could be
+3:16 100 or 5 or whatever i'm just trying to
+3:18 stay
+3:19 abstract and let's say that z is a
+3:21 member
+3:22 i'm running out of letters let's say z
+3:24 is a member of r
+3:26 z is a member of r
+3:28 l
+3:29 then what's the transformation t what's
+3:31 its matrix representation going to be
+3:33 and we know it's a linear transformation
+3:34 i told you that so we know it can be
+3:36 represented in this form so we could say
+3:38 that t
+3:40 of x
+3:41 where x is a member of r m
+3:44 where x is a member of rm is going to be
+3:47 equal to some matrix b
+3:49 times x
+3:51 and what are the dimensions of matrix b
+3:53 going to be
+3:54 x is going to be a member of r m
+3:56 so b is going to have to have m columns
+4:00 and then it's a mapping into a set
+4:02 that's a member of rl so it's going to
+4:04 map from members of rm to members of rl
+4:07 so it's going to be an l
+4:09 by m matrix right there now when you see
+4:12 this a a very natural question might
+4:15 arise in your head can we construct some
+4:18 mapping
+4:19 that goes all the way
+4:20 that goes all the way from set x
+4:23 all the way to set t
+4:26 and maybe we'll call that let me call
+4:29 that the composition of and maybe we can
+4:32 create that mapping using a combination
+4:34 of s and t
+4:36 so let's call
+4:37 let's just make up some word let's just
+4:40 call t
+4:41 with this little circle s
+4:43 let's just call this
+4:45 a mapping from x all the way to z
+4:49 from x all the way to z
+4:52 and we'll call this the composition
+4:55 the composition
+4:57 composition
+4:59 of
+5:00 t
+5:02 with s we're essentially just combining
+5:04 the two functions in order to try to
+5:05 create some mapping that takes us from t
+5:09 from set x
+5:10 all the way to set z but we still
+5:12 haven't defined this how can we actually
+5:14 construct this well a natural thing
+5:16 might be
+5:17 to first apply
+5:19 transformation s let's say that this is
+5:21 our x we're dealing with right here
+5:23 maybe the first thing we want to do is
+5:24 apply s
+5:26 and that will give us
+5:28 an s of x
+5:29 that will give us this value right here
+5:31 that's in set y
+5:33 and then what if we were to take that
+5:35 value and apply the transformation t to
+5:38 it
+5:38 so we would apply take this value and
+5:40 apply the transformation t to it to
+5:43 maybe get to this value
+5:45 so this would be the linear
+5:46 transformation t applied to this value
+5:49 this this member of our y of of of the
+5:53 set y which is an rm
+5:56 so we're just going to apply that
+5:57 transformation to this guy right here
+5:59 which was the transformation s applied
+6:01 to x
+6:03 this might look fancy but all this is
+6:05 remember this is just a vector right
+6:06 here in the set y which is a subset of r
+6:09 m this is a vector that's in x so when
+6:12 you apply a mapping you get another
+6:14 vector that's in y and then you apply
+6:16 the mat the linear transformation t to
+6:18 that and then you get another vector
+6:19 that's in set z so let's define
+6:22 the composition of t with s so this is
+6:25 going to be a definition
+6:27 let's define the composition of t with s
+6:30 to b
+6:31 first we apply s to some vector in x
+6:35 so we apply s to some vector in x to get
+6:38 us here and then we apply t to that
+6:40 vector to get us to set z
+6:43 to get us to set so we apply t
+6:46 to this thing right there
+6:48 now the first question might be is this
+6:51 even a linear transformation
+6:54 is the composition of two linear
+6:56 transformations even a linear
+6:57 transformation
+6:59 is it a linear
+7:01 transformation
+7:05 linear transformation
+7:07 well there are two requirements to be a
+7:08 linear transformation right the sum of
+7:11 the linear transformation of the sum of
+7:13 two vectors should be the linear
+7:14 transformation of each of them summed
+7:16 together so let's see when i know when i
+7:18 just say that verbally it probably
+7:19 doesn't make a lot of sense so let's
+7:20 just try to take the composition
+7:23 the composition of t
+7:24 with s
+7:25 of
+7:26 let's say the sum of two vectors in x so
+7:29 let's say i'm taking the vectors
+7:31 x
+7:32 and
+7:33 the vectors y well by definition what is
+7:36 this equal to this is equal to
+7:39 this is equal to applying the linear
+7:40 transformation t
+7:42 to the linear transformation s
+7:45 applied to our two vectors
+7:47 x
+7:48 plus y
+7:49 and what is this equal to i told you at
+7:51 the beginning of the video that s is a
+7:54 linear transformation so by definition
+7:56 of a linear transformation one of our
+7:58 requirements we know that s of x plus y
+8:01 is the same thing as
+8:03 s
+8:04 of x
+8:06 plus
+8:07 s
+8:08 of y because s is a linear
+8:10 transformation we know that that is true
+8:13 we know that we can replace
+8:15 this thing right there with that thing
+8:17 right there well we also know that t is
+8:19 a linear transformation which means that
+8:22 the transformation applied to the sum of
+8:24 two vectors is equal to the
+8:27 transformation
+8:29 of each of the vectors summed up so the
+8:31 transformation of s
+8:33 of x
+8:35 or the transformation applied to the
+8:38 transformation of s applied to x i know
+8:41 the terminology is getting confused plus
+8:43 t
+8:44 of
+8:46 s of y
+8:48 this is we can do this because we know
+8:50 that t is a linear transformation but
+8:52 what is this right here this is equal to
+8:55 all this statement right here is equal
+8:57 to the composition of t
+8:59 with s
+9:02 applied to x
+9:03 plus the composition of t with s applied
+9:07 to y
+9:08 so given that both t and s are linear
+9:11 transformations we got our first
+9:12 requirement that the composition of
+9:15 applied to the sum of two vectors is
+9:17 equal to the composition applied to each
+9:19 of the vectors summed up so that was our
+9:21 first
+9:22 requirement for a linear transformation
+9:25 and then our second one is we need to
+9:27 apply this to a scalar multiple of of a
+9:30 vector in x so t
+9:32 of s or let me say this way the
+9:34 composition of t with s applied to some
+9:37 scalar multiple
+9:39 of some vector x that's in our set x
+9:42 this is a vector x that's our set x this
+9:44 should be a capital x
+9:46 this is equal to what
+9:48 well by our definition of our linear of
+9:50 our of our composition this is equal to
+9:54 the transformation t
+9:55 applied to
+9:57 the transformation s applied to
+10:00 c times our vector x
+10:03 and what is this equal to we know that
+10:05 this is a linear transformation so given
+10:07 that this is a linear transformation
+10:09 that s is a linear transformation we
+10:10 know that this can be rewritten as t
+10:13 times
+10:15 c
+10:16 times s applied to x
+10:19 this little replacing that i did with s
+10:22 applied to c times x is the same thing
+10:24 as c times the linear transformation
+10:26 applied to x this just comes out of the
+10:28 fact that s is a linear transformation
+10:30 we've done that multiple times well now
+10:32 we have t applied to some scalar
+10:35 multiple of some vector and so we can do
+10:37 the same thing we know that t is a
+10:39 linear transformation so we know that
+10:41 this is equal to i'll do it down here
+10:44 this is equal to c times t
+10:47 applied to s applied to some
+10:51 vector x that's in there and what is
+10:53 this equal to
+10:54 this is equal to
+10:56 the constant c
+10:58 times the composition t with s
+11:02 of our vector x right there so we've met
+11:05 our second requirement for a linear
+11:07 transformation
+11:09 so the composition as we've defined it
+11:11 is definitely a linear transformation
+11:14 now that means that this thing right
+11:16 here can be written
+11:19 this means that
+11:20 the composition of t with s can be
+11:23 written as some
+11:25 matrix let me write it this way the
+11:27 composition of t with s applied to or
+11:30 the transformation of the which is the
+11:32 composition of t with s applied to some
+11:34 vector x
+11:35 can be written
+11:37 as some
+11:39 matrix
+11:40 times
+11:41 our vector x and what will be the
+11:43 dimensions of our matrix we're going
+11:45 from a
+11:46 n dimension space so this is going to
+11:48 have n columns
+11:50 to a l dimensions base so this is going
+11:53 to have l rows so it's going to be an l
+11:56 by n matrix
+11:57 now i'll leave you there in this video
+11:59 because i realize i've been making too
+12:00 many 20 minute plus videos in the next
+12:03 video now that we know this is a linear
+12:04 transformation and then we know that we
+12:06 can represent it as a matrix vector
+12:08 product we'll actually figure out how to
+12:10 represent this matrix
+12:12 especially in relation to the two
+12:15 matrices that define our transformations
+12:17 s and t
+
+
+
+
+

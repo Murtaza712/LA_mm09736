@@ -524,3 +524,86 @@ $$\blacksquare$$
 2. **Rank Connection (Augmented Matrix):**
    $A\mathbf{x} = \mathbf{b}$ is consistent $\iff \text{rank}(A) = \text{rank}([A \mid \mathbf{b}])$.
    *(Adding $\mathbf{b}$ to the matrix doesn't add any new dimensions because $\mathbf{b}$ is already inside the span of $A$'s columns).*
+
+---
+
+## Theorem: The Trivial Kernel Test for One-to-One Linear Transformations
+
+### Statement
+> Let $T: V \to W$ be a linear transformation between vector spaces $V$ and $W$. Then $T$ is **one-to-one** (injective) if and only if the kernel of $T$ consists of only the zero vector:
+> $$T \text{ is one-to-one} \iff \ker(T) = \{\mathbf{0}\}$$
+
+---
+
+### Core Intuition: The Linearity Bridge ($\mathbf{x} = \mathbf{x}_p + \mathbf{x}_h$)
+A common question is: *"Why does checking only the zero vector $T(\mathbf{x}) = \mathbf{0}$ tell us whether multiple inputs can hit ANY general target vector $\mathbf{b}$?"*
+
+The bridge is **linearity**. 
+In a linear system, if two inputs $\mathbf{u}$ and $\mathbf{w}$ collide at the same output ($T(\mathbf{u}) = T(\mathbf{w}) = \mathbf{b}$), their difference vector $(\mathbf{u} - \mathbf{w})$ is mapped directly to $\mathbf{0}$ by linearity:
+$$T(\mathbf{u} - \mathbf{w}) = T(\mathbf{u}) - T(\mathbf{w}) = \mathbf{b} - \mathbf{b} = \mathbf{0}$$
+
+Conversely, if the kernel contains a non-zero vector $\mathbf{v}_h \in \ker(T)$, then for any particular solution $\mathbf{x}_p$ satisfying $T(\mathbf{x}_p) = \mathbf{b}$, the shifted vector $(\mathbf{x}_p + \mathbf{v}_h)$ will ALSO hit $\mathbf{b}$:
+$$T(\mathbf{x}_p + \mathbf{v}_h) = T(\mathbf{x}_p) + T(\mathbf{v}_h) = \mathbf{b} + \mathbf{0} = \mathbf{b}$$
+
+Therefore, **in a linear system, if inputs collapse anywhere, they collapse at $\mathbf{0}$; and if they collapse at $\mathbf{0}$, they collapse everywhere**.
+
+---
+
+### Proof (Bidirectional $\iff$)
+
+Let $T: V \to W$ be a linear transformation. Recall the definition of one-to-one:
+$$T \text{ is one-to-one} \iff \big(T(\mathbf{u}) = T(\mathbf{w}) \implies \mathbf{u} = \mathbf{w}\big) \quad \text{for all } \mathbf{u}, \mathbf{w} \in V$$
+
+#### 1. Forward Direction ($\implies$): Assume $T$ is one-to-one, prove $\ker(T) = \{\mathbf{0}\}$
+
+1. By the fundamental property of linear transformations, the zero vector of $V$ always maps to the zero vector of $W$:
+   $$T(\mathbf{0}_V) = \mathbf{0}_W$$
+   Therefore, $\mathbf{0}_V \in \ker(T)$.
+2. Now, suppose $\mathbf{v}$ is any arbitrary vector in $\ker(T)$.
+3. By definition of the kernel:
+   $$T(\mathbf{v}) = \mathbf{0}_W$$
+4. Equating the two expressions:
+   $$T(\mathbf{v}) = T(\mathbf{0}_V)$$
+5. Since $T$ is one-to-one, distinct inputs cannot have the same output. Therefore:
+   $$\mathbf{v} = \mathbf{0}_V$$
+6. Since $\mathbf{v}$ was an arbitrary element of $\ker(T)$, the only element in $\ker(T)$ is $\mathbf{0}_V$.
+7. Thus, $\ker(T) = \{\mathbf{0}_V\}$.
+
+---
+
+#### 2. Backward Direction ($\impliedby$): Assume $\ker(T) = \{\mathbf{0}\}$, prove $T$ is one-to-one
+
+1. Let $\mathbf{u}, \mathbf{w} \in V$ be two vectors such that:
+   $$T(\mathbf{u}) = T(\mathbf{w})$$
+2. Subtracting $T(\mathbf{w})$ from both sides:
+   $$T(\mathbf{u}) - T(\mathbf{w}) = \mathbf{0}_W$$
+3. By the linearity of $T$ (specifically, additivity and homogeneity with scalar $-1$):
+   $$T(\mathbf{u} - \mathbf{w}) = \mathbf{0}_W$$
+4. By definition of the kernel, the vector $(\mathbf{u} - \mathbf{w})$ belongs to $\ker(T)$:
+   $$(\mathbf{u} - \mathbf{w}) \in \ker(T)$$
+5. By our initial assumption, $\ker(T)$ contains ONLY the zero vector: $\ker(T) = \{\mathbf{0}_V\}$.
+6. Therefore:
+   $$\mathbf{u} - \mathbf{w} = \mathbf{0}_V \implies \mathbf{u} = \mathbf{w}$$
+7. Having shown that $T(\mathbf{u}) = T(\mathbf{w})$ guarantees $\mathbf{u} = \mathbf{w}$, it follows by definition that $T$ is **one-to-one**.
+
+$$\blacksquare$$
+
+---
+
+### Non-trivial Kernel and General Non-Uniqueness ($\mathbf{x} = \mathbf{x}_p + \mathbf{x}_h$)
+
+* **Case 1: Trivial Kernel ($\ker(T) = \{\mathbf{0}\}$):**
+  Every reached target $\mathbf{b} \in \text{range}(T)$ has **exactly ONE unique pre-image**:
+  $$T(\mathbf{x}) = \mathbf{b} \implies \mathbf{x} \text{ is unique}$$
+* **Case 2: Non-Trivial Kernel ($\ker(T) \neq \{\mathbf{0}\}$):**
+  There exists at least one non-zero vector $\mathbf{v}_h \in \ker(T)$ such that $T(\mathbf{v}_h) = \mathbf{0}$.
+  If a particular vector $\mathbf{x}_p$ maps to $\mathbf{b}$ ($T(\mathbf{x}_p) = \mathbf{b}$), then for **any scalar $c \in \mathbb{R}$**:
+  $$T(\mathbf{x}_p + c\mathbf{v}_h) = T(\mathbf{x}_p) + c T(\mathbf{v}_h) = \mathbf{b} + c(\mathbf{0}) = \mathbf{b}$$
+  Because $c$ can be any real number, **every target $\mathbf{b}$ in the range has infinitely many pre-images**.
+
+---
+
+### Key Exam Takeaways:
+1. **The Kernel Pivot Criterion:** For a matrix transformation $T_A(\mathbf{x}) = A\mathbf{x}$, $\ker(T) = \{\mathbf{0}\} \iff$ **A pivot in every column** $\iff$ no free variables $\iff$ columns are linearly independent.
+2. **Dimension Bound:** For $T: \mathbb{R}^n \to \mathbb{R}^m$ to be one-to-one, you must have $n \le m$. A "wide" matrix ($n > m$) can **never** be one-to-one because it is mathematically impossible to have $n$ pivots with only $m$ rows.
+

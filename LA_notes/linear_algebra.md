@@ -82,7 +82,41 @@
   - [Finding Bases for Null Space & Column Space (Unified Walkthrough)](#finding-bases-for-null-space--column-space-unified-walkthrough)
   - [Rank, Nullity & The Rank-Nullity Theorem](#rank-nullity--the-rank-nullity-theorem)
     - [Theorem (The Rank-Nullity Theorem / Dimension Theorem)](#theorem-rank-nullity)
-- [14. Vocabulary Glossary](#14-vocabulary-glossary)
+- [14. Linear Transformations](#14-linear-transformations)
+  - [Functions, Mappings, Domain, Codomain & Range](#functions-mappings-domain-codomain--range)
+  - [Vector Transformations](#vector-transformations)
+  - [Linear Transformations & The Two Axioms](#linear-transformations--the-two-axioms)
+    - [Worked Example 1: Proving Linearity ($T: \mathbb{R}^2 \to \mathbb{R}^2$)](#worked-example-1-proving-linearity)
+    - [Worked Example 2: Disproving Linearity (Counterexample with Powers)](#worked-example-2-disproving-linearity)
+    - [Exam Quick-Check Rules for Linearity](#exam-quick-check-rules-for-linearity)
+  - [Matrix-Vector Products as Linear Transformations](#matrix-vector-products-as-linear-transformations)
+  - [The Standard Matrix of a Linear Transformation](#the-standard-matrix-of-a-linear-transformation)
+    - [The Standard Basis & The Construction Theorem](#the-standard-basis--the-construction-theorem)
+    - [Step-by-Step Construction Example ($T: \mathbb{R}^2 \to \mathbb{R}^3$)](#step-by-step-construction-example-t-mathbbr2-to-mathbbr3)
+  - [The Geometric Gallery of Transformations (2D & 3D)](#the-geometric-gallery-of-transformations-2d--3d)
+    - [1. Rotations in $\mathbb{R}^2$ ($R_\theta$)](#1-rotations-in-mathbbr2-r_theta)
+    - [2. Reflections (Flipping Space)](#2-reflections-flipping-space)
+    - [3. Orthogonal Projections (Flattening Space)](#3-orthogonal-projections-flattening-space)
+    - [4. Dilations & Contractions (Scaling)](#4-dilations--contractions-scaling)
+    - [5. Shears (Sliding Space)](#5-shears-sliding-space)
+    - [Summary Gallery Reference Table](#summary-gallery-reference-table)
+  - [General Linear Transformations (Calculus & Function Spaces)](#general-linear-transformations-calculus--function-spaces)
+    - [The Derivative Operator](#the-derivative-operator)
+    - [The Definite Integral Operator](#the-definite-integral-operator)
+  - [Kernel and Range of a Linear Transformation](#kernel-and-range-of-a-linear-transformation)
+    - [The Kernel ($\ker(T)$) & Nullity](#the-kernel-kert--nullity)
+    - [The Range ($\text{range}(T)$) & Rank](#the-range-ranget--rank)
+    - [The Dimension Theorem for Transformations](#the-dimension-theorem-for-transformations)
+  - [One-to-One, Onto & Inverse Transformations](#one-to-one-onto--inverse-transformations)
+    - [One-to-One (Injective) Transformations](#one-to-one-injective-transformations)
+    - [Onto (Surjective) Transformations](#onto-surjective-transformations)
+    - [The Pivot & Shape Decision Rules](#the-pivot--shape-decision-rules)
+    - [Inverse Linear Transformations ($T^{-1}$)](#inverse-linear-transformations-t-1)
+  - [Compositions of Linear Transformations](#compositions-of-linear-transformations)
+    - [Definition & Proof of Linearity](#definition--proof-of-linearity)
+    - [The Standard Matrix Composition Rule ($[T_2 \circ T_1] = [T_2][T_1]$)](#the-standard-matrix-composition-rule-t_2-circ-t_1--t_2t_1)
+    - [Worked Pipeline Example: Reflect, Then Rotate](#worked-pipeline-example-reflect-then-rotate)
+- [15. Vocabulary Glossary](#15-vocabulary-glossary)
 
 ---
 
@@ -2080,25 +2114,553 @@ In our worked examples:
 ---
 
 #### 7. The Grand Unification: The Invertibility Master Theorem
-For a square $n \times n$ matrix $A$, the Rank-Nullity Theorem connects everything we have studied into one unified web of equivalence. The following statements are either **all true** or **all false**:
+For a square $n \times n$ matrix $A$ and its induced linear operator $T_A: \mathbb{R}^n \to \mathbb{R}^n$ defined by $T_A(\mathbf{x}) = A\mathbf{x}$, the Rank-Nullity Theorem, systems theory, determinant theory, and transformation theory coalesce into one unified web of equivalence. 
 
-1.  $A$ is invertible ($A^{-1}$ exists).
-2.  $\det(A) \neq 0$.
-3.  $\text{RREF}(A) = I_n$ (the $n \times n$ identity matrix).
-4.  The column vectors of $A$ are **linearly independent**.
-5.  The column vectors of $A$ **span $\mathbb{R}^n$**.
-6.  The column vectors of $A$ form a **basis for $\mathbb{R}^n$**.
-7.  $\text{Col}(A) = \mathbb{R}^n$.
-8.  $\text{Rank}(A) = n$ (matrix has **full rank**; all $n$ columns are pivot columns).
-9.  $\text{Null}(A) = \{\mathbf{0}\}$ (only the trivial solution exists for $A\mathbf{x} = \mathbf{0}$).
-10. $\text{Nullity}(A) = 0$ (zero free variables).
-11. $A\mathbf{x} = \mathbf{b}$ has a unique solution for every $\mathbf{b} \in \mathbb{R}^n$.
+The following statements are **completely equivalent** (if any single one is true, **all** are true; if any single one is false, **all** are false):
+
+```mermaid
+flowchart TD
+    Inv["1. A is Invertible<br/>(A⁻¹ exists)"]
+    Det["2. det(A) ≠ 0"]
+    RREF["3. RREF(A) = Iₙ<br/>(n pivots)"]
+    Rank["4. Rank(A) = n<br/>Nullity(A) = 0"]
+    Ax0["5. Ax = 0 has ONLY<br/>trivial solution x = 0"]
+    Axb["6. Ax = b has a UNIQUE<br/>solution for every b"]
+    Basis["7. Columns / Rows form<br/>a BASIS of ℝⁿ"]
+    Map["8. T_A is an ISOMORPHISM<br/>(Both 1-to-1 and Onto)"]
+
+    Inv <--> Det
+    Inv <--> RREF
+    RREF <--> Rank
+    Rank <--> Ax0
+    Rank <--> Axb
+    Rank <--> Basis
+    Rank <--> Map
+```
+
+##### The Four Thematic Pillars:
+
+1. **Determinants & Row Operations:**
+   * $A$ is invertible ($A^{-1}$ exists).
+   * $\det(A) \neq 0$.
+   * $\text{RREF}(A) = I_n$ (the $n \times n$ identity matrix).
+   * $A$ has $n$ pivot positions (a pivot in every row and every column).
+   * $A$ is expressible as a finite product of elementary matrices: $A = E_1 E_2 \cdots E_k$.
+   * $A^T$ is invertible (with $(A^T)^{-1} = (A^{-1})^T$).
+
+2. **Systems of Linear Equations:**
+   * $A\mathbf{x} = \mathbf{0}$ has **only the trivial solution** ($\mathbf{x} = \mathbf{0}$).
+   * $A\mathbf{x} = \mathbf{b}$ is **consistent** for every vector $\mathbf{b} \in \mathbb{R}^n$.
+   * $A\mathbf{x} = \mathbf{b}$ has **exactly one unique solution** for every $\mathbf{b} \in \mathbb{R}^n$, explicitly given by $\mathbf{x} = A^{-1}\mathbf{b}$.
+
+3. **Vector Spaces & Subspaces:**
+   * The column vectors of $A$ are **linearly independent**.
+   * The column vectors of $A$ **span $\mathbb{R}^n$**.
+   * The column vectors of $A$ form a **basis for $\mathbb{R}^n$**.
+   * $\text{Col}(A) = \mathbb{R}^n$ (column space fills the entire space).
+   * The row vectors of $A$ are **linearly independent**, span $\mathbb{R}^n$, and form a **basis for $\mathbb{R}^n$** ($\text{Row}(A) = \mathbb{R}^n$).
+   * $\text{Rank}(A) = n$ (matrix has **full rank**).
+   * $\text{Null}(A) = \{\mathbf{0}\}$ (null space contains only the zero vector).
+   * $\text{Nullity}(A) = 0$ (zero free variables).
+
+4. **Linear Transformations ($T_A(\mathbf{x}) = A\mathbf{x}$):**
+   * $\ker(T_A) = \{\mathbf{0}\}$ (trivial kernel).
+   * $\text{nullity}(T_A) = 0$.
+   * $T_A$ is **one-to-one** (injective).
+   * $\text{range}(T_A) = \text{Col}(A) = \mathbb{R}^n$ (range equals the entire codomain).
+   * $T_A$ is **onto** (surjective).
+   * $T_A$ is an **isomorphism** (a bijective linear operator).
+   * The inverse transformation $T_A^{-1}$ exists and is given by $T_A^{-1}(\mathbf{y}) = A^{-1}\mathbf{y}$.
+
+
+---
+
+## 14. Linear Transformations
+
+### Functions, Mappings, Domain, Codomain & Range
+> **Video Resource:** [Khan Academy - A more formal understanding of functions](https://youtu.be/BQMyeQOLvpg?si=GJvFXg8XYXt4tH6D)
+
+Before analyzing matrices as geometric engines, we formalize the algebraic machinery of functions and mappings.
+
+#### 1. Formal Definition of a Function
+A **function** (or **mapping**) is a rule/relation that associates **every** element in an input set $X$ with a unique element in a target set $Y$.
+*   **Notation:** 
+    $$f: X \to Y \quad \text{or} \quad x \mapsto f(x)$$
+    *(Read as: "$f$ maps $X$ into $Y$" or "$x$ is mapped/associated to $f(x)$").*
+
+#### 2. Domain vs. Codomain vs. Range
+*   **Domain:** The set $X$ containing all allowable input objects. It is an explicit part of the function's definition.
+*   **Codomain:** The set $Y$ that the function maps into; represents all *potential* output candidates.
+*   **Range (Image):** The set of values in the codomain that the function *actually hits*:
+    $$\text{Range}(f) = \{y \in Y \mid \exists x \in X \text{ such that } f(x) = y\} \subseteq Y$$
+    *(Crucial Exam Rule: The Range is always a **subset** of the Codomain: $\text{Range} \subseteq \text{Codomain}$. They are NOT necessarily equal!).*
+
+#### 3. Scalar-Valued vs. Vector-Valued Functions
+*   **Scalar-Valued (Real-Valued) Function:** The codomain is 1-dimensional ($\mathbb{R}$ or a subset of $\mathbb{R}$). 
+*   **Vector-Valued Function:** The codomain is multi-dimensional ($\mathbb{R}^m$ where $m > 1$).
+
+#### Worked Examples from Video 1:
+*   **Example 1: Classic Scalar Map**
+    $$f: \mathbb{R} \to \mathbb{R}, \quad f(x) = x^2$$
+    *   **Domain:** $\mathbb{R}$ (all real numbers).
+    *   **Codomain:** $\mathbb{R}$ (all real numbers).
+    *   **Range:** $[0, \infty)$ (non-negative real numbers, because squares cannot be negative).
+*   **Example 2: Constant Map (Collapsing Dimension)**
+    $$G: \mathbb{R}^2 \to \mathbb{R}, \quad G(x_1, x_2) = 2$$
+    *   **Domain:** $\mathbb{R}^2$ (the entire 2D Cartesian plane).
+    *   **Codomain:** $\mathbb{R}$ (the 1D real line).
+    *   **Range:** The singleton set $\{2\}$.
+    *   *Visual:* The entire infinite 2D plane is squashed down to a single point at $2$ on the real number line.
+*   **Example 3: Non-Linear Vector-Valued Function & The Range Restriction**
+    $$H: \mathbb{R}^2 \to \mathbb{R}^3, \quad H(x_1, x_2) = \begin{bmatrix} x_1 + x_2 \\ x_2 - x_1 \\ x_1 x_2 \end{bmatrix}$$
+    *   **Domain:** $\mathbb{R}^2$, **Codomain:** $\mathbb{R}^3$.
+    *   **Point in the Range:** Let $(x_1, x_2) = (2, 3)$.
+        $$H(2, 3) = \begin{bmatrix} 2 + 3 \\ 3 - 2 \\ 2 \cdot 3 \end{bmatrix} = \begin{bmatrix} 5 \\ 1 \\ 6 \end{bmatrix} \in \text{Range}(H)$$
+    *   **Counterexample (Why Codomain $\neq$ Range):** Is $\mathbf{y} = \begin{bmatrix} 5 \\ 1 \\ 0 \end{bmatrix}$ in the range of $H$?
+        $$\begin{cases} x_1 + x_2 = 5 \\ x_2 - x_1 = 1 \end{cases} \implies 2x_2 = 6 \implies x_2 = 3, \, x_1 = 2$$
+        For this unique solution, the third coordinate *must* be $x_1 x_2 = 2 \cdot 3 = 6 \neq 0$.
+        Therefore, no input $(x_1, x_2)$ can ever map to $\begin{bmatrix} 5 \\ 1 \\ 0 \end{bmatrix}$. While $\begin{bmatrix} 5 \\ 1 \\ 0 \end{bmatrix} \in \mathbb{R}^3$ (Codomain), it is strictly **outside the Range**.
+
+---
+
+### Vector Transformations
+> **Video Resource:** [Khan Academy - Vector transformations](https://youtu.be/gAbadNuQEjI?si=cWdoAQH7jxJi9rjS)
+
+In Linear Algebra, when a function takes vectors as inputs and produces vectors as outputs, we call it a **transformation** (denoted capital $T$):
+$$T: \mathbb{R}^n \to \mathbb{R}^m$$
+*   **Why use the word "Transformation" instead of "Function"?**
+    *   In standard calculus, functions are often visualized as static graphs ($y = f(x)$).
+    *   In linear algebra and computer graphics, vectors represent positions or directions in space. Calling $T$ a *transformation* emphasizes that it actively **moves, rotates, stretches, squashes, or projects** vectors from an input space $\mathbb{R}^n$ into an output space $\mathbb{R}^m$.
+
+#### Worked Example from Video 2:
+Define $T: \mathbb{R}^3 \to \mathbb{R}^2$ by the rule:
+$$T(x_1, x_2, x_3) = \begin{bmatrix} x_1 + 2x_2 \\ 3x_3 \end{bmatrix}$$
+*   **Domain:** $\mathbb{R}^3$ (3D space).
+*   **Codomain:** $\mathbb{R}^2$ (2D plane).
+*   **Evaluation 1:** Plug in $\mathbf{v}_1 = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}$:
+    $$T\left(\begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}\right) = \begin{bmatrix} 1 + 2(1) \\ 3(1) \end{bmatrix} = \begin{bmatrix} 3 \\ 3 \end{bmatrix} \in \mathbb{R}^2$$
+*   **Evaluation 2:** Plug in $\mathbf{v}_2 = \begin{bmatrix} 2 \\ 4 \\ 1 \end{bmatrix}$:
+    $$T\left(\begin{bmatrix} 2 \\ 4 \\ 1 \end{bmatrix}\right) = \begin{bmatrix} 2 + 2(4) \\ 3(1) \end{bmatrix} = \begin{bmatrix} 10 \\ 3 \end{bmatrix} \in \mathbb{R}^2$$
+
+---
+
+### Linear Transformations & The Two Axioms
+> **Video Resource:** [Khan Academy - Linear transformations](https://youtu.be/4PCktDZJH8E?si=diutF34Mc6jhwAh3)
+
+Not all vector transformations are created equal. In Linear Algebra, we focus almost exclusively on **linear transformations**—transformations that respect and preserve the core vector space operations: addition and scaling.
+
+> ### <a id="definition-linear-transformation"></a><mark>Definition: Linear Transformation</mark>
+> A transformation $T: \mathbb{R}^n \to \mathbb{R}^m$ is called a **linear transformation** if and only if it satisfies the following two conditions for all vectors $\mathbf{u}, \mathbf{v} \in \mathbb{R}^n$ and every scalar $c \in \mathbb{R}$:
+> 1.  **Additivity (Preservation of Addition):**
+>     $$T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$$
+>     *(Transforming a sum is the same as summing the individual transformations).*
+> 2.  **Homogeneity (Preservation of Scalar Multiplication):**
+>     $$T(c\mathbf{u}) = cT(\mathbf{u})$$
+>     *(Scaling a vector before transforming gives the exact same result as scaling after transforming).*
+
+#### Immediate Consequences & The Superposition Principle:
+*   **The Zero-Vector Test:** Setting $c = 0$ in the homogeneity axiom yields:
+    $$T(\mathbf{0}) = T(0 \cdot \mathbf{u}) = 0 \cdot T(\mathbf{u}) = \mathbf{0}$$
+    > **CRITICAL EXAM QUICK-KILL RULE:** Every linear transformation **MUST** map the zero vector of the domain to the zero vector of the codomain:
+    > $$T(\mathbf{0}) = \mathbf{0}$$
+    > If $T(\mathbf{0}) \neq \mathbf{0}$ (e.g., $T(x) = x + 3$ or $T(\mathbf{x}) = A\mathbf{x} + \mathbf{b}$ where $\mathbf{b} \neq \mathbf{0}$), it **fails instantly** and is NOT linear!
+*   **The Master Superposition Property:** Combining both axioms into a single test:
+    $$T(c_1\mathbf{u}_1 + c_2\mathbf{u}_2 + \dots + c_k\mathbf{u}_k) = c_1T(\mathbf{u}_1) + c_2T(\mathbf{u}_2) + \dots + c_kT(\mathbf{u}_k)$$
+    *(A transformation is linear if and only if it preserves all linear combinations).*
+
+---
+
+#### Worked Example 1: Proving Linearity
+> Prove that the transformation $T: \mathbb{R}^2 \to \mathbb{R}^2$ defined by:
+> $$T\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} x_1 + x_2 \\ 3x_1 \end{bmatrix}$$
+> is a valid linear transformation.
+
+<mark style="background-color: lightgreen;">Step 1: Test Additivity $T(\mathbf{a} + \mathbf{b}) \stackrel{?}{=} T(\mathbf{a}) + T(\mathbf{b})$</mark>
+Let $\mathbf{a} = \begin{bmatrix} a_1 \\ a_2 \end{bmatrix}$ and $\mathbf{b} = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix}$. Then their vector sum is:
+$$\mathbf{a} + \mathbf{b} = \begin{bmatrix} a_1 + b_1 \\ a_2 + b_2 \end{bmatrix}$$
+Apply the transformation rule to the sum:
+$$T(\mathbf{a} + \mathbf{b}) = \begin{bmatrix} (a_1 + b_1) + (a_2 + b_2) \\ 3(a_1 + b_1) \end{bmatrix} = \begin{bmatrix} (a_1 + a_2) + (b_1 + b_2) \\ 3a_1 + 3b_1 \end{bmatrix}$$
+Now evaluate $T(\mathbf{a})$ and $T(\mathbf{b})$ separately and sum them:
+$$T(\mathbf{a}) = \begin{bmatrix} a_1 + a_2 \\ 3a_1 \end{bmatrix}, \quad T(\mathbf{b}) = \begin{bmatrix} b_1 + b_2 \\ 3b_1 \end{bmatrix}$$
+$$T(\mathbf{a}) + T(\mathbf{b}) = \begin{bmatrix} (a_1 + a_2) + (b_1 + b_2) \\ 3a_1 + 3b_1 \end{bmatrix}$$
+Since both sides match identically, **Additivity holds!** $\checkmark$
+
+<mark style="background-color: lightgreen;">Step 2: Test Homogeneity $T(c\mathbf{a}) \stackrel{?}{=} cT(\mathbf{a})$</mark>
+Let $c \in \mathbb{R}$. The scaled vector is $c\mathbf{a} = \begin{bmatrix} ca_1 \\ ca_2 \end{bmatrix}$.
+Apply the transformation:
+$$T(c\mathbf{a}) = \begin{bmatrix} ca_1 + ca_2 \\ 3(ca_1) \end{bmatrix} = \begin{bmatrix} c(a_1 + a_2) \\ c(3a_1) \end{bmatrix} = c \begin{bmatrix} a_1 + a_2 \\ 3a_1 \end{bmatrix} = c T(\mathbf{a})$$
+Since both sides match, **Homogeneity holds!** $\checkmark$
+
+**Conclusion:** Because both axioms are satisfied, $T$ is proven to be a **linear transformation**. $\blacksquare$
+
+---
+
+#### Worked Example 2: Disproving Linearity (Counterexample with Powers)
+> Determine whether the transformation $T: \mathbb{R}^2 \to \mathbb{R}^2$ defined by:
+> $$T\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} x_1^2 \\ 0 \end{bmatrix}$$
+> is a linear transformation.
+
+<mark style="background-color: #ffcccc;">Testing Homogeneity:</mark>
+Let $\mathbf{a} = \begin{bmatrix} a_1 \\ a_2 \end{bmatrix}$ and let $c$ be an arbitrary scalar.
+The scaled vector is $c\mathbf{a} = \begin{bmatrix} ca_1 \\ ca_2 \end{bmatrix}$.
+Apply the transformation:
+$$T(c\mathbf{a}) = \begin{bmatrix} (ca_1)^2 \\ 0 \end{bmatrix} = \begin{bmatrix} c^2 a_1^2 \\ 0 \end{bmatrix} = c^2 \begin{bmatrix} a_1^2 \\ 0 \end{bmatrix} = c^2 T(\mathbf{a})$$
+For linearity, we require:
+$$T(c\mathbf{a}) = c T(\mathbf{a})$$
+However, our calculation produced $c^2 T(\mathbf{a})$. 
+*   **Concrete Numerical Counterexample:** Choose $c = 2$ and $\mathbf{a} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$:
+    $$T(2\mathbf{a}) = T\left(\begin{bmatrix} 2 \\ 0 \end{bmatrix}\right) = \begin{bmatrix} 2^2 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ 0 \end{bmatrix}$$
+    $$2 T(\mathbf{a}) = 2 T\left(\begin{bmatrix} 1 \\ 0 \end{bmatrix}\right) = 2 \begin{bmatrix} 1^2 \\ 0 \end{bmatrix} = \begin{bmatrix} 2 \\ 0 \end{bmatrix}$$
+    Clearly, $\begin{bmatrix} 4 \\ 0 \end{bmatrix} \neq \begin{bmatrix} 2 \\ 0 \end{bmatrix}$.
+
+**Conclusion:** $T(c\mathbf{a}) \neq cT(\mathbf{a})$. The transformation **fails Homogeneity** and is **NOT linear**. $\blacksquare$
+
+---
+
+#### Exam Quick-Check Rules for Linearity
+When scanning candidate transformations on an exam, use these fast visual heuristics:
+
+| Feature in $T(\mathbf{x})$ | Linearity Status | Reason / Counterexample |
+| :--- | :--- | :--- |
+| **Linear Combinations only** (e.g. $2x_1 - 5x_2$) | **Linear** $\checkmark$ | Satisfies both additivity and scalar preservation. |
+| **Constants / Shifts** (e.g. $x_1 + 3$) | **NON-Linear** $\times$ | $T(\mathbf{0}) \neq \mathbf{0}$ (Zero test fails!). |
+| **Powers / Exponents** (e.g. $x_1^2, \sqrt{x_2}$) | **NON-Linear** $\times$ | Fails scalar homogeneity ($T(c\mathbf{x}) = c^k T(\mathbf{x}) \neq c T(\mathbf{x})$). |
+| **Cross-Products** (e.g. $x_1 x_2$) | **NON-Linear** $\times$ | $(ca_1)(ca_2) = c^2 a_1 a_2 \implies$ fails homogeneity. |
+| **Absolute Values / Norms** (e.g. $\|x_1\|$) | **NON-Linear** $\times$ | Fails negative scalars: $|-1 \cdot 2| = 2 \neq -1 \cdot |2|$. |
+| **Trig / Transcendentals** (e.g. $\sin(x_1), e^{x_2}$) | **NON-Linear** $\times$ | $\sin(u+v) \neq \sin(u) + \sin(v)$. |
+
+---
+
+### Matrix-Vector Products as Linear Transformations
+> **Video Resource:** [Khan Academy - Matrix vector products as linear transformations](https://youtu.be/ondmopWLiEg?si=jGtIkIwCoqrgdPo0)
+
+So far, we have viewed $A\mathbf{x} = \mathbf{b}$ as a static system of linear equations to solve for $\mathbf{x}$. We now reverse the perspective: **we fix the matrix $A$ and let the vector $\mathbf{x}$ vary freely**.
+
+When written as:
+$$\mathbf{b} = T(\mathbf{x}) = A\mathbf{x}$$
+$A$ acts as a computational machine (or function) that inputs a vector $\mathbf{x} \in \mathbb{R}^n$ and outputs a transformed vector $\mathbf{b} \in \mathbb{R}^m$.
+
+#### 1. Column Vector Expansion
+Let $A$ be an $m \times n$ matrix with columns $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n \in \mathbb{R}^m$. By definition of matrix-vector multiplication:
+$$A\mathbf{x} = \begin{bmatrix} \big| & \big| & & \big| \\ \mathbf{v}_1 & \mathbf{v}_2 & \dots & \mathbf{v}_n \\ \big| & \big| & & \big| \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} = x_1\mathbf{v}_1 + x_2\mathbf{v}_2 + \dots + x_n\mathbf{v}_n$$
+Because each column $\mathbf{v}_i \in \mathbb{R}^m$, any linear combination of them produces a vector in $\mathbb{R}^m$. Thus, multiplication by $A$ defines a valid mapping:
+$$T_A: \mathbb{R}^n \to \mathbb{R}^m$$
+
+#### 2. Rigorous Proof: Matrix Multiplication is Always Linear
+> **Theorem:** For any $m \times n$ matrix $A$, the transformation $T(\mathbf{x}) = A\mathbf{x}$ is guaranteed to be a linear transformation.
+
+<mark style="background-color: lightgreen;">Proof of Additivity: $A(\mathbf{a} + \mathbf{b}) = A\mathbf{a} + A\mathbf{b}$</mark>
+Let $\mathbf{a}, \mathbf{b} \in \mathbb{R}^n$. The vector sum $\mathbf{a} + \mathbf{b}$ has components $(a_i + b_i)$.
+$$A(\mathbf{a} + \mathbf{b}) = (a_1 + b_1)\mathbf{v}_1 + (a_2 + b_2)\mathbf{v}_2 + \dots + (a_n + b_n)\mathbf{v}_n$$
+Using the distributive property of vector scalar multiplication:
+$$= (a_1\mathbf{v}_1 + b_1\mathbf{v}_1) + (a_2\mathbf{v}_2 + b_2\mathbf{v}_2) + \dots + (a_n\mathbf{v}_n + b_n\mathbf{v}_n)$$
+Regrouping terms by vector $\mathbf{a}$ and vector $\mathbf{b}$:
+$$= (a_1\mathbf{v}_1 + a_2\mathbf{v}_2 + \dots + a_n\mathbf{v}_n) + (b_1\mathbf{v}_1 + b_2\mathbf{v}_2 + \dots + b_n\mathbf{v}_n)$$
+$$= A\mathbf{a} + A\mathbf{b} \quad \blacksquare$$
+
+<mark style="background-color: lightgreen;">Proof of Homogeneity: $A(c\mathbf{a}) = c(A\mathbf{a})$</mark>
+Let $c \in \mathbb{R}$. The scaled vector $c\mathbf{a}$ has components $c a_i$.
+$$A(c\mathbf{a}) = (c a_1)\mathbf{v}_1 + (c a_2)\mathbf{v}_2 + \dots + (c a_n)\mathbf{v}_n$$
+Factoring the scalar $c$ from the linear combination:
+$$= c(a_1\mathbf{v}_1 + a_2\mathbf{v}_2 + \dots + a_n\mathbf{v}_n) = c(A\mathbf{a}) \quad \blacksquare$$
+
+#### Real-World Takeaway (GPU Architecture)
+In modern computing, video game graphics cards (GPUs in consoles like PlayStation and Xbox, or Nvidia architecture) are literally dedicated, hardware-level matrix multipliers. Millions of 3D vertices defining polygons are multiplied by transformation matrices in parallel at 120+ frames per second to render real-time rotations, perspectives, and lighting.
+
+---
+
+### The Standard Matrix of a Linear Transformation
+> **Video Resource:** [Khan Academy - Linear transformations as matrix vector products](https://youtu.be/PErhLkQcpZ8?si=6t3Vbk2alYFKU9DR)
+
+We just established that every matrix multiplication $A\mathbf{x}$ defines a linear transformation. We now tackle the **fundamental converse**:
+> Can *every* linear transformation $T: \mathbb{R}^n \to \mathbb{R}^m$ be written as a matrix multiplication $T(\mathbf{x}) = A\mathbf{x}$?
+> **Answer:** YES! And there is a foolproof, universal recipe to construct this matrix $A$.
+
+#### The Standard Basis & The Construction Theorem
+Recall that the **standard basis** for the domain $\mathbb{R}^n$ consists of the columns of the $n \times n$ identity matrix $I_n$:
+$$\mathbf{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, \quad \mathbf{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}, \quad \dots, \quad \mathbf{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}$$
+Every vector $\mathbf{x} \in \mathbb{R}^n$ can be uniquely decomposed as a linear combination of these basis vectors:
+$$\mathbf{x} = x_1\mathbf{e}_1 + x_2\mathbf{e}_2 + \dots + x_n\mathbf{e}_n$$
+
+Applying the linearity of $T$ (the Superposition Principle):
+$$T(\mathbf{x}) = T(x_1\mathbf{e}_1 + x_2\mathbf{e}_2 + \dots + x_n\mathbf{e}_n)$$
+$$= x_1 T(\mathbf{e}_1) + x_2 T(\mathbf{e}_2) + \dots + x_n T(\mathbf{e}_n)$$
+Rewriting this sum of vectors as a matrix-vector product:
+$$= \begin{bmatrix} \big| & \big| & & \big| \\ T(\mathbf{e}_1) & T(\mathbf{e}_2) & \dots & T(\mathbf{e}_n) \\ \big| & \big| & & \big| \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} = [T]\mathbf{x}$$
+
+> ### <a id="theorem-standard-matrix"></a><mark>Theorem: The Standard Matrix of a Linear Transformation</mark>
+> Let $T: \mathbb{R}^n \to \mathbb{R}^m$ be any linear transformation. Then there exists a unique $m \times n$ matrix $[T]$ (often denoted $A$) such that $T(\mathbf{x}) = [T]\mathbf{x}$ for all $\mathbf{x} \in \mathbb{R}^n$.
+> This matrix is formed by packing the transformed standard basis vectors as its columns:
+> $$[T] = \begin{bmatrix} T(\mathbf{e}_1) & T(\mathbf{e}_2) & \dots & T(\mathbf{e}_n) \end{bmatrix}_{m \times n}$$
+
+#### Step-by-Step Construction Example ($T: \mathbb{R}^2 \to \mathbb{R}^3$)
+Let $T: \mathbb{R}^2 \to \mathbb{R}^3$ be defined by:
+$$T\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} x_1 + 3x_2 \\ 5x_2 - x_1 \\ 4x_1 + x_2 \end{bmatrix}$$
+
+*   **Step 1: Evaluate $T$ at each standard basis vector of the domain ($\mathbb{R}^2$):**
+    *   For $\mathbf{e}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$:
+        $$T(\mathbf{e}_1) = T\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 + 3(0) \\ 5(0) - 1 \\ 4(1) + 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -1 \\ 4 \end{bmatrix}$$
+    *   For $\mathbf{e}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$:
+        $$T(\mathbf{e}_2) = T\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \begin{bmatrix} 0 + 3(1) \\ 5(1) - 0 \\ 4(0) + 1 \end{bmatrix} = \begin{bmatrix} 3 \\ 5 \\ 1 \end{bmatrix}$$
+
+*   **Step 2: Assemble the transformed vectors as columns of $A$:**
+    $$A = [T] = \begin{bmatrix} T(\mathbf{e}_1) & T(\mathbf{e}_2) \end{bmatrix} = \begin{bmatrix} 1 & 3 \\ -1 & 5 \\ 4 & 1 \end{bmatrix}_{3 \times 2}$$
+
+*   **Step 3: Verification:**
+    $$A\mathbf{x} = \begin{bmatrix} 1 & 3 \\ -1 & 5 \\ 4 & 1 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} x_1 + 3x_2 \\ -x_1 + 5x_2 \\ 4x_1 + x_2 \end{bmatrix} = T(\mathbf{x}) \quad \checkmark$$
+
+---
+
+### The Geometric Gallery of Transformations (2D & 3D)
+> **Lecture Reference:** Lecture 13 (Sajal Rana) & [Khan Academy - Rotations in $\mathbb{R}^2$](https://youtu.be/lPWfIq5DzqI?si=EWc5ysQPTRT5JTrC)
+
+Because every linear operator $T: \mathbb{R}^2 \to \mathbb{R}^2$ is completely determined by where it sends $\mathbf{e}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ and $\mathbf{e}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$, we can effortlessly construct the standard matrices for all classical geometric operations.
+
+#### 1. Rotations in $\mathbb{R}^2$ ($R_\theta$)
+To rotate every vector in $\mathbb{R}^2$ counterclockwise by an angle $\theta$ around the origin:
+*   $\mathbf{e}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ rotates along the unit circle to $(\cos\theta, \sin\theta) \implies T(\mathbf{e}_1) = \begin{bmatrix} \cos\theta \\ \sin\theta \end{bmatrix}$.
+*   $\mathbf{e}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$ (at $90^\circ$) rotates to angle $90^\circ + \theta$. By trig identities, $\cos(90^\circ+\theta) = -\sin\theta$ and $\sin(90^\circ+\theta) = \cos\theta \implies T(\mathbf{e}_2) = \begin{bmatrix} -\sin\theta \\ \cos\theta \end{bmatrix}$.
+
+Glued into column vectors, the **Rotation Matrix** is:
+$$R_\theta = \begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}$$
+
+*   **Quarter-Turn ($90^\circ$ Rotation, $\theta = \pi/2$):**
+    $$R_{90^\circ} = \begin{bmatrix} \cos 90^\circ & -\sin 90^\circ \\ \sin 90^\circ & \cos 90^\circ \end{bmatrix} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$$
+    *(Notice: $\begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$, swinging the $x$-axis vector up to the $y$-axis).*
+*   **$45^\circ$ Rotation ($\theta = \pi/4$):**
+    $$R_{45^\circ} = \begin{bmatrix} \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix}$$
+*   **$180^\circ$ Rotation ($\theta = \pi$):**
+    $$R_{180^\circ} = \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix} = -I$$
+
+#### 2. Reflections (Flipping Space)
+*   **Reflection across the $x$-axis:**
+    Preserves $x$, flips sign of $y$: $\mathbf{e}_1 \to \begin{bmatrix} 1 \\ 0 \end{bmatrix}$, $\mathbf{e}_2 \to \begin{bmatrix} 0 \\ -1 \end{bmatrix}$.
+    $$[\text{Ref}_x] = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$$
+*   **Reflection across the $y$-axis:**
+    Flips sign of $x$, preserves $y$: $\mathbf{e}_1 \to \begin{bmatrix} -1 \\ 0 \end{bmatrix}$, $\mathbf{e}_2 \to \begin{bmatrix} 0 \\ 1 \end{bmatrix}$.
+    $$[\text{Ref}_y] = \begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}$$
+*   **Reflection across the line $y = x$:**
+    Swaps the coordinates: $(x, y) \to (y, x)$. $\mathbf{e}_1 \to \begin{bmatrix} 0 \\ 1 \end{bmatrix}$, $\mathbf{e}_2 \to \begin{bmatrix} 1 \\ 0 \end{bmatrix}$.
+    $$[\text{Ref}_{y=x}] = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$$
+
+#### 3. Orthogonal Projections (Flattening Space)
+Projections drop a vector orthogonally onto a lower-dimensional axis or plane, discarding perpendicular components:
+*   **Projection onto the $x$-axis in $\mathbb{R}^2$:**
+    $T(x, y) = (x, 0) \implies \mathbf{e}_1 \to \begin{bmatrix} 1 \\ 0 \end{bmatrix}$, $\mathbf{e}_2 \to \begin{bmatrix} 0 \\ 0 \end{bmatrix}$.
+    $$[P_x] = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$$
+*   **Projection onto the $y$-axis in $\mathbb{R}^2$:**
+    $T(x, y) = (0, y) \implies [P_y] = \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}$
+*   **Projection onto the $xy$-plane in $\mathbb{R}^3$:**
+    $T(x, y, z) = (x, y, 0)$. It kills the $z$-coordinate:
+    $$[P_{xy}] = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix}$$
+
+#### 4. Dilations & Contractions (Scaling)
+Scales all components uniformly by a factor $k > 0$:
+$$[T] = \begin{bmatrix} k & 0 \\ 0 & k \end{bmatrix} = k I$$
+*   If $k > 1$, it is a **dilation** (expansion).
+*   If $0 < k < 1$, it is a **contraction** (compression).
+
+#### 5. Shears (Sliding Space)
+A shear slides coordinates parallel to an axis proportionally to their distance from that axis:
+*   **Horizontal Shear (along $x$-axis by factor $k$):**
+    Each point $(x, y) \to (x + ky, y)$. Points on the $x$-axis ($y = 0$) stay still; points higher up shift horizontally.
+    $$\mathbf{e}_1 \to \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \quad \mathbf{e}_2 \to \begin{bmatrix} k \\ 1 \end{bmatrix} \implies [\text{Shear}_x] = \begin{bmatrix} 1 & k \\ 0 & 1 \end{bmatrix}$$
+*   **Vertical Shear (along $y$-axis by factor $k$):**
+    $(x, y) \to (x, y + kx)$.
+    $$[\text{Shear}_y] = \begin{bmatrix} 1 & 0 \\ k & 1 \end{bmatrix}$$
+
+#### Summary Gallery Reference Table
+| Transformation Name | Standard Matrix $[T]$ | Geometric Effect |
+| :--- | :---: | :--- |
+| **Identity** | $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ | Leaves all vectors unchanged ($T(\mathbf{x}) = \mathbf{x}$) |
+| **Rotation by $\theta$** | $\begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}$ | Rotates plane counterclockwise by angle $\theta$ |
+| **Reflection ($x$-axis)** | $\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$ | Negates vertical component; mirrors across $x$-axis |
+| **Reflection ($y=x$)** | $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$ | Swaps coordinates $(x, y) \to (y, x)$ |
+| **Projection ($x$-axis)** | $\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$ | Collapses 2D plane down to 1D line ($y = 0$) |
+| **Horizontal Shear** | $\begin{bmatrix} 1 & k \\ 0 & 1 \end{bmatrix}$ | Slants shapes horizontally while preserving area |
+
+---
+
+### General Linear Transformations (Calculus & Function Spaces)
+> **Lecture Reference:** Lecture 14 (Sajal Rana)
+
+Linear transformations are not restricted to finite-dimensional Euclidean space $\mathbb{R}^n$. The same two linearity rules govern operations on abstract vector spaces, such as polynomial spaces $P_n$ and continuous function spaces $C[a, b]$.
+
+#### The Derivative Operator
+Let $V = P_n$ (polynomials of degree $\le n$) and $W = P_{n-1}$. Define the derivative transformation $D: P_n \to P_{n-1}$ by:
+$$D(p) = \frac{d}{dx}[p(x)] = p'(x)$$
+
+*   **Test Additivity:** For any two polynomials $p(x), q(x)$:
+    $$D(p + q) = (p + q)' = p' + q' = D(p) + D(q) \quad \checkmark$$
+*   **Test Homogeneity:** For any scalar $c \in \mathbb{R}$:
+    $$D(cp) = (cp)' = c p' = c D(p) \quad \checkmark$$
+Therefore, **differentiation is a linear transformation!**
+
+#### The Definite Integral Operator
+Let $V = C[a, b]$ (continuous functions on $[a, b]$) and $W = \mathbb{R}$. Define $I: C[a, b] \to \mathbb{R}$ by:
+$$I(f) = \int_a^b f(x) \, dx$$
+
+*   $\int_a^b (f(x) + g(x)) \, dx = \int_a^b f(x) \, dx + \int_a^b g(x) \, dx \implies I(f + g) = I(f) + I(g)$
+*   $\int_a^b c f(x) \, dx = c \int_a^b f(x) \, dx \implies I(cf) = c I(f)$
+Therefore, **definite integration is a linear transformation!**
+
+---
+
+### Kernel and Range of a Linear Transformation
+> **Lecture Reference:** Lecture 14 (Sajal Rana)
+
+Just as every matrix has a Null Space and a Column Space, every general linear transformation $T: V \to W$ possesses two fundamental spaces: what gets lost, and what gets reached.
+
+#### The Kernel ($\ker(T)$) & Nullity
+> **Definition:** The **kernel** (or null space) of $T: V \to W$ is the set of all vectors in the domain $V$ that map to the zero vector $\mathbf{0}_W$ in the codomain:
+> $$\ker(T) = \{\mathbf{v} \in V \mid T(\mathbf{v}) = \mathbf{0}_W\}$$
+
+*   **Where it lives:** The Kernel is ALWAYS a valid subspace of the **DOMAIN** $V$: $\ker(T) \subseteq V$.
+*   **Nullity of $T$:** The dimension of the kernel:
+    $$\text{nullity}(T) = \dim(\ker(T))$$
+*   **Matrix Bridge:** For a matrix transformation $T_A(\mathbf{x}) = A\mathbf{x}$, the kernel is precisely the null space of $A$:
+    $$\ker(T_A) = \text{Null}(A) = \{\mathbf{x} \in \mathbb{R}^n \mid A\mathbf{x} = \mathbf{0}\}$$
+*   **Calculus Examples:**
+    *   For the derivative operator $D(p) = p'$ on $P_n$:
+        $$\ker(D) = \{p \in P_n \mid p'(x) = 0\} = \{\text{constant polynomials}\} \implies \text{nullity}(D) = 1$$
+    *   For the integral operator $I(f) = \int_a^b f(x)dx$:
+        $$\ker(I) = \left\{f \in C[a, b] \;\middle|\; \int_a^b f(x) \, dx = 0\right\}$$
+
+#### The Range ($\text{range}(T)$) & Rank
+> **Definition:** The **range** (or image) of $T: V \to W$ is the set of all vectors in the codomain $W$ that are the image of at least one vector in $V$:
+> $$\text{range}(T) = \{T(\mathbf{v}) \mid \mathbf{v} \in V\}$$
+
+*   **Where it lives:** The Range is ALWAYS a valid subspace of the **CODOMAIN** $W$: $\text{range}(T) \subseteq W$.
+*   **Rank of $T$:** The dimension of the range:
+    $$\text{rank}(T) = \dim(\text{range}(T))$$
+*   **Matrix Bridge:** For a matrix transformation $T_A(\mathbf{x}) = A\mathbf{x}$, the range is precisely the column space of $A$:
+    $$\text{range}(T_A) = \text{Col}(A) = \text{span}(\text{columns of } A)$$
+
+#### The Dimension Theorem for Transformations
+> ### <a id="theorem-rank-nullity-transformations"></a><mark>Theorem: The Rank-Nullity Theorem for Transformations</mark>
+> Let $T: V \to W$ be a linear transformation from a finite-dimensional vector space $V$ into a vector space $W$. Then:
+> $$\text{rank}(T) + \text{nullity}(T) = \dim(V)$$
+> $$\dim(\text{range}(T)) + \dim(\ker(T)) = \dim(\text{Domain})$$
+> *(Conservation of Dimensions: The dimension of the input space is partitioned between what survives into the range and what collapses into the kernel).*
+
+---
+
+### One-to-One, Onto & Inverse Transformations
+> **Lecture Reference:** Lecture 15 (Sajal Rana)
+
+When analyzing a transformation $T: V \to W$, two central questions determine whether information is preserved and whether the target space is completely filled:
+1. Does $T$ lose information by collapsing distinct inputs together? (**One-to-One / Injective**)
+2. Does $T$ reach every possible target in the codomain? (**Onto / Surjective**)
+
+#### One-to-One (Injective) Transformations
+> **Definition:** A transformation $T: V \to W$ is **one-to-one** (injective) if distinct inputs always yield distinct outputs:
+> $$T(\mathbf{u}) = T(\mathbf{v}) \implies \mathbf{u} = \mathbf{v}$$
+> Equivalently: if $\mathbf{u} \neq \mathbf{v}$, then $T(\mathbf{u}) \neq T(\mathbf{v})$.
+
+> ### <a id="theorem-one-to-one-kernel"></a><mark>Theorem: The Trivial Kernel Test for One-to-One</mark>
+> A linear transformation $T: V \to W$ is **one-to-one if and only if its kernel contains ONLY the zero vector**:
+> $$T \text{ is one-to-one} \iff \ker(T) = \{\mathbf{0}\} \iff \text{nullity}(T) = 0$$
+
+<mark style="background-color: lightgreen;">Formal Proof (Bidirectional $\iff$):</mark>
+
+1. **Backward Direction ($\impliedby$): Assume $\ker(T) = \{\mathbf{0}\}$, prove $T$ is one-to-one.**
+   * Let $\mathbf{u}, \mathbf{v} \in V$ such that $T(\mathbf{u}) = T(\mathbf{v})$.
+   * Subtracting gives: $T(\mathbf{u}) - T(\mathbf{v}) = \mathbf{0}$.
+   * By linearity: $T(\mathbf{u} - \mathbf{v}) = \mathbf{0}$.
+   * This means the difference vector $(\mathbf{u} - \mathbf{v})$ lies in $\ker(T)$.
+   * Since $\ker(T) = \{\mathbf{0}\}$, the only vector in the kernel is the zero vector:
+     $$\mathbf{u} - \mathbf{v} = \mathbf{0} \implies \mathbf{u} = \mathbf{v}$$
+   * Therefore, $T$ is one-to-one.
+
+2. **Forward Direction ($\implies$): Assume $T$ is one-to-one, prove $\ker(T) = \{\mathbf{0}\}$.**
+   * By linearity, we always have $T(\mathbf{0}) = \mathbf{0}$, so $\mathbf{0} \in \ker(T)$.
+   * Now let $\mathbf{v} \in \ker(T)$, meaning $T(\mathbf{v}) = \mathbf{0}$.
+   * Since $T(\mathbf{0}) = \mathbf{0}$, we have $T(\mathbf{v}) = T(\mathbf{0})$.
+   * Because $T$ is assumed to be one-to-one, $T(\mathbf{v}) = T(\mathbf{0})$ forces:
+     $$\mathbf{v} = \mathbf{0}$$
+   * Hence, no non-zero vector can belong to $\ker(T)$, proving $\ker(T) = \{\mathbf{0}\}$.
+
+$$\blacksquare$$
+
+<mark style="background-color: #fff2a8;">The Intuition — Why Collapsing at $\mathbf{0}$ Collapses Everywhere:</mark>
+* **The Question:** *"We only checked $A\mathbf{x} = \mathbf{0}$. Why does a non-trivial kernel guarantee that general outputs $A\mathbf{x} = \mathbf{b}$ also have multiple solutions?"*
+* **The Reason (Linearity):** Recall the general solution structure: $\mathbf{x} = \mathbf{x}_p + \mathbf{x}_h$.
+  Suppose a target $\mathbf{b}$ is reached by a particular input $\mathbf{x}_p$, so $T(\mathbf{x}_p) = \mathbf{b}$.
+  If the kernel is non-trivial, there exists a non-zero vector $\mathbf{v}_h \in \ker(T)$ where $T(\mathbf{v}_h) = \mathbf{0}$.
+  Now test the shifted input $(\mathbf{x}_p + \mathbf{v}_h)$:
+  $$T(\mathbf{x}_p + \mathbf{v}_h) = T(\mathbf{x}_p) + T(\mathbf{v}_h) = \mathbf{b} + \mathbf{0} = \mathbf{b}$$
+  Both $\mathbf{x}_p$ and $(\mathbf{x}_p + \mathbf{v}_h)$ hit the exact same target $\mathbf{b}$! Since any scalar multiple $c\mathbf{v}_h$ also lives in the kernel, there are infinitely many inputs hitting $\mathbf{b}$.
+* **Takeaway:** In a linear world, if the transformation collapses inputs together at the origin $\mathbf{0}$, it collapses inputs together *everywhere in the space*.
+
+#### Onto (Surjective) Transformations
+> **Definition:** A transformation $T: V \to W$ is **onto** (surjective) if its range completely covers its entire codomain:
+> $$\text{range}(T) = W$$
+> Equivalently: for **every** target vector $\mathbf{w} \in W$, there exists at least one input $\mathbf{v} \in V$ such that $T(\mathbf{v}) = \mathbf{w}$.
+
+*   **Dimension Requirement for Onto:** $\text{rank}(T) = \dim(W)$.
+
+#### The Pivot & Shape Decision Rules
+For matrix transformations $T_A: \mathbb{R}^n \to \mathbb{R}^m$ where $A$ is an $m \times n$ matrix:
+
+| Property | Definition | Matrix / Pivot Condition | Shape Limitation |
+| :--- | :--- | :--- | :--- |
+| **One-to-One** (Injective) | $\ker(T) = \{\mathbf{0}\}$ | **Pivot in EVERY column** of $A$<br>($\text{nullity}(A) = 0$, columns are linearly independent) | Requires $n \le m$.<br>*(A "wide" matrix $n > m$ can **never** be one-to-one; it must have free variables!)* |
+| **Onto** (Surjective) | $\text{range}(T) = \mathbb{R}^m$ | **Pivot in EVERY row** of $A$<br>($\text{rank}(A) = m$, columns span $\mathbb{R}^m$) | Requires $m \le n$.<br>*(A "tall" matrix $m > n$ can **never** be onto; rank cannot reach $m$!)* |
+| **Invertible** (Bijective) | Both 1-to-1 and Onto | **Pivot in EVERY row and column**<br>($A$ is square $n \times n$ and $\det(A) \neq 0$) | Requires $m = n$ (Square matrix). |
+
+#### Inverse Linear Transformations ($T^{-1}$)
+If $T: \mathbb{R}^n \to \mathbb{R}^n$ is both one-to-one and onto, it is a **bijection** (or **isomorphism**). It possesses a unique inverse transformation $T^{-1}: \mathbb{R}^n \to \mathbb{R}^n$ that completely reverses the mapping:
+$$(T^{-1} \circ T)(\mathbf{x}) = \mathbf{x} \quad \text{and} \quad (T \circ T^{-1})(\mathbf{y}) = \mathbf{y}$$
+
+*   **Matrix Inverse Relationship:**
+    $$[T^{-1}] = [T]^{-1}$$
+*   **Rotation Example:** The inverse of rotating counterclockwise by $\theta$ is rotating counterclockwise by $-\theta$:
+    $$[R_\theta]^{-1} = R_{-\theta} = \begin{bmatrix} \cos(-\theta) & -\sin(-\theta) \\ \sin(-\theta) & \cos(-\theta) \end{bmatrix} = \begin{bmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{bmatrix} = R_\theta^T$$
+    *(Notice: for any rotation matrix, its inverse is simply its transpose: $R_\theta^{-1} = R_\theta^T$!).*
+
+---
+
+### Compositions of Linear Transformations
+> **Video Resource:** [Khan Academy - Compositions of linear transformations](https://youtu.be/f_DTiXZpb8M?si=VghPW3fxIH6iprx7) & Lecture 16 (Sajal Rana)
+
+#### Definition & Proof of Linearity
+Let $T_1: \mathbb{R}^n \to \mathbb{R}^k$ and $T_2: \mathbb{R}^k \to \mathbb{R}^m$ be linear transformations. The **composition** $(T_2 \circ T_1): \mathbb{R}^n \to \mathbb{R}^m$ is defined by chaining the outputs:
+$$(T_2 \circ T_1)(\mathbf{x}) = T_2(T_1(\mathbf{x}))$$
+
+*   **Proof that Composition is Linear:**
+    1.  **Additivity:**
+        $$(T_2 \circ T_1)(\mathbf{u} + \mathbf{v}) = T_2(T_1(\mathbf{u} + \mathbf{v})) = T_2(T_1(\mathbf{u}) + T_1(\mathbf{v})) = T_2(T_1(\mathbf{u})) + T_2(T_1(\mathbf{v})) = (T_2 \circ T_1)(\mathbf{u}) + (T_2 \circ T_1)(\mathbf{v})$$
+    2.  **Homogeneity:**
+        $$(T_2 \circ T_1)(c\mathbf{u}) = T_2(T_1(c\mathbf{u})) = T_2(c T_1(\mathbf{u})) = c T_2(T_1(\mathbf{u})) = c (T_2 \circ T_1)(\mathbf{u})$$
+
+#### The Standard Matrix Composition Rule ($[T_2 \circ T_1] = [T_2][T_1]$)
+Because the composition is linear, it must have its own standard matrix. By substituting matrix products:
+$$(T_2 \circ T_1)(\mathbf{x}) = T_2(T_1(\mathbf{x})) = [T_2]([T_1]\mathbf{x}) = ([T_2][T_1])\mathbf{x}$$
+
+> ### <a id="theorem-composition-matrix"></a><mark>Theorem: Standard Matrix of a Composition</mark>
+> The standard matrix of the composition $(T_2 \circ T_1)$ is the **matrix product** of the standard matrices of $T_2$ and $T_1$:
+> $$[T_2 \circ T_1] = [T_2] [T_1]$$
+> **CRITICAL ORDER WARNING:** In $(T_2 \circ T_1)$, $T_1$ acts FIRST and $T_2$ acts SECOND. In matrix multiplication, the first transformation matrix is on the **RIGHT** ($[T_2][T_1]\mathbf{x}$).
+
+#### Worked Pipeline Example: Reflect, Then Rotate
+> Find the standard matrix for the linear transformation $T: \mathbb{R}^2 \to \mathbb{R}^2$ that **first reflects** vectors across the $x$-axis, and **then rotates** the result counterclockwise by $90^\circ$.
+
+*   **Step 1: Identify individual matrices:**
+    *   First action ($T_1 = \text{Ref}_x$):
+        $$[T_1] = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$$
+    *   Second action ($T_2 = R_{90^\circ}$):
+        $$[T_2] = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$$
+*   **Step 2: Multiply in reverse order ($[T] = [T_2][T_1]$):**
+    $$[T] = [T_2][T_1] = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} = \begin{bmatrix} (0)(1) + (-1)(0) & (0)(0) + (-1)(-1) \\ (1)(1) + (0)(0) & (1)(0) + (0)(-1) \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$$
+*   **Step 3: Geometric Interpretation:**
+    The resulting matrix is $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$, which we recognize immediately from our Gallery as the matrix for **reflection across the line $y = x$**!
+    Reflecting across the $x$-axis followed by a $90^\circ$ counterclockwise rotation produces exactly a reflection across $y = x$.
 
 ---
 
 <div style="page-break-before: always; break-before: page;"></div>
 
-## 14. Vocabulary Glossary
+## 15. Vocabulary Glossary
 Here is a master list of all the terminology introduced in this document:
 
 *   **Linear Equation:** An equation where all variables are to the first power, and there are no products of variables or special functions.
@@ -2139,3 +2701,17 @@ Here is a master list of all the terminology introduced in this document:
 *   **Column Space ($\text{Col}(A)$ or Range):** The subspace of $\mathbb{R}^m$ formed by the span of the column vectors of an $m \times n$ matrix $A$, representing all possible output vectors $A\mathbf{x}$.
 *   **Rank ($\text{rank}(A)$):** The dimension of the column space of $A$ ($\dim(\text{Col}(A))$), which is strictly equal to the number of pivot columns in $\text{RREF}(A)$.
 *   **Rank-Nullity Theorem (Dimension Theorem):** The fundamental conservation law stating that for any $m \times n$ matrix $A$, $\text{Rank}(A) + \text{Nullity}(A) = n$ (Pivot columns + Free columns = Total columns).
+*   **Transformation (Mapping):** A function that operates on vectors ($T: \mathbb{R}^n \to \mathbb{R}^m$), actively moving, stretching, rotating, or projecting vectors from an input space to an output space.
+*   **Domain:** The set of all valid input vectors for a transformation ($\mathbb{R}^n$).
+*   **Codomain:** The target universe of all potential output vectors for a transformation ($\mathbb{R}^m$).
+*   **Range (Image of $T$):** The actual subset of the codomain consisting of all vectors that are mapped to by at least one input vector: $\text{Range}(T) \subseteq \text{Codomain}$.
+*   **Linear Transformation:** A transformation $T: \mathbb{R}^n \to \mathbb{R}^m$ that strictly preserves vector addition ($T(\mathbf{u}+\mathbf{v}) = T(\mathbf{u})+T(\mathbf{v})$) and scalar multiplication ($T(c\mathbf{u}) = cT(\mathbf{u})$).
+*   **Superposition Principle:** The combined linearity test stating that $T(c_1\mathbf{v}_1 + c_2\mathbf{v}_2) = c_1T(\mathbf{v}_1) + c_2T(\mathbf{v}_2)$. Linearity preserves all linear combinations.
+*   **Standard Matrix ($[T]$):** The unique $m \times n$ matrix representing a linear transformation $T: \mathbb{R}^n \to \mathbb{R}^m$, constructed by setting its columns to the images of the standard basis vectors: $[T] = \begin{bmatrix} T(\mathbf{e}_1) & \dots & T(\mathbf{e}_n) \end{bmatrix}$.
+*   **Kernel ($\ker(T)$):** The set of all domain vectors mapped to $\mathbf{0}$ by $T$: $\ker(T) = \{\mathbf{v} \in V \mid T(\mathbf{v}) = \mathbf{0}\}$. It is a subspace of the domain $V$.
+*   **One-to-One (Injective):** A transformation where distinct inputs always map to distinct outputs ($T(\mathbf{u}) = T(\mathbf{v}) \implies \mathbf{u} = \mathbf{v}$). Holds if and only if $\ker(T) = \{\mathbf{0}\}$ (pivot in every column).
+*   **Onto (Surjective):** A transformation whose range covers the entire codomain ($\text{range}(T) = W$). Holds if and only if there is a pivot in every row.
+*   **Isomorphism (Invertible Transformation):** A linear transformation that is both one-to-one and onto (bijective), allowing a unique inverse transformation $T^{-1}$ to reverse the mapping.
+*   **Composition of Transformations ($T_2 \circ T_1$):** Applying $T_1$ first, then $T_2$ to the output: $(T_2 \circ T_1)(\mathbf{x}) = T_2(T_1(\mathbf{x}))$. Its standard matrix is the product $[T_2][T_1]$ in reverse order.
+
+
