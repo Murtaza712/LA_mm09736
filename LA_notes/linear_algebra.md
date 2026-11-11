@@ -2582,15 +2582,20 @@ When analyzing a transformation $T: V \to W$, two central questions determine wh
 
 $$\blacksquare$$
 
-<mark style="background-color: #fff2a8;">The Intuition — Why Collapsing at $\mathbf{0}$ Collapses Everywhere:</mark>
-* **The Question:** *"We only checked $A\mathbf{x} = \mathbf{0}$. Why does a non-trivial kernel guarantee that general outputs $A\mathbf{x} = \mathbf{b}$ also have multiple solutions?"*
-* **The Reason (Linearity):** Recall the general solution structure: $\mathbf{x} = \mathbf{x}_p + \mathbf{x}_h$.
+<mark style="background-color: #fff2a8;">The Intuition — Why Do We Only Solve $A\mathbf{x} = \mathbf{0}$ Instead of Checking Every Arbitrary $A\mathbf{x} = \mathbf{b}$?</mark>
+* **The Question:** *"One-to-one means NO output $\mathbf{b}$ anywhere can have two different inputs. Why do we only test $A\mathbf{x} = \mathbf{0}$ instead of testing an arbitrary $A\mathbf{x} = \mathbf{b}$?"*
+* **1. Any collision at ANY $\mathbf{b}$ automatically shows up at $\mathbf{0}$ (The $\mathbf{b}$ Cancels Out!):**
+  Suppose two distinct inputs $\mathbf{u} \neq \mathbf{w}$ hit the same arbitrary vector $\mathbf{b}$: $A\mathbf{u} = \mathbf{b}$ and $A\mathbf{w} = \mathbf{b}$. Subtracting them gives:
+  $$A\mathbf{u} - A\mathbf{w} = \mathbf{b} - \mathbf{b} \implies A(\mathbf{u} - \mathbf{w}) = \mathbf{0}$$
+  The arbitrary $\mathbf{b}$ **completely cancels out**! Every collision at any $\mathbf{b}$ creates a non-zero solution $(\mathbf{u} - \mathbf{w}) \neq \mathbf{0}$ to $A\mathbf{x} = \mathbf{0}$. So if $A\mathbf{x} = \mathbf{0}$ has ONLY $\mathbf{x} = \mathbf{0}$, no collision can happen at *any* $\mathbf{b}$!
+* **2. Any collapse at $\mathbf{0}$ copies itself to EVERY reachable $\mathbf{b}$ ($\mathbf{x} = \mathbf{x}_p + \mathbf{x}_h$):**
   Suppose a target $\mathbf{b}$ is reached by a particular input $\mathbf{x}_p$, so $T(\mathbf{x}_p) = \mathbf{b}$.
   If the kernel is non-trivial, there exists a non-zero vector $\mathbf{v}_h \in \ker(T)$ where $T(\mathbf{v}_h) = \mathbf{0}$.
-  Now test the shifted input $(\mathbf{x}_p + \mathbf{v}_h)$:
-  $$T(\mathbf{x}_p + \mathbf{v}_h) = T(\mathbf{x}_p) + T(\mathbf{v}_h) = \mathbf{b} + \mathbf{0} = \mathbf{b}$$
-  Both $\mathbf{x}_p$ and $(\mathbf{x}_p + \mathbf{v}_h)$ hit the exact same target $\mathbf{b}$! Since any scalar multiple $c\mathbf{v}_h$ also lives in the kernel, there are infinitely many inputs hitting $\mathbf{b}$.
-* **Takeaway:** In a linear world, if the transformation collapses inputs together at the origin $\mathbf{0}$, it collapses inputs together *everywhere in the space*.
+  Now test the shifted input $(\mathbf{x}_p + c\mathbf{v}_h)$:
+  $$T(\mathbf{x}_p + c\mathbf{v}_h) = T(\mathbf{x}_p) + cT(\mathbf{v}_h) = \mathbf{b} + \mathbf{0} = \mathbf{b}$$
+  Every single reachable $\mathbf{b}$ inherits infinitely many pre-images $\mathbf{x}_p + c\mathbf{v}_h$!
+* **3. Why this ONLY works for Linear maps:**
+  For a non-linear function like $f(x) = (x - 2)^2$, $f(x) = 0$ has only one solution ($x = 2$), yet $f(x) = 1$ has two ($x = 1, 3$) because $f(u) - f(w) \neq f(u - w)$. Linearity makes $\mathbf{0}$ a universal detector for the entire space!
 
 #### Onto (Surjective) Transformations
 > **Definition:** A transformation $T: V \to W$ is **onto** (surjective) if its range completely covers its entire codomain:
